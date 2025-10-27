@@ -7,27 +7,29 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* Styles pour l'animation d'ouverture/fermeture */
+    /* ---- Accordéon : caché par défaut ---- */
     .partner-content {
-      max-height: 0;
+      display: none;
       overflow: hidden;
-      transition: max-height 0.4s ease, margin-top 0.4s ease;
-      margin-top: 0;
+      transition: all 0.4s ease;
       opacity: 0;
+      transform: translateY(-5px);
     }
 
     .partner-content.active {
-      margin-top: 1rem;
+      display: block;
       opacity: 1;
+      transform: translateY(0);
+      margin-top: 1rem;
     }
 
-    /* Focus formulaire rouge Renault Trucks */
+    /* Focus rouge Renault Trucks */
     input:focus, textarea:focus {
       border-color: #dc2626 !important;
       box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.4);
     }
 
-    /* Liens partenaires uniformes */
+    /* Style des liens partenaires */
     .partner-link {
       display: flex;
       align-items: center;
@@ -45,22 +47,15 @@
     function toggleCategory(id) {
       const section = document.getElementById(id);
 
-      // Ferme toutes les autres
+      // Fermer les autres sections
       document.querySelectorAll('.partner-content').forEach(item => {
         if (item.id !== id) {
           item.classList.remove('active');
-          item.style.maxHeight = '0';
         }
       });
 
-      // Bascule la section cliquée
+      // Basculer la visibilité de la section cliquée
       section.classList.toggle('active');
-
-      if (section.classList.contains('active')) {
-        section.style.maxHeight = section.scrollHeight + 'px';
-      } else {
-        section.style.maxHeight = '0';
-      }
     }
   </script>
 </head>
@@ -77,13 +72,12 @@
       </div>
       <nav class="space-x-4 text-sm font-semibold">
         <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Partenaires</a>
-        <a href="#contact"
-          class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact</a>
+        <a href="#contact" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- SECTION INTRO -->
+  <!-- INTRO -->
   <section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
     <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
       Vos Avantages <span class="text-red-600">CE Renault Trucks</span>
@@ -99,7 +93,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- Exemple RESTAURANTS -->
+      <!-- RESTAURANTS -->
       <div class="col-span-1">
         <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
           onclick="toggleCategory('resto-content')">
@@ -123,40 +117,55 @@
         </div>
       </div>
 
-      <!-- Répéter le même modèle pour les autres catégories -->
-      <!-- AUTOMOBILE, LOISIRS, VOYAGES, SPORTS -->
+      <!-- AUTOMOBILE -->
+      <div class="col-span-1">
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
+          onclick="toggleCategory('auto-content')">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+            class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
+          <div
+            class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
+            🚗 AUTOMOBILE
+          </div>
+        </div>
+        <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://maps.google.com/?q=Garage+du+Plateau+Bourg-en-Bresse" target="_blank"
+            class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🛠️</span> <span class="font-semibold">Garage du Plateau</span> — Révision -15%
+          </a>
+          <a href="https://maps.google.com/?q=Auto+Clean+01+Bourg-en-Bresse" target="_blank"
+            class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🧼</span> <span class="font-semibold">Auto Clean 01</span> — Lavage complet à 25 €
+          </a>
+        </div>
+      </div>
 
+      <!-- LOISIRS -->
+      <div class="col-span-1">
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
+          onclick="toggleCategory('loisirs-content')">
+          <img
+            src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80"
+            class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Loisirs">
+          <div
+            class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
+            🎬 LOISIRS
+          </div>
+        </div>
+        <div id="loisirs-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://maps.google.com/?q=Cinéma+La+Grenette+Bourg-en-Bresse" target="_blank"
+            class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🎟️</span> <span class="font-semibold">Cinéma La Grenette</span> — 1 place à 9 €
+          </a>
+          <a href="https://maps.google.com/?q=Laser+Game+01+Bourg-en-Bresse" target="_blank"
+            class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🔫</span> <span class="font-semibold">Laser Game 01</span> — 2e partie à -50%
+          </a>
+        </div>
+      </div>
     </div>
   </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="bg-gray-800 py-16 px-4">
-    <div class="max-w-lg mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4 text-white">Contactez votre CE</h2>
-      <p class="text-gray-400 mb-8">Pour toute question, suggestion de partenariat ou demande d'information, utilisez le formulaire ci-dessous.</p>
-      <form class="space-y-4 bg-white p-6 rounded-xl shadow-2xl">
-        <input type="text" placeholder="Nom / Service"
-          class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">
-        <input type="email" placeholder="Adresse e-mail professionnelle"
-          class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">
-        <textarea placeholder="Votre message..."
-          class="w-full border border-gray-300 p-3 rounded-lg h-28 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150"></textarea>
-        <button type="submit"
-          class="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-[1.01] duration-200 shadow-lg">
-          Envoyer au CE
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-black text-white text-center py-6 mt-0">
-    <div class="max-w-7xl mx-auto px-4">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png"
-        alt="Renault Trucks Logo" class="h-6 mx-auto mb-3 filter brightness-0 invert">
-      <p class="text-sm text-gray-400">© 2025 CE Renault Trucks CE - Bourg-en-Bresse | Tous droits réservés.</p>
-    </div>
-  </footer>
 
 </body>
 </html>
