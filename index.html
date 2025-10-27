@@ -28,17 +28,6 @@
       align-items: center;
       padding: 0.5rem 0; 
     }
-    /* Nouveau style pour les cartes de catégories */
-    .category-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 12rem; /* Hauteur définie */
-      background-color: #f3f4f6; /* bg-gray-100 */
-      border: 2px solid #e5e7eb; /* border-gray-200 */
-      text-align: center;
-    }
   </style>
 
   <script>
@@ -80,10 +69,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300" 
-             onclick="toggleCategory('resto-content')">
-          <span class="text-6xl mb-2">🍽️</span> 
-          <p class="text-xl font-bold text-gray-800">Restaurants</p>
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl" onclick="toggleCategory('resto-content')">
+          <img src="https://images.unsplash.com/photo-1555992336-03a23c9d784d?auto=format&fit=crop&w=800&q=80" class="rounded-2xl object-cover w-full h-48" alt="Restaurants">
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-2xl font-bold group-hover:bg-opacity-70 transition">🍽️ Restaurants</div>
         </div>
         <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-md">
           <a href="https://maps.google.com/?q=Le+Bressan+Gourmand+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
@@ -96,10 +84,9 @@
       </div>
 
             <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300" 
-             onclick="toggleCategory('auto-content')">
-          <span class="text-6xl mb-2">🚗</span> 
-          <p class="text-xl font-bold text-gray-800">Automobile</p>
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl" onclick="toggleCategory('auto-content')">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" class="rounded-2xl object-cover w-full h-48" alt="Automobile">
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-2xl font-bold group-hover:bg-opacity-70 transition">🚗 Automobile</div>
         </div>
         <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-md">
           <a href="https://maps.google.com/?q=Garage+du+Plateau+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
@@ -112,10 +99,9 @@
       </div>
 
             <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300" 
-             onclick="toggleCategory('loisirs-content')">
-          <span class="text-6xl mb-2">🎬</span> 
-          <p class="text-xl font-bold text-gray-800">Loisirs</p>
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl" onclick="toggleCategory('loisirs-content')">
+          <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80" class="rounded-2xl object-cover w-full h-48" alt="Loisirs">
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-2xl font-bold group-hover:bg-opacity-70 transition">🎭 Loisirs</div>
         </div>
         <div id="loisirs-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-md">
           <a href="https://maps.google.com/?q=Cinéma+La+Grenette+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
@@ -128,10 +114,9 @@
       </div>
 
             <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300" 
-             onclick="toggleCategory('vacances-content')">
-          <span class="text-6xl mb-2">🌴</span> 
-          <p class="text-xl font-bold text-gray-800">Vacances</p>
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl" onclick="toggleCategory('vacances-content')">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="rounded-2xl object-cover w-full h-48" alt="Vacances">
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-2xl font-bold group-hover:bg-opacity-70 transition">✈️ Vacances</div>
         </div>
         <div id="vacances-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-md">
           <a href="https://maps.google.com/?q=Voyages+Bresse+Horizon+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
@@ -144,10 +129,9 @@
       </div>
 
             <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300" 
-             onclick="toggleCategory('sports-content')">
-          <span class="text-6xl mb-2">⚽</span> 
-          <p class="text-xl font-bold text-gray-800">Sports</p>
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl" onclick="toggleCategory('sports-content')">
+          <img src="https://images.unsplash.com/photo-1504280390368-397bb2b86651?auto=format&fit=crop&w=800&q=80" class="rounded-2xl object-cover w-full h-48" alt="Sports">
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-2xl font-bold group-hover:bg-opacity-70 transition">🏋️ Sports</div>
         </div>
         <div id="sports-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-md">
           <a href="https://maps.google.com/?q=Intersport+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
