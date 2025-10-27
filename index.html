@@ -41,7 +41,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png">
   <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png">
-  <meta name="theme-color" content="#dc2626" />
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#dc2626">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="CE Renault Trucks">
@@ -144,6 +147,7 @@
           </a>
         </div>
       </div>
+
       <!-- SPORTS -->
       <div class="col-span-1">
         <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
@@ -191,28 +195,26 @@
       </div>
 
       <!-- ENFANTS -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
-       onclick="toggleCategory('enfants-content')">
-    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/enfants.webp"
-         class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
-      🧒 ENFANTS
-    </div>
-  </div>
-  <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=1055+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/1055.png" class="partner-logo">
-      <span class="font-semibold">1055 Bourg-en-Bresse</span> — Bons cadeaux pour activités ludiques
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Ludy+Lucky+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/ludi%20lucky.jpg" class="partner-logo">
-      <span class="font-semibold">Ludy Lucky</span> — Jeux et loisirs pour enfants
-    </a>
-  </div>
-</div>
-
-
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
+             onclick="toggleCategory('enfants-content')">
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/enfants.webp"
+               class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+            🧒 ENFANTS
+          </div>
+        </div>
+        <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://www.google.com/maps/search/?api=1&query=1055+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/1055.png" class="partner-logo">
+            <span class="font-semibold">1055 Bourg-en-Bresse</span> — Bons cadeaux pour activités ludiques
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ludy+Lucky+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/ludi%20lucky.jpg" class="partner-logo">
+            <span class="font-semibold">Ludy Lucky</span> — Jeux et loisirs pour enfants
+          </a>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -239,5 +241,13 @@
     </div>
   </footer>
 
+  <!-- Enregistrement Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker enregistré', reg))
+        .catch(err => console.log('Erreur Service Worker', err));
+    }
+  </script>
 </body>
 </html>
