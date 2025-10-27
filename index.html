@@ -32,10 +32,6 @@
     .partner-link:last-child {
       border-bottom: none;
     }
-    /* Classe pour appliquer le filtre de couleur au logo blanc sur fond foncé */
-    .logo-white {
-      filter: brightness(0) invert(1);
-    }
   </style>
 
   <script>
@@ -44,6 +40,17 @@
       const section = document.getElementById(id);
       const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
 
+      // Désactive tous les autres accordéons
+      document.querySelectorAll('.partner-content.active').forEach(item => {
+        if (item.id !== id) {
+          item.classList.remove('active');
+          item.style.maxHeight = '0';
+          // Enlève l'ombre stylisée des autres cartes
+          document.querySelector(`[onclick="toggleCategory('${item.id}')"]`).classList.remove("shadow-red-500/50");
+        }
+      });
+
+      // Active/désactive l'accordéon actuel
       section.classList.toggle("active");
       card.classList.toggle("shadow-red-500/50"); // Ajoute une ombre stylisée
 
@@ -62,112 +69,81 @@
       <div class="flex items-center space-x-2">
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png"
            alt="Renault Trucks Logo" class="h-10">
-        <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">Comité d'Entreprise</span>
+        <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">CE Bourg-en-Bresse</span>
       </div>
       <nav class="space-x-4 text-sm font-semibold">
-        <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Nos Offres</a>
-        <a href="#contact" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact CE</a>
+        <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Partenaires</a>
+        <a href="#contact" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact</a>
       </nav>
     </div>
   </header>
 
-    <section class="bg-gray-900 text-white text-center py-20 px-4">
-    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Vos Avantages Exclusifs</h1>
-    <p class="text-red-600 mt-2 text-xl font-bold">RENAULT TRUCKS CE - BOURG-EN-BRESSE</p>
-    <p class="text-gray-300 mt-4 max-w-xl mx-auto font-light">
-      Accédez aux meilleures offres négociées par votre Comité d'Entreprise auprès de nos partenaires locaux.
+    <section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Vos Avantages <span class="text-red-600">CE Renault Trucks</span></h1>
+    <p class="text-gray-600 mt-2 max-w-xl mx-auto text-lg font-light">
+      Cliquez sur une catégorie pour découvrir toutes les offres exclusives négociées par votre Comité d'Entreprise.
     </p>
   </section>
 
+
     <section id="categories" class="max-w-6xl mx-auto py-12 px-4">
-    <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Parcourez les Secteurs d'Activité</h2>
+    <h2 class="text-2xl font-bold text-center mb-10 text-gray-800">Catégories d'Offres</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <div class="col-span-1">
         <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
           <img src="https://images.unsplash.com/photo-1555992336-03a23c9d784d?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Restaurants">
-          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-2xl font-bold transition duration-500 group-hover:bg-opacity-75">
+          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
             🍽️ RESTAURANTS
           </div>
         </div>
         <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-lg">
-          <a href="https://maps.google.com/?q=Le+Bressan+Gourmand+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🧑‍🍳</span> <span class="font-semibold">Le Bressan Gourmand</span> — -10% sur le menu du midi
-          </a>
-          <a href="https://maps.google.com/?q=La+Table+de+l'Oiseau+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>☕</span> <span class="font-semibold">La Table de l’Oiseau</span> — Café offert avec le repas
-          </a>
-        </div>
+                  </div>
       </div>
 
             <div class="col-span-1">
         <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
           <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
-          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-2xl font-bold transition duration-500 group-hover:bg-opacity-75">
+          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
             🚗 AUTOMOBILE
           </div>
         </div>
         <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-lg">
-          <a href="https://maps.google.com/?q=Garage+du+Plateau+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🛠️</span> <span class="font-semibold">Garage du Plateau</span> — Révision -15%
-          </a>
-          <a href="https://maps.google.com/?q=Auto+Clean+01+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🧼</span> <span class="font-semibold">Auto Clean 01</span> — Lavage complet à 25 €
-          </a>
-        </div>
+                  </div>
       </div>
 
             <div class="col-span-1">
         <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl overflow-hidden" onclick="toggleCategory('loisirs-content')">
           <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Loisirs">
-          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-2xl font-bold transition duration-500 group-hover:bg-opacity-75">
+          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
             🎬 LOISIRS
           </div>
         </div>
         <div id="loisirs-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-lg">
-          <a href="https://maps.google.com/?q=Cinéma+La+Grenette+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🎟️</span> <span class="font-semibold">Cinéma La Grenette</span> — 1 place à 9 €
-          </a>
-          <a href="https://maps.google.com/?q=Laser+Game+01+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🔫</span> <span class="font-semibold">Laser Game 01</span> — 2e partie à -50%
-          </a>
-        </div>
+                  </div>
       </div>
 
             <div class="col-span-1">
         <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl overflow-hidden" onclick="toggleCategory('vacances-content')">
           <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Vacances">
-          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-2xl font-bold transition duration-500 group-hover:bg-opacity-75">
+          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
             🌴 VOYAGES
           </div>
         </div>
         <div id="vacances-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-lg">
-          <a href="https://maps.google.com/?q=Voyages+Bresse+Horizon+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🌍</span> <span class="font-semibold">Voyages Bresse Horizon</span> — 10% sur les séjours
-          </a>
-          <a href="https://maps.google.com/?q=Camping+La+Plaine+Tonique+Montrevel-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>🏕️</span> <span class="font-semibold">Camping La Plaine Tonique</span> — Nuitée à -20%
-          </a>
-        </div>
+                  </div>
       </div>
 
             <div class="col-span-1">
         <div class="relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-xl rounded-2xl overflow-hidden" onclick="toggleCategory('sports-content')">
           <img src="https://images.unsplash.com/photo-1504280390368-397bb2b86651?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Sports">
-          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-2xl font-bold transition duration-500 group-hover:bg-opacity-75">
+          <div class="absolute inset-0 bg-red-600 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition duration-500 group-hover:bg-opacity-75">
             🏋️ SPORTS
           </div>
         </div>
         <div id="sports-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 space-y-1 shadow-lg">
-          <a href="https://maps.google.com/?q=Intersport+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Intersport_logo.svg" alt="Logo Intersport" class="h-6 w-auto"> 
-            <span class="font-semibold">Intersport Bourg-en-Bresse</span> — -15% sur tout le magasin
-          </a>
-          <a href="https://maps.google.com/?q=Fit’Club+01+Bourg-en-Bresse" target="_blank" class="partner-link space-x-2 text-gray-800 hover:text-red-600 transition">
-            <span>💪</span> <span class="font-semibold">Fit’Club 01</span> — Abonnement mensuel à 29 €
-          </a>
-        </div>
+                  </div>
       </div>
     
     </div> 
@@ -191,7 +167,7 @@
     <footer class="bg-black text-white text-center py-6 mt-0">
     <div class="max-w-7xl mx-auto px-4">
       <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png"
-           alt="Renault Trucks Logo" class="h-6 mx-auto mb-3 logo-white">
+           alt="Renault Trucks Logo" class="h-6 mx-auto mb-3 filter brightness-0 invert">
       <p class="text-sm text-gray-400">© 2025 CE Renault Trucks CE - Bourg-en-Bresse | Tous droits réservés.</p>
     </div>
   </footer>
