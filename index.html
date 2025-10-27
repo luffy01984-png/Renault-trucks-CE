@@ -6,11 +6,13 @@
   <title>Avantages Partenaires | Renault Trucks CE Bourg-en-Bresse</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ✅ Icônes pour raccourci smartphone et navigateur -->
-  <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png">
-  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png">
+  <!-- ✅ Icônes pour raccourci smartphone et favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/fHQy0cL/renault-trucks-ce-icon-transparent.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://i.ibb.co/fHQy0cL/renault-trucks-ce-icon-transparent.png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/fHQy0cL/renault-trucks-ce-icon-transparent.png">
   <meta name="theme-color" content="#dc2626" />
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="CE Renault Trucks">
 
   <style>
@@ -25,7 +27,7 @@
     .partner-content.active {
       opacity: 1;
       margin-top: 1rem;
-      max-height: 500px; /* assez grand pour le contenu */
+      max-height: 500px;
     }
 
     /* ✅ Formulaires */
@@ -52,7 +54,7 @@
       const section = document.getElementById(id);
       const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
 
-      // Fermer les autres
+      // Fermer les autres sections
       document.querySelectorAll('.partner-content').forEach(item => {
         if (item.id !== id) item.classList.remove('active');
       });
@@ -67,7 +69,7 @@
       section.classList.toggle('active');
 
       if (section.classList.contains('active')) {
-        // ✅ Ajouter le halo rouge Renault Trucks
+        // ✅ Ajouter halo rouge Renault Trucks
         card.classList.remove("shadow-lg");
         card.classList.add("shadow-xl", "shadow-red-500/50");
       } else {
@@ -84,9 +86,12 @@
   <header class="bg-white shadow-xl sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
       <div class="flex items-center space-x-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png"
-             alt="Renault Trucks Logo" class="h-10">
-        <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">CE Bourg-en-Bresse</span>
+        <!-- ✅ Nouveau logo CE Renault Trucks transparent -->
+        <img src="https://i.ibb.co/fHQy0cL/renault-trucks-ce-icon-transparent.png"
+             alt="Logo CE Renault Trucks" class="h-10 rounded-lg shadow-sm">
+        <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">
+          CE Bourg-en-Bresse
+        </span>
       </div>
       <nav class="space-x-4 text-sm font-semibold">
         <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Partenaires</a>
@@ -174,10 +179,11 @@
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="bg-black text-white text-center py-6 mt-0">
     <div class="max-w-7xl mx-auto px-4">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png"
-           alt="Renault Trucks Logo" class="h-6 mx-auto mb-3 filter brightness-0 invert">
+      <img src="https://i.ibb.co/fHQy0cL/renault-trucks-ce-icon-transparent.png"
+           alt="Logo CE Renault Trucks" class="h-6 mx-auto mb-3 filter brightness-0 invert">
       <p class="text-sm text-gray-400">© 2025 CE Renault Trucks CE - Bourg-en-Bresse | Tous droits réservés.</p>
     </div>
   </footer>
