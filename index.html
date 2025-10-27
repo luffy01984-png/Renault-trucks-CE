@@ -3,61 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avantages Partenaires - Renault Trucks CE</title>
+  <title>Partenaires Renault Trucks CE</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-900 font-sans">
 
   <!-- HEADER -->
-  <header class="bg-white shadow-md p-4 flex items-center justify-center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png" 
-         alt="Renault Trucks Logo" class="h-12">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Renault_Trucks_logo_2015.png"
+           alt="Renault Trucks Logo" class="h-10">
+      <nav class="space-x-4 text-sm font-medium">
+        <a href="#categories" class="hover:text-red-600">Partenaires</a>
+        <a href="#contact" class="hover:text-red-600">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="bg-black text-white text-center py-6 px-4">
-    <h1 class="text-2xl font-semibold">Avantages partenaires du CE</h1>
-    <p class="text-gray-300 mt-2">Découvrez les offres exclusives négociées par le Comité d'Entreprise</p>
+  <!-- SECTION HERO -->
+  <section class="bg-black text-white text-center py-16 px-4">
+    <h1 class="text-3xl md:text-4xl font-semibold">Partenaires Renault Trucks CE</h1>
+    <p class="text-gray-300 mt-3 text-lg max-w-xl mx-auto">
+      Des offres exclusives pour nos collaborateurs et partenaires à Bourg-en-Bresse.
+    </p>
+    <a href="#categories" class="mt-6 inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition">Découvrir les offres</a>
   </section>
 
-  <!-- CARTES PARTENAIRES -->
-  <section class="py-6 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+  <!-- SECTION CATEGORIES -->
+  <section id="categories" class="max-w-7xl mx-auto py-12 px-4">
+    <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">Nos catégories partenaires</h2>
 
-    <!-- Carte 1 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Cinéma" class="w-full h-40 object-cover bg-gray-100">
-      <div class="p-4">
-        <h2 class="text-lg font-semibold text-gray-900">Cinéma</h2>
-        <p class="text-gray-600 text-sm">1 place à 10 €</p>
-        <a href="#" class="inline-block mt-3 bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition">En savoir plus</a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- RESTAURANTS -->
+      <div class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+        <div class="bg-red-600 text-white text-center py-2 font-semibold">🍽️ Restaurants</div>
+        <div class="p-4 space-y-3">
+          <div>
+            <h3 class="font-semibold">Le Bressan Gourmand</h3>
+            <p class="text-sm text-gray-600">-10% sur le menu du midi</p>
+          </div>
+          <div>
+            <h3 class="font-semibold">La Table de l’Oiseau</h3>
+            <p class="text-sm text-gray-600">Café offert avec le repas</p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Carte 2 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/235/235861.png" alt="Agence de voyages" class="w-full h-40 object-cover bg-gray-100">
-      <div class="p-4">
-        <h2 class="text-lg font-semibold text-gray-900">Agence de voyages</h2>
-        <p class="text-gray-600 text-sm">10% de réduction sur tous les voyages</p>
-        <a href="#" class="inline-block mt-3 bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition">En savoir plus</a>
+      <!-- AUTOMOBILE -->
+      <div class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+        <div class="bg-red-600 text-white text-center py-2 font-semibold">🚗 Automobile</div>
+        <div class="p-4 space-y-3">
+          <div>
+            <h3 class="font-semibold">Garage du Plateau</h3>
+            <p class="text-sm text-gray-600">Révision -15% pour les employés Renault Trucks</p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Auto Clean 01</h3>
+            <p class="text-sm text-gray-600">Lavage complet à 25 €</p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Carte 3 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Magasin de sport" class="w-full h-40 object-cover bg-gray-100">
-      <div class="p-4">
-        <h2 class="text-lg font-semibold text-gray-900">Magasin de sport</h2>
-        <p class="text-gray-600 text-sm">15% de réduction sur tout le magasin</p>
-        <a href="#" class="inline-block mt-3 bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition">En savoir plus</a>
+      <!-- LOISIRS -->
+      <div class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+        <div class="bg-red-600 text-white text-center py-2 font-semibold">🎭 Loisirs</div>
+        <div class="p-4 space-y-3">
+          <div>
+            <h3 class="font-semibold">Cinéma La Grenette</h3>
+            <p class="text-sm text-gray-600">1 place à 9 €</p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Laser Game 01</h3>
+            <p class="text-sm text-gray-600">2e partie à -50%</p>
+          </div>
+        </div>
       </div>
-    </div>
 
+      <!-- VACANCES -->
+      <div class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+        <div class="bg-red-600 text-white text-center py-2 font-semibold">✈️ Vacances</div>
+        <div class="p-4 space-y-3">
+          <div>
+            <h3 class="font-semibold">Voyages Bresse Horizon</h3>
+            <p class="text-sm text-gray-600">10% de réduction sur les séjours en Europe</p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Camping La Plaine Tonique</h3>
+            <p class="text-sm text-gray-600">Nuitée à -20%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPORTS -->
+      <div class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+        <div class="bg-red-600 text-white text-center py-2 font-semibold">🏋️ Sports</div>
+        <div class="p-4 space-y-3">
+          <div>
+            <h3 class="font-semibold">Intersport Bourg-en-Bresse</h3>
+            <p class="text-sm text-gray-600">-15% sur tout le magasin</p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Fit’Club 01</h3>
+            <p class="text-sm text-gray-600">Abonnement mensuel à 29 €</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION CONTACT -->
+  <section id="contact" class="bg-gray-100 py-12 px-4">
+    <div class="max-w-lg mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Contact / Devenir partenaire</h2>
+      <p class="text-gray-600 mb-6">Vous souhaitez rejoindre notre réseau de partenaires ? Contactez-nous ci-dessous.</p>
+      <form class="space-y-4">
+        <input type="text" placeholder="Nom / Entreprise" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+        <input type="email" placeholder="Adresse e-mail" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+        <textarea placeholder="Votre message..." class="w-full border border-gray-300 p-3 rounded-lg h-28 focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+        <button type="submit" class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition">Envoyer</button>
+      </form>
+    </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-black text-white text-center py-4 mt-6">
-    <p class="text-sm">Site du CE Renault Trucks Bourg-en-Bresse</p>
+  <footer class="bg-black text-white text-center py-4 mt-8">
+    <p class="text-sm">© 2025 Renault Trucks CE - Bourg-en-Bresse | Site partenaires</p>
   </footer>
 
 </body>
