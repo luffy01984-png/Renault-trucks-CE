@@ -6,7 +6,7 @@
   <title>Avantages Partenaires | Renault Trucks CE Bourg-en-Bresse</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ✅ Icônes et favicon avec logo officiel Renault Trucks -->
+  <!-- Favicon et icônes pour raccourci smartphone -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png">
   <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png">
@@ -116,11 +116,11 @@
           </div>
         </div>
         <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://maps.google.com/?q=Le+Bressan+Gourmand+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span>🧑‍🍳</span> <span class="font-semibold">Le Bressan Gourmand</span> — -10% sur le menu du midi
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🍴</span> <span class="font-semibold">La Table d'Arthur</span> — Cuisine traditionnelle raffinée
           </a>
-          <a href="https://maps.google.com/?q=La+Table+de+l'Oiseau+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span>☕</span> <span class="font-semibold">La Table de l’Oiseau</span> — Café offert avec le repas
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🍷</span> <span class="font-semibold">Brasserie Le Français</span> — Ambiance bistro parisien
           </a>
         </div>
       </div>
@@ -136,11 +136,11 @@
           </div>
         </div>
         <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://maps.google.com/?q=Garage+du+Plateau+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span>🛠️</span> <span class="font-semibold">Garage du Plateau</span> — Révision -15%
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🔧</span> <span class="font-semibold">Renault Trucks Bourg-en-Bresse</span> — Visites guidées et service
           </a>
-          <a href="https://maps.google.com/?q=Auto+Clean+01+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span>🧼</span> <span class="font-semibold">Auto Clean 01</span> — Lavage complet à 25 €
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🛠️</span> <span class="font-semibold">Garage du Plateau</span> — Révision et entretien véhicules
           </a>
         </div>
       </div>
@@ -150,4 +150,86 @@
         <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
              onclick="toggleCategory('loisirs-content')">
           <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80"
-              
+               class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Loisirs">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+            🎬 LOISIRS
+          </div>
+        </div>
+        <div id="loisirs-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🎳</span> <span class="font-semibold">Le 1055</span> — Bowling et laser game
+          </a>
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🚣</span> <span class="font-semibold">Parc de Loisirs de Bouvent</span> — Canoë et activités nautiques
+          </a>
+        </div>
+      </div>
+
+      <!-- VACANCES -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
+             onclick="toggleCategory('vacances-content')">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+               class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Vacances">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+            🌴 VACANCES
+          </div>
+        </div>
+        <div id="vacances-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🌍</span> <span class="font-semibold">Voyages Bresse Horizon</span> — 10% sur les séjours
+          </a>
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🏕️</span> <span class="font-semibold">Camping La Plaine Tonique</span> — Nuitée à -20%
+          </a>
+        </div>
+      </div>
+
+      <!-- ENFANTS -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
+             onclick="toggleCategory('enfants-content')">
+          <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80"
+               class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+            🧒 ENFANTS
+          </div>
+        </div>
+        <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🎨</span> <span class="font-semibold">Atelier Peinture</span> — 1h offerte
+          </a>
+          <a href="#" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span>🤹</span> <span class="font-semibold">Parc des Jeux</span> — Entrée gratuite pour 1 enfant
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="bg-gray-800 py-16 px-4">
+    <div class="max-w-lg mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4 text-white">Contactez votre CE</h2>
+      <p class="text-gray-400 mb-8">Pour toute question, suggestion de partenariat ou demande d'information, utilisez le formulaire ci-dessous.</p>
+      <form class="space-y-4 bg-white p-6 rounded-xl shadow-2xl">
+        <input type="text" placeholder="Nom / Service" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">
+        <input type="email" placeholder="Adresse e-mail professionnelle" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">
+        <textarea placeholder="Votre message..." class="w-full border border-gray-300 p-3 rounded-lg h-28 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150"></textarea>
+        <button type="submit" class="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-[1.01] duration-200 shadow-lg">Envoyer au CE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-black text-white text-center py-6 mt-0">
+    <div class="max-w-7xl mx-auto px-4">
+      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png"
+           alt="Renault Trucks Logo" class="h-6 mx-auto mb-3 filter brightness-0 invert">
+      <p class="text-sm text-gray-400">© 2025 CE Renault Trucks CE - Bourg-en-Bresse | Tous droits réservés.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
