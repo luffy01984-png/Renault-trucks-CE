@@ -1,11 +1,12 @@
 {
-  "name": "CE Renault Trucks Bourg-en-Bresse",
+  "name": "CE Renault Trucks",
   "short_name": "CE Renault",
-  "start_url": "./index.html",
+  "description": "Découvrez tous les avantages et partenaires du CE Renault Trucks Bourg-en-Bresse.",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#dc2626",
-  "description": "Accédez facilement à tous les avantages du CE Renault Trucks Bourg-en-Bresse.",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png",
