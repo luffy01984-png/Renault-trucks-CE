@@ -1,19 +1,18 @@
-{
-  "name": "CE Renault Trucks",
+{{
+  "name": "Renault Trucks CE",
   "short_name": "CE Renault",
-  "description": "Avantages exclusifs CE Renault Trucks Bourg-en-Bresse",
-  "start_url": "/index.html",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#dc2626",
+  "theme_color": "#d50000",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png",
+      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/New_Renault_Trucks_Logo.png",
+      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
