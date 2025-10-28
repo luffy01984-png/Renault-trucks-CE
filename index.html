@@ -18,12 +18,9 @@
     .partner-logo { height: 30px; width: 30px; object-fit: contain; border-radius: 4px; }
   </style>
 
-  <!-- ✅ Favicon et icônes corrigés -->
+  <!-- ✅ Logo et PWA -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png">
-
-  <!-- PWA manifest (ajouté à l’étape suivante) -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#dc2626">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -78,111 +75,7 @@
     </p>
   </section>
 
-  <!-- ... (le reste de ton code HTML reste inchangé) ... -->
-
-</body>
-</html>
-
-
-  <!-- CATEGORIES -->
-  <section id="categories" class="max-w-6xl mx-auto py-12 px-4">
-    <h2 class="text-2xl font-bold text-center mb-10 text-gray-800">Catégories d'Offres</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- RESTAURANTS -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/pexels-chanwalrus-958545.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Restaurants">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
-        </div>
-        <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=LouPan+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/lou%20pan.jpg" class="partner-logo">
-            <span class="font-semibold">LouPan</span> — Boulangerie artisanale
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Le+Jasmin+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/le%20jasmin.png" class="partner-logo">
-            <span class="font-semibold">Le Jasmin</span> — Cuisine raffinée
-          </a>
-        </div>
-      </div>
-
-      <!-- AUTOMOBILE -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🚗 AUTOMOBILE</div>
-        </div>
-        <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=Contrôle+Technique+Autovision+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/t%C3%A9l%C3%A9chargement.png" class="partner-logo">
-            <span class="font-semibold">Contrôle Technique Autovision</span>
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Contrôle+Technique+Sécuritest+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/securites.jpg" class="partner-logo">
-            <span class="font-semibold">Contrôle Technique Sécuritest</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- SPORTS -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('sports-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/sport.jpeg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Sports">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏋️ SPORTS</div>
-        </div>
-        <div id="sports-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=Intersport+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/intersport.png" class="partner-logo">
-            <span class="font-semibold">Intersport</span> — -15% sur tout le magasin
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Basic+Fit+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/basic-fit-logo.jpg" class="partner-logo">
-            <span class="font-semibold">Basic Fit</span> — Abonnement mensuel avantageux
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Fit%27Club+01+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/so%20fit.png" class="partner-logo">
-            <span class="font-semibold">Fit’Club 01</span> — Abonnement mensuel à 29 €
-          </a>
-        </div>
-      </div>
-
-      <!-- VACANCES -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('vacances-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Vacances-productivite.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Vacances">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🌴 VOYAGES</div>
-        </div>
-        <div id="vacances-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=Voyages+Bresse+Horizon+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span class="font-semibold">Voyages Bresse Horizon</span> — 10% sur les séjours
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Camping+La+Plaine+Tonique+Montrevel-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span class="font-semibold">Camping La Plaine Tonique</span> — Nuitée à -20%
-          </a>
-        </div>
-      </div>
-
-      <!-- ENFANTS -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/enfants.webp" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧒 ENFANTS</div>
-        </div>
-        <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=1055+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/1055.png" class="partner-logo">
-            <span class="font-semibold">1055 Bourg-en-Bresse</span> — Bons cadeaux pour activités ludiques
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Ludy+Lucky+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/ludi%20lucky.jpg" class="partner-logo">
-            <span class="font-semibold">Ludy Lucky</span> — Jeux et loisirs pour enfants
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  <!-- ICI tes catégories / partenaires (inchangés) -->
 
   <!-- CONTACT -->
   <section id="contact" class="bg-gray-800 py-16 px-4">
@@ -205,14 +98,45 @@
       <p class="text-sm text-gray-400">© 2025 CE Renault Trucks CE - Bourg-en-Bresse | Tous droits réservés.</p>
     </div>
   </footer>
-<!-- Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(reg => console.log('Service Worker enregistré ✅'))
-      .catch(err => console.log('Erreur Service Worker:', err));
-  }
-</script>
+
+  <!-- ✅ POPUP D’INSTALLATION ROUGE -->
+  <div id="installPopup" class="hidden fixed inset-0 bg-red-700 bg-opacity-95 flex flex-col justify-center items-center text-center p-6 z-50">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png" class="h-20 mb-4 rounded-xl shadow-lg">
+    <h2 class="text-white text-2xl font-bold mb-2">Ajouter à l’écran d’accueil</h2>
+    <p class="text-white text-sm mb-6 max-w-sm">Installez le site du CE Renault Trucks pour y accéder plus rapidement depuis votre téléphone.</p>
+    <button id="installButton" class="bg-white text-red-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-200 transition">
+      📲 Installer maintenant
+    </button>
+  </div>
+
+  <!-- ✅ Script PWA + popup -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker enregistré ✅'))
+        .catch(err => console.log('Erreur Service Worker:', err));
+    }
+
+    let deferredPrompt;
+    const popup = document.getElementById('installPopup');
+    const installButton = document.getElementById('installButton');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      setTimeout(() => popup.classList.remove('hidden'), 2000); // Affiche le popup après 2s
+    });
+
+    installButton.addEventListener('click', async () => {
+      popup.classList.add('hidden');
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Résultat de l'installation : ${outcome}`);
+        deferredPrompt = null;
+      }
+    });
+  </script>
 
 </body>
 </html>
