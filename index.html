@@ -13,12 +13,46 @@
 body { font-family: 'Inter', sans-serif; margin:0; padding:0; }
 
 /* Splash screen */
-#splash {
-  position: fixed; top:0; left:0; width:100vw; height:100vh;
-  background:#fff; display:flex; justify-content:center; align-items:center;
-  z-index:10000; transition: opacity 0.5s ease;
-}
-#splash img { width:100%; height:100%; object-fit:cover; }
+<!-- Splash screen -->
+<div id="splash">
+  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/new%20electra.png" alt="Splash">
+</div>
+
+<style>
+  /* Splash screen */
+  #splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease;
+  }
+
+  #splash img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* garde l’image entière */
+  }
+</style>
+
+<script>
+  // Splash screen : disparition automatique après 2 secondes
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const splash = document.getElementById('splash');
+      splash.style.opacity = '0';
+      setTimeout(() => splash.style.display = 'none', 500);
+    }, 2000);
+  });
+</script>
 
 /* Partner content toggle */
 .partner-content { max-height:0; overflow:hidden; opacity:0; transition:max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease; margin-top:0; }
