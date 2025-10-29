@@ -29,8 +29,6 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 #splash img {
   max-width: 90%;
   max-height: 90%;
-  width: auto;
-  height: auto;
   object-fit: contain;
 }
 
@@ -72,14 +70,6 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 .partner-link:last-child {
   margin-bottom: 0;
 }
-.partner-logo {
-  height: 36px;
-  width: 36px;
-  object-fit: contain;
-  border-radius: 0.5rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
-}
 
 /* Modal */
 #imageModal {
@@ -91,7 +81,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 #imageModal button { position:absolute; top:20px; right:20px; background:#dc2626; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; }
 
 /* Category cards */
-.category-card img { width:100%; height:12rem; object-fit:cover; }
+.category-card img { width:100%; height:12rem; object-fit:cover; border-radius: 1rem; }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -137,7 +127,33 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   <h2 class="text-2xl font-bold text-center mb-10 text-gray-800">Catégories d'Offres</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <!-- Exemple catégorie -->
+    <!-- RESTAURANTS -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" alt="Restaurants">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
+      </div>
+      <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800')">Au Bon Choix</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1604908177530-88d69c8795de?w=800')">Food Truck Fermier</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800')">Le Loft</div>
+      </div>
+    </div>
+
+    <!-- ARTISANS DU GOÛT -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('gout-content')">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800" alt="Artisans du Goût">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🥖 ARTISANS DU GOÛT</div>
+      </div>
+      <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=800')">Les Pépites Bressanes</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1598511722810-44f6adf892f6?w=800')">LouPan</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603133872873-bcc99b9a28d8?w=800')">Monts et Terroir</div>
+      </div>
+    </div>
+
+    <!-- AUTOMOBILE -->
     <div class="col-span-1">
       <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
         <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" alt="Automobile">
@@ -153,7 +169,78 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
       </div>
     </div>
 
-    <!-- Ajoute toutes tes autres catégories ici en suivant le même format -->
+    <!-- ANIMAL -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
+        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" alt="Animaux">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐾 ANIMAL</div>
+      </div>
+      <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">Food Animo</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800')">Espace Passion Animalerie</div>
+      </div>
+    </div>
+
+    <!-- MAISON -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" alt="Maison et déco">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏠 MAISON</div>
+      </div>
+      <div id="maison-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800')">Conforama</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800')">Bricomarché</div>
+      </div>
+    </div>
+
+    <!-- TERROIR -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('terroir-content')">
+        <img src="https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800" alt="Produits du terroir">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍷 TERROIR</div>
+      </div>
+      <div id="terroir-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800')">La Ferme du Coin</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800')">Cave de la Bresse</div>
+      </div>
+    </div>
+
+    <!-- ÉVÉNEMENTIEL -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" alt="Événementiel">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🎉 ÉVÉNEMENTIEL</div>
+      </div>
+      <div id="event-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800')">Salle Polyvalente</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800')">Théâtre Local</div>
+      </div>
+    </div>
+
+    <!-- QUOTIDIEN -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
+        <img src="https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800" alt="Quotidien">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🛒 QUOTIDIEN</div>
+      </div>
+      <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800')">Carrefour</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800')">Intermarché</div>
+      </div>
+    </div>
+
+    <!-- ENFANTS -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
+        <img src="https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800" alt="Enfants">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧸 ENFANTS</div>
+      </div>
+      <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">Ludothèque</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">École de Danse</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -177,13 +264,13 @@ function toggleCategory(id) {
   }
 }
 
-// Splash screen avec délai plus long
+// Splash screen
 window.addEventListener('load', () => {
   setTimeout(() => {
     const splash = document.getElementById('splash');
     splash.style.opacity = '0';
     setTimeout(() => splash.style.display='none', 500);
-  }, 3000); // 3 secondes au lieu de 2
+  }, 3000); // délai 3 secondes
 });
 
 // Modal
@@ -210,7 +297,13 @@ installBanner.textContent = "Installer l'application sur votre écran d'accueil"
 installBanner.style.display = 'none';
 document.body.appendChild(installBanner);
 
+// Vérifie si déjà installée
+window.addEventListener('appinstalled', () => {
+  installBanner.style.display = 'none';
+});
+
 window.addEventListener('beforeinstallprompt', (e) => {
+  if (window.matchMedia('(display-mode: standalone)').matches) return; // déjà installé
   e.preventDefault();
   deferredPrompt = e;
   installBanner.style.display = 'block';
