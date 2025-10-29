@@ -1,418 +1,254 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avantages Partenaires | Renault Trucks CE Bourg-en-Bresse</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avantages Partenaires | Renault Trucks CE Bourg-en-Bresse</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
 
-  <!-- Police Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  /* Splash screen */
+  #splash {
+    position: fixed; top:0; left:0; width:100vw; height:100vh;
+    background:#fff; display:flex; justify-content:center; align-items:center;
+    z-index:10000; transition: opacity 0.5s ease;
+  }
+  #splash img { max-width: 80%; max-height:80%; }
 
-  <style>
-    body { font-family: 'Inter', sans-serif; }
+  /* Partner content toggle */
+  .partner-content {
+    max-height:0; overflow:hidden; opacity:0;
+    transition:max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    margin-top:0;
+  }
+  .partner-content.active {
+    opacity:1; margin-top:1rem; max-height:800px;
+  }
 
-    /* Splash screen */
-    #splash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      transition: opacity 0.5s ease;
-    }
-    #splash img { max-width: 80%; max-height: 80%; }
+  /* Partner links */
+  .partner-link {
+    display:flex; align-items:center; padding:0.5rem 0; border-bottom:1px solid #f3f4f6; gap:0.75rem; cursor:pointer;
+  }
+  .partner-link:last-child { border-bottom:none; }
+  .partner-logo { height:30px; width:30px; object-fit:contain; border-radius:4px; }
 
-    .partner-content {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
-      margin-top: 0;
-    }
-    .partner-content.active {
-      opacity: 1;
-      margin-top: 1rem;
-      max-height: 600px;
-    }
-    input:focus, textarea:focus {
-      border-color: #dc2626 !important;
-      box-shadow: 0 0 0 3px rgba(220,38,38,0.4);
-    }
-    .partner-link {
-      display: flex;
-      align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #f3f4f6;
-      gap: 0.75rem;
-    }
-    .partner-link:last-child { border-bottom: none; }
-    .partner-logo { height: 30px; width: 30px; object-fit: contain; border-radius: 4px; }
-
-    #installBanner {
-      position: fixed;
-      bottom: 15px; left: 10px; right: 10px;
-      background: #dc2626;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 8px;
-      text-align: center;
-      font-family: sans-serif;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    #installBanner button {
-      background: #fff;
-      color: #dc2626;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  </style>
-
-  <!-- Favicon et icônes -->
-  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg">
-
-  <!-- Manifest PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#dc2626">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="CE Renault Trucks">
-
-  <script>
-    // Toggle categories
-    function toggleCategory(id) {
-      const section = document.getElementById(id);
-      const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
-      document.querySelectorAll('.partner-content').forEach(item => { if(item.id !== id) item.classList.remove('active'); });
-      document.querySelectorAll('.category-card').forEach(cardEl => {
-        cardEl.classList.remove("shadow-red-500/50", "shadow-xl");
-        cardEl.classList.add("shadow-lg");
-      });
-      section.classList.toggle('active');
-      if(section.classList.contains('active')){
-        card.classList.remove("shadow-lg");
-        card.classList.add("shadow-xl", "shadow-red-500/50");
-      } else {
-        card.classList.remove("shadow-xl", "shadow-red-500/50");
-        card.classList.add("shadow-lg");
-      }
-    }
-
-    // Splash screen
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const splash = document.getElementById('splash');
-        splash.style.opacity = '0';
-        setTimeout(() => splash.style.display = 'none', 500);
-      }, 2500);
-    });
-
-    // PWA install banner
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      const banner = document.createElement('div');
-      banner.id = 'installBanner';
-      banner.innerHTML = `Installer l'application <button id="installBtn">Installer</button>`;
-      document.body.appendChild(banner);
-      document.getElementById('installBtn').onclick = async () => {
-        banner.style.display = 'none';
-        deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
-        deferredPrompt = null;
-      }
-    });
-
-    // Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker enregistré ✅'))
-        .catch(err => console.log('Erreur Service Worker:', err));
-    }
-  </script>
+  /* Modal */
+  #imageModal {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:10000; transition: opacity 0.3s ease;
+  }
+  #imageModal.active { display:flex; }
+  #imageModal img { max-width:90%; max-height:80%; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.5); }
+  #imageModal button { position:absolute; top:20px; right:20px; background:#dc2626; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; }
+</style>
 </head>
-
 <body class="bg-gray-50 text-gray-900">
 
-  <!-- Splash screen -->
-  <div id="splash">
-    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" alt="Logo Renault Trucks CE">
-  </div>
+<!-- Splash screen -->
+<div id="splash">
+  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" alt="Logo Renault Trucks CE">
+</div>
 
-  <!-- HEADER -->
-  <header class="bg-white shadow-xl sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
-      <div class="flex items-center space-x-2">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" alt="Logo Renault Trucks" class="h-10 rounded-md">
-        <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">CE Bourg-en-Bresse</span>
-      </div>
-      <nav class="space-x-4 text-sm font-semibold">
-        <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Partenaires</a>
-        <a href="#contact" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact</a>
-      </nav>
+<!-- Modal -->
+<div id="imageModal">
+  <button onclick="closeModal()">Fermer</button>
+  <img id="modalImg" src="" alt="Partenaire">
+</div>
+
+<!-- HEADER -->
+<header class="bg-white shadow-xl sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
+    <div class="flex items-center space-x-2">
+      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" alt="Logo Renault Trucks" class="h-10 rounded-md">
+      <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">CE Bourg-en-Bresse</span>
     </div>
-  </header>
+    <nav class="space-x-4 text-sm font-semibold">
+      <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Partenaires</a>
+      <a href="#contact" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
-    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-      Vos Avantages <span class="text-red-600">CE Renault Trucks</span>
-    </h1>
-    <p class="text-gray-400 mt-1 text-sm uppercase tracking-wider">Bourg-en-Bresse</p>
-    <p class="text-gray-600 mt-4 max-w-xl mx-auto text-lg font-light">
-      Cliquez sur une catégorie pour découvrir toutes les offres exclusives négociées par votre Comité d'Entreprise. *Sur présentation du badge.
-    </p>
-  </section>
+<!-- HERO -->
+<section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
+  <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+    Vos Avantages <span class="text-red-600">CE Renault Trucks</span>
+  </h1>
+  <p class="text-gray-400 mt-1 text-sm uppercase tracking-wider">Bourg-en-Bresse</p>
+  <p class="text-gray-600 mt-4 max-w-xl mx-auto text-lg font-light">
+    Cliquez sur une catégorie pour découvrir toutes les offres exclusives négociées par votre Comité d'Entreprise. *Sur présentation du badge.
+  </p>
+</section>
 
-  <!-- CATEGORIES -->
-  <section id="categories" class="max-w-6xl mx-auto py-12 px-4">
-    <h2 class="text-2xl font-bold text-center mb-10 text-gray-800">Catégories d'Offres</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- CATEGORIES -->
+<section id="categories" class="max-w-6xl mx-auto py-12 px-4">
+  <h2 class="text-2xl font-bold text-center mb-10 text-gray-800">Catégories d'Offres</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- RESTAURANTS -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/pexels-chanwalrus-958545.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Restaurants">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
-        </div>
-        <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-  <a href="https://www.google.com/maps/search/?api=1&query=Au+Bon+Choix+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">Au Bon Choix</span> — Restaurant traditionnel
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Food+Truck+Fermier+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">Food Truck Fermier</span> — Cuisine locale à emporter
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Le+Loft+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">Le Loft</span> — Ambiance moderne et plats faits maison
-  </a>
-</div>
+    <!-- RESTAURANTS -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Restaurants">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
       </div>
-      <!-- ARTISANS DU GOÛT -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('gout-content')">
-    <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Artisans du Goût">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🥖 ARTISANS DU GOÛT</div>
-  </div>
-  <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=Les+Pépites+Bressanes+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Les Pépites Bressanes</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=LouPan+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">LouPan</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Monts+et+Terroir+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Monts et Terroir</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Grain+d'pain+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Grain d'pain</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Janny+Fruits+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Janny Fruits</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=La+Cézée+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">La Cézée</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Biocoop+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Biocoop</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Boucherie+André+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Boucherie André</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Cerdon+AOC" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Cerdon AOC</span>
-    </a>
-  </div>
-</div>
-
-</div>
-
-
-      <!-- AUTOMOBILE -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🚗 AUTOMOBILE</div>
-        </div>
-        <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-  <a href="https://www.google.com/maps/search/?api=1&query=Autosur+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">Autosur</span> — Centre de contrôle technique
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Auto+Securitas+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">Auto Securitas</span> — Contrôle technique
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=APC+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">APC</span> — Garage & entretien
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=123+Parebrise+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">123 Parebrise</span> — Réparation & remplacement pare-brise
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=ADA+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">ADA</span> — Location de véhicules
-  </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Renault+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-    <span class="font-semibold">Renault</span> — Réseau concessionnaire officiel
-  </a>
-</div>
-
+      <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800')">Au Bon Choix</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1604908177530-88d69c8795de?w=800')">Food Truck Fermier</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800')">Le Loft</div>
       </div>
-
-      <!-- SPORTS -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('sports-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/sport.jpeg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Sports">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏋️ SPORTS</div>
-        </div>
-        <div id="sports-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=Intersport+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/intersport.png" class="partner-logo">
-            <span class="font-semibold">Intersport</span> — -15% sur tout le magasin
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Basic+Fit+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/basic-fit-logo.jpg" class="partner-logo">
-            <span class="font-semibold">Basic Fit</span> — Abonnement mensuel avantageux
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Fit%27Club+01+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/so%20fit.png" class="partner-logo">
-            <span class="font-semibold">Fit’Club 01</span> — Abonnement mensuel à 29 €
-          </a>
-        </div>
-      </div>
-
-      <!-- VACANCES -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('vacances-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Vacances-productivite.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Vacances">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🌴 VOYAGES</div>
-        </div>
-        <div id="vacances-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=Voyages+Bresse+Horizon+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span class="font-semibold">Voyages Bresse Horizon</span> — 10% sur les séjours
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Camping+La+Plaine+Tonique+Montrevel-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <span class="font-semibold">Camping La Plaine Tonique</span> — Nuitée à -20%
-          </a>
-        </div>
-      </div>
-      <!-- ANIMAL -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
-    <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Animalerie">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐾 ANIMAL</div>
-  </div>
-  <div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
-    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=800&q=80" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Animaux">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐶 ANIMAL</div>
-  </div>
-  <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=Food+Animo+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Food Animo</span> — Alimentation et accessoires
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Espace+Passion+Animalerie+Bourg-en-Bresse" target="_blank" class="partner-link hover:text-red-600">
-      <span class="font-semibold">Espace Passion Animalerie</span> — Animalerie complète
-    </a>
-  </div>
-</div>
-
-</div>
-
-<!-- MAISON -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
-    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Maison et déco">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏠 MAISON</div>
-  </div>
-  <div id="maison-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=Conforama+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Conforama</span> — Réduction sur mobilier et literie
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Bricomarché+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Bricomarché</span> — 10 % sur le matériel de bricolage
-    </a>
-  </div>
-</div>
-
-<!-- TERROIR -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('terroir-content')">
-    <img src="https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Produits du terroir">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍷 TERROIR</div>
-  </div>
-  <div id="terroir-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=La+Ferme+du+Coin+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">La Ferme du Coin</span> — 10 % sur les produits locaux
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Cave+de+la+Bresse+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Cave de la Bresse</span> — Dégustation offerte
-    </a>
-  </div>
-</div>
-
-<!-- ÉVÉNEMENTIEL -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Événementiel">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🎉 ÉVÉNEMENTIEL</div>
-  </div>
-  <div id="event-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=Photographe+Mariage+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Studio Photo Lumière</span> — Réduction sur reportages photo
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Fleuriste+Événementiel+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Fleuriste Créatif</span> — -15 % sur bouquets événementiels
-    </a>
-  </div>
-</div>
-
-<!-- QUOTIDIEN -->
-<div class="col-span-1">
-  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
-    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Quotidien et services">
-    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🛍️ QUOTIDIEN</div>
-  </div>
-  <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-    <a href="https://www.google.com/maps/search/?api=1&query=Pressing+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Pressing Express</span> — 10 % sur les nettoyages à sec
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Pharmacie+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-      <span class="font-semibold">Pharmacie Centrale</span> — Offres fidélité CE
-    </a>
-  </div>
-</div>
-
-
-      <!-- ENFANTS -->
-      <div class="col-span-1">
-        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/enfants.webp" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
-          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧒 ENFANTS</div>
-        </div>
-        <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-          <a href="https://www.google.com/maps/search/?api=1&query=1055+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/1055.png" class="partner-logo">
-            <span class="font-semibold">1055 Bourg-en-Bresse</span> — Bons cadeaux pour activités ludiques
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Ludy+Lucky+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/ludi%20lucky.jpg" class="partner-logo">
-            <span class="font-semibold">Ludy Lucky</span> — Jeux et loisirs pour enfants
-          </a>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!--
+    <!-- ARTISANS DU GOÛT -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('gout-content')">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Artisans du Goût">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🥖 ARTISANS DU GOÛT</div>
+      </div>
+      <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=800')">Les Pépites Bressanes</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1598511722810-44f6adf892f6?w=800')">LouPan</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603133872873-bcc99b9a28d8?w=800')">Monts et Terroir</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1606312612923-4a8f9a2a5d36?w=800')">Grain d'pain</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1606312729337-3453f67bc9c4?w=800')">Janny Fruits</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1606312633223-b8f6bc22f8c0?w=800')">La Cézée</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1606312652310-1c2e1b1a6f0c?w=800')">Biocoop</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1606312670211-2a8b32f4b3b0?w=800')">Boucherie André</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1606312690014-1e0d01f8c5c2?w=800')">Cerdon AOC</div>
+      </div>
+    </div>
+
+    <!-- AUTOMOBILE -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
+        <img src="https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🚗 AUTOMOBILE</div>
+      </div>
+      <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">Autosur</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">Auto Securitas</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">APC</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">123 Parebrise</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">ADA</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">Renault</div>
+      </div>
+    </div>
+
+    <!-- ANIMAL -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
+        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Animaux">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐾 ANIMAL</div>
+      </div>
+      <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">Food Animo</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800')">Espace Passion Animalerie</div>
+      </div>
+    </div>
+
+    <!-- MAISON -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Maison et déco">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏠 MAISON</div>
+      </div>
+      <div id="maison-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800')">Conforama</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800')">Bricomarché</div>
+      </div>
+    </div>
+
+    <!-- TERROIR -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('terroir-content')">
+        <img src="https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Produits du terroir">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍷 TERROIR</div>
+      </div>
+      <div id="terroir-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800')">La Ferme du Coin</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800')">Cave de la Bresse</div>
+      </div>
+    </div>
+
+    <!-- ÉVÉNEMENTIEL -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Événementiel">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🎉 ÉVÉNEMENTIEL</div>
+      </div>
+      <div id="event-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800')">Salle Polyvalente</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800')">Théâtre Local</div>
+      </div>
+    </div>
+
+    <!-- QUOTIDIEN -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
+        <img src="https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Quotidien">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🛒 QUOTIDIEN</div>
+      </div>
+      <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800')">Carrefour</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800')">Intermarché</div>
+      </div>
+    </div>
+
+    <!-- ENFANTS -->
+    <div class="col-span-1">
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
+        <img src="https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧸 ENFANTS</div>
+      </div>
+      <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">Ludothèque</div>
+        <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">École de Danse</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Toggle categories
+  function toggleCategory(id) {
+    const section = document.getElementById(id);
+    const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
+    document.querySelectorAll('.partner-content').forEach(item => { if(item.id !== id) item.classList.remove('active'); });
+    document.querySelectorAll('.category-card').forEach(cardEl => {
+      cardEl.classList.remove("shadow-red-500/50", "shadow-xl");
+      cardEl.classList.add("shadow-lg");
+    });
+    section.classList.toggle('active');
+    if(section.classList.contains('active')){
+      card.classList.remove("shadow-lg");
+      card.classList.add("shadow-xl", "shadow-red-500/50");
+    } else {
+      card.classList.remove("shadow-xl", "shadow-red-500/50");
+      card.classList.add("shadow-lg");
+    }
+  }
+
+  // Splash screen
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const splash = document.getElementById('splash');
+      splash.style.opacity = '0';
+      setTimeout(() => splash.style.display='none', 500);
+    }, 2000);
+  });
+
+  // Modal
+  function openModal(url) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    modalImg.src = url;
+    modal.classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('imageModal').classList.remove('active');
+  }
+</script>
+</body>
+</html>
