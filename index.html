@@ -8,17 +8,74 @@
 
   <!-- Police Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .partner-content { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease; margin-top: 0; }
-    .partner-content.active { opacity: 1; margin-top: 1rem; max-height: 600px; }
-    input:focus, textarea:focus { border-color: #dc2626 !important; box-shadow: 0 0 0 3px rgba(220,38,38,0.4); }
-    .partner-link { display: flex; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #f3f4f6; gap: 0.75rem; }
+
+    /* Splash screen */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+    #splash img { max-width: 80%; max-height: 80%; }
+
+    .partner-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+      margin-top: 0;
+    }
+    .partner-content.active {
+      opacity: 1;
+      margin-top: 1rem;
+      max-height: 600px;
+    }
+    input:focus, textarea:focus {
+      border-color: #dc2626 !important;
+      box-shadow: 0 0 0 3px rgba(220,38,38,0.4);
+    }
+    .partner-link {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      gap: 0.75rem;
+    }
     .partner-link:last-child { border-bottom: none; }
     .partner-logo { height: 30px; width: 30px; object-fit: contain; border-radius: 4px; }
-    #installBanner { position: fixed; bottom: 15px; left: 10px; right: 10px; background: #dc2626; color: #fff; padding: 10px 15px; border-radius: 8px; text-align: center; font-family: sans-serif; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
-    #installBanner button { background: #fff; color: #dc2626; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+    #installBanner {
+      position: fixed;
+      bottom: 15px; left: 10px; right: 10px;
+      background: #dc2626;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-family: sans-serif;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #installBanner button {
+      background: #fff;
+      color: #dc2626;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 
   <!-- Favicon et icônes -->
@@ -34,6 +91,7 @@
   <meta name="apple-mobile-web-app-title" content="CE Renault Trucks">
 
   <script>
+    // Toggle categories
     function toggleCategory(id) {
       const section = document.getElementById(id);
       const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
@@ -51,37 +109,48 @@
         card.classList.add("shadow-lg");
       }
     }
+
+    // Splash screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash');
+        splash.style.opacity = '0';
+        setTimeout(() => splash.style.display = 'none', 500);
+      }, 2500);
+    });
+
+    // PWA install banner
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const banner = document.createElement('div');
+      banner.id = 'installBanner';
+      banner.innerHTML = `Installer l'application <button id="installBtn">Installer</button>`;
+      document.body.appendChild(banner);
+      document.getElementById('installBtn').onclick = async () => {
+        banner.style.display = 'none';
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      }
+    });
+
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker enregistré ✅'))
+        .catch(err => console.log('Erreur Service Worker:', err));
+    }
   </script>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
 
-  <!-- ÉCRAN DE DÉMARRAGE -->
-  <div id="splash-screen" style="
-    position: fixed;
-    inset: 0;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity 1s ease;
-  ">
-    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" 
-         alt="Logo Renault Trucks" 
-         style="max-width: 80%; height: auto; border-radius: 20px;">
+  <!-- Splash screen -->
+  <div id="splash">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" alt="Logo Renault Trucks CE">
   </div>
-
-  <script>
-    // Animation de disparition du splash screen
-    window.addEventListener('load', () => {
-      const splash = document.getElementById('splash-screen');
-      setTimeout(() => {
-        splash.style.opacity = '0';
-        setTimeout(() => splash.remove(), 1000);
-      }, 1500);
-    });
-  </script>
 
   <!-- HEADER -->
   <header class="bg-white shadow-xl sticky top-0 z-50">
@@ -112,60 +181,100 @@
   <section id="categories" class="max-w-6xl mx-auto py-12 px-4">
     <h2 class="text-2xl font-bold text-center mb-10 text-gray-800">Catégories d'Offres</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Les cartes existantes restent inchangées -->
-      <!-- … -->
+
+      <!-- RESTAURANTS -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/pexels-chanwalrus-958545.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Restaurants">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
+        </div>
+        <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://www.google.com/maps/search/?api=1&query=LouPan+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/lou%20pan.jpg" class="partner-logo">
+            <span class="font-semibold">LouPan</span> — Boulangerie artisanale
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Le+Jasmin+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/le%20jasmin.png" class="partner-logo">
+            <span class="font-semibold">Le Jasmin</span> — Cuisine raffinée
+          </a>
+        </div>
+      </div>
+
+      <!-- AUTOMOBILE -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🚗 AUTOMOBILE</div>
+        </div>
+        <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://www.google.com/maps/search/?api=1&query=Contrôle+Technique+Autovision+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/t%C3%A9l%C3%A9chargement.png" class="partner-logo">
+            <span class="font-semibold">Contrôle Technique Autovision</span>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Contrôle+Technique+Sécuritest+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/securites.jpg" class="partner-logo">
+            <span class="font-semibold">Contrôle Technique Sécuritest</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- SPORTS -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('sports-content')">
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/sport.jpeg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Sports">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏋️ SPORTS</div>
+        </div>
+        <div id="sports-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://www.google.com/maps/search/?api=1&query=Intersport+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/intersport.png" class="partner-logo">
+            <span class="font-semibold">Intersport</span> — -15% sur tout le magasin
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Basic+Fit+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/basic-fit-logo.jpg" class="partner-logo">
+            <span class="font-semibold">Basic Fit</span> — Abonnement mensuel avantageux
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Fit%27Club+01+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/so%20fit.png" class="partner-logo">
+            <span class="font-semibold">Fit’Club 01</span> — Abonnement mensuel à 29 €
+          </a>
+        </div>
+      </div>
+
+      <!-- VACANCES -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('vacances-content')">
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Vacances-productivite.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Vacances">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🌴 VOYAGES</div>
+        </div>
+        <div id="vacances-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://www.google.com/maps/search/?api=1&query=Voyages+Bresse+Horizon+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span class="font-semibold">Voyages Bresse Horizon</span> — 10% sur les séjours
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Camping+La+Plaine+Tonique+Montrevel-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <span class="font-semibold">Camping La Plaine Tonique</span> — Nuitée à -20%
+          </a>
+        </div>
+      </div>
+
+      <!-- ENFANTS -->
+      <div class="col-span-1">
+        <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/enfants.webp" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
+          <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧒 ENFANTS</div>
+        </div>
+        <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <a href="https://www.google.com/maps/search/?api=1&query=1055+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/1055.png" class="partner-logo">
+            <span class="font-semibold">1055 Bourg-en-Bresse</span> — Bons cadeaux pour activités ludiques
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ludy+Lucky+Bourg-en-Bresse" target="_blank" class="partner-link text-gray-800 hover:text-red-600 transition">
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/ludi%20lucky.jpg" class="partner-logo">
+            <span class="font-semibold">Ludy Lucky</span> — Jeux et loisirs pour enfants
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="bg-gray-800 py-16 px-4">
-    <div class="max-w-lg mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4 text-white">Contactez votre CE</h2>
-      <p class="text-gray-400 mb-8">Pour toute question, suggestion de partenariat ou demande d'information, utilisez le formulaire ci-dessous.</p>
-      <form class="space-y-4 bg-white p-6 rounded-xl shadow-2xl">
-        <input type="text" placeholder="Nom / Service" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">
-        <input type="email" placeholder="Adresse e-mail professionnelle" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">
-        <textarea placeholder="Votre message..." class="w-full border border-gray-300 p-3 rounded-lg h-28 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150"></textarea>
-        <button type="submit" class="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-[1.01] duration-200 shadow-lg">Envoyer au CE</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-black text-white text-center py-6 mt-0">
-    <div class="max-w-7xl mx-auto px-4">
-      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg" alt="Renault Trucks Logo" class="h-6 mx-auto mb-3 filter brightness-0 invert">
-      <p class="text-sm text-gray-400">© 2025 CE Renault Trucks CE - Bourg-en-Bresse | Tous droits réservés.</p>
-    </div>
-  </footer>
-
-  <!-- Bandeau PWA -->
-  <script>
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      const banner = document.createElement('div');
-      banner.id = 'installBanner';
-      banner.innerHTML = `Installer l'application <button id="installBtn">Installer</button>`;
-      document.body.appendChild(banner);
-      document.getElementById('installBtn').onclick = async () => {
-        banner.style.display = 'none';
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        deferredPrompt = null;
-      }
-    });
-  </script>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker enregistré ✅'))
-        .catch(err => console.log('Erreur Service Worker:', err));
-    }
-  </script>
-
-</body>
-</html>
+  <!--
