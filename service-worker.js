@@ -5,7 +5,7 @@ const urlsToCache = [
   './manifest.json',
   'https://cdn.tailwindcss.com',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
-  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/New_Renault_Trucks_Logo.png'
+  'https://raw.github.com/luffy01984-png/Renault-trucks-CE/blob/main/assets/1761728183491.jpg'
 ];
 
 // Installation du service worker
