@@ -1,6 +1,6 @@
 {
-  "name": "CE Renault Trucks Bourg-en-Bresse",
-  "short_name": "CE Renault Trucks",
+  "name": "CSE Renault Trucks Bourg-en-Bresse",
+  "short_name": "CSE Renault Trucks",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
