@@ -4,7 +4,7 @@
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "theme_color": "#dc2626",
   "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
   "icons": [
@@ -16,6 +16,11 @@
     {
       "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
+      "sizes": "1024x1024",
       "type": "image/png"
     }
   ],
