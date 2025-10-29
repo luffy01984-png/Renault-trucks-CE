@@ -14,10 +14,8 @@
   /* Splash screen */
   #splash {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
     background: #fff;
     display: flex;
     justify-content: center;
@@ -25,12 +23,9 @@
     z-index: 10000;
     transition: opacity 0.5s ease;
   }
-
   #splash img {
     max-width: 90%;
     max-height: 90%;
-    width: auto;
-    height: auto;
     object-fit: contain;
   }
 
@@ -44,16 +39,10 @@
   }
   .partner-content.active { opacity:1; margin-top:1rem; max-height:1000px; }
 
-  /* Partner links */
-  .partner-link { display:flex; align-items:center; padding:0.5rem 0; border-bottom:1px solid #f3f4f6; gap:0.75rem; cursor:pointer; }
-  .partner-link:last-child { border-bottom:none; }
-  .partner-logo { height:30px; width:30px; object-fit:contain; border-radius:4px; }
-
   /* Modal */
   #imageModal {
     display:none;
-    position:fixed;
-    top:0; left:0;
+    position:fixed; top:0; left:0;
     width:100%; height:100%;
     background: rgba(0,0,0,0.7);
     justify-content:center; align-items:center;
@@ -62,9 +51,6 @@
   #imageModal.active { display:flex; }
   #imageModal img { max-width:90%; max-height:80%; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.5); }
   #imageModal button { position:absolute; top:20px; right:20px; background:#dc2626; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; }
-
-  /* Category cards */
-  .category-card img { width:100%; height:12rem; object-fit:cover; }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -142,7 +128,93 @@
   </div>
 </div>
 
-<!-- Ajoute les autres catégories de la même façon -->
+<!-- AUTOMOBILE -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" alt="Automobile">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🚗 AUTOMOBILE</div>
+  </div>
+  <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">Autosur</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">Auto Securitas</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">APC</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/123%20parebrise.jpg')">123 Parebrise</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/ada.jpg')">ADA</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/renault.jpg')">Renault</div>
+  </div>
+</div>
+
+<!-- ANIMAL -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
+    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" alt="Animaux">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐾 ANIMAL</div>
+  </div>
+  <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">Food Animo</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800')">Espace Passion Animalerie</div>
+  </div>
+</div>
+
+<!-- MAISON -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
+    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" alt="Maison et déco">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏠 MAISON</div>
+  </div>
+  <div id="maison-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800')">Conforama</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800')">Bricomarché</div>
+  </div>
+</div>
+
+<!-- TERROIR -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('terroir-content')">
+    <img src="https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800" alt="Produits du terroir">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍷 TERROIR</div>
+  </div>
+  <div id="terroir-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800')">La Ferme du Coin</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800')">Cave de la Bresse</div>
+  </div>
+</div>
+
+<!-- ÉVÉNEMENTIEL -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" alt="Événementiel">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🎉 ÉVÉNEMENTIEL</div>
+  </div>
+  <div id="event-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800')">Salle Polyvalente</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800')">Théâtre Local</div>
+  </div>
+</div>
+
+<!-- QUOTIDIEN -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
+    <img src="https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800" alt="Quotidien">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🛒 QUOTIDIEN</div>
+  </div>
+  <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800')">Carrefour</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800')">Intermarché</div>
+  </div>
+</div>
+
+<!-- ENFANTS -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
+    <img src="https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800" alt="Enfants">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧸 ENFANTS</div>
+  </div>
+  <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">Ludothèque</div>
+    <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800')">École de Danse</div>
+  </div>
+</div>
 
 </div>
 </section>
@@ -167,13 +239,13 @@
     }
   }
 
-  // Splash screen
+  // Splash screen (3 secondes)
   window.addEventListener('load', () => {
     setTimeout(() => {
       const splash = document.getElementById('splash');
       splash.style.opacity = '0';
       setTimeout(() => splash.style.display='none', 500);
-    }, 2000);
+    }, 3000);
   });
 
   // Modal
@@ -183,9 +255,7 @@
     modalImg.src = url;
     modal.classList.add('active');
   }
-  function closeModal() {
-    document.getElementById('imageModal').classList.remove('active');
-  }
+  function closeModal() { document.getElementById('imageModal').classList.remove('active'); }
 
   // PWA install banner
   let deferredPrompt;
@@ -207,7 +277,6 @@
     installBanner.addEventListener('click', async () => {
       installBanner.style.display = 'none';
       deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
       deferredPrompt = null;
     });
   });
