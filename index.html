@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Inter', sans-serif; }
+  body { font-family: 'Inter', sans-serif; margin:0; }
 
   /* Splash screen */
   #splash {
@@ -15,7 +15,7 @@
     background:#fff; display:flex; justify-content:center; align-items:center;
     z-index:10000; transition: opacity 0.5s ease;
   }
-  #splash img { max-width: 80%; max-height:80%; }
+  #splash img { width:100%; height:100%; object-fit:cover; }
 
   /* Partner content toggle */
   .partner-content {
@@ -24,7 +24,7 @@
     margin-top:0;
   }
   .partner-content.active {
-    opacity:1; margin-top:1rem; max-height:800px;
+    opacity:1; margin-top:1rem; max-height:1000px;
   }
 
   /* Partner links */
@@ -42,13 +42,16 @@
   #imageModal.active { display:flex; }
   #imageModal img { max-width:90%; max-height:80%; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.5); }
   #imageModal button { position:absolute; top:20px; right:20px; background:#dc2626; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; }
+
+  /* Category hover shadow */
+  .category-card:hover { transform: scale(1.02); transition: transform 0.3s ease; }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
 <!-- Splash screen -->
 <div id="splash">
-  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/blob/main/assets/assets/images/new%20electra.png"
+  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/elektra.jpg" alt="Splash">
 </div>
 
 <!-- Modal -->
@@ -89,8 +92,8 @@
 
     <!-- RESTAURANTS -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
-        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Restaurants">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('resto-content')">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" class="object-cover w-full h-48" alt="Restaurants">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
       </div>
       <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -102,8 +105,8 @@
 
     <!-- ARTISANS DU GOÛT -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('gout-content')">
-        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Artisans du Goût">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('gout-content')">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800" class="object-cover w-full h-48" alt="Artisans du Goût">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🥖 ARTISANS DU GOÛT</div>
       </div>
       <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -121,8 +124,8 @@
 
     <!-- AUTOMOBILE -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Automobile">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
+        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" class="object-cover w-full h-48" alt="Automobile">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🚗 AUTOMOBILE</div>
       </div>
       <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -130,16 +133,15 @@
         <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">Auto Securitas</div>
         <div class="partner-link" onclick="openModal('https://images.unsplash.com/photo-1601933477502-77c6e0d9055e?w=800')">APC</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/123%20parebrise.jpg')">123 Parebrise</div>
-<div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/ada.jpg')">ADA</div>
-<div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/renault.jpg')">Renault</div>
-
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/ada.jpg')">ADA</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/renault.jpg')">Renault</div>
       </div>
     </div>
 
     <!-- ANIMAL -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
-        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Animaux">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
+        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" class="object-cover w-full h-48" alt="Animaux">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐾 ANIMAL</div>
       </div>
       <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -150,8 +152,8 @@
 
     <!-- MAISON -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
-        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Maison et déco">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" class="object-cover w-full h-48" alt="Maison et déco">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏠 MAISON</div>
       </div>
       <div id="maison-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -162,8 +164,8 @@
 
     <!-- TERROIR -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('terroir-content')">
-        <img src="https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Produits du terroir">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('terroir-content')">
+        <img src="https://images.unsplash.com/photo-1603034805025-3b7a3093b7b8?w=800" class="object-cover w-full h-48" alt="Produits du terroir">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍷 TERROIR</div>
       </div>
       <div id="terroir-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -174,8 +176,8 @@
 
     <!-- ÉVÉNEMENTIEL -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Événementiel">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="object-cover w-full h-48" alt="Événementiel">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🎉 ÉVÉNEMENTIEL</div>
       </div>
       <div id="event-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -186,8 +188,8 @@
 
     <!-- QUOTIDIEN -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
-        <img src="https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Quotidien">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
+        <img src="https://images.unsplash.com/photo-1581090700227-8c11184ed56b?w=800" class="object-cover w-full h-48" alt="Quotidien">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🛒 QUOTIDIEN</div>
       </div>
       <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -198,8 +200,8 @@
 
     <!-- ENFANTS -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
-        <img src="https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800" class="object-cover w-full h-48 transition duration-500 group-hover:opacity-80" alt="Enfants">
+      <div class="category-card relative group cursor-pointer shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
+        <img src="https://images.unsplash.com/photo-1601758123927-7b98c4a3b6f7?w=800" class="object-cover w-full h-48" alt="Enfants">
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧸 ENFANTS</div>
       </div>
       <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
@@ -251,5 +253,6 @@
     document.getElementById('imageModal').classList.remove('active');
   }
 </script>
+
 </body>
 </html>
