@@ -11,84 +11,41 @@
 
 <style>
 body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#f3f4f6; }
+html { scroll-behavior: smooth; }
 
 /* Splash screen */
-#splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  transition: opacity 0.5s ease;
-}
-#splash img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-}
+#splash { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.5s ease; }
+#splash img { max-width: 90%; max-height: 90%; object-fit: contain; }
 
 /* Partner content toggle */
-.partner-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
-  margin-top: 0;
-}
-.partner-content.active {
-  opacity: 1;
-  margin-top: 1rem;
-  max-height: 2000px;
-}
+.partner-content { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease; margin-top: 0; }
+.partner-content.active { opacity: 1; margin-top: 1rem; max-height: 2000px; }
 
-/* Partner links - modernes et espacés */
-.partner-link {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.25rem;
-  margin-bottom: 0.75rem;
-  border-radius: 0.75rem;
-  background-color: #f9fafb;
-  color: #1f2937;
-  font-weight: 500;
-  font-size: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, color 0.2s;
-}
-.partner-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  background-color: #fff;
-  color: #dc2626;
-}
-.partner-link:last-child {
-  margin-bottom: 0;
-}
+/* Partner links */
+.partner-link { display: flex; align-items: center; padding: 1rem 1.25rem; margin-bottom: 0.75rem; border-radius: 0.75rem; background-color: #f9fafb; color: #1f2937; font-weight: 500; font-size: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, color 0.2s; }
+.partner-link:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); background-color: #fff; color: #dc2626; }
+.partner-link:last-child { margin-bottom: 0; }
 
 /* Modal */
-#imageModal {
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:10000; transition: opacity 0.3s ease;
-}
+#imageModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:10000; transition: opacity 0.3s ease; }
 #imageModal.active { display:flex; }
 #imageModal img { max-width:90%; max-height:80%; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.5); }
 #imageModal button { position:absolute; top:20px; right:20px; background:#dc2626; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; }
 
 /* Category cards */
 .category-card img { width:100%; height:12rem; object-fit:cover; border-radius: 1rem; }
+
+/* Mentions légales */
+#mentions { background-color:#f9fafb; color:#1f2937; padding:3rem 1rem; text-align:center; border-top:1px solid #d1d5db; }
+#mentions h2 { font-size:1.5rem; font-weight:bold; margin-bottom:1rem; }
+#mentions p { font-size:0.875rem; max-width:800px; margin:0 auto; line-height:1.6; }
 </style>
 </head>
 <body class="bg-gray-30 text-gray-700">
 
 <!-- Splash screen -->
 <div id="splash">
-  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/electra%20maj.jpg" alt="Splash">
+  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/electra_maj.jpg" alt="Splash">
 </div>
 
 <!-- Modal -->
@@ -106,7 +63,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
     </div>
     <nav class="space-x-4 text-sm font-semibold">
       <a href="#categories" class="text-gray-600 hover:text-red-600 transition">Partenaires</a>
-      <a href="#contact" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Contact</a>
+      <a href="#mentions" class="text-white bg-red-600 px-3 py-1 rounded-full hover:bg-red-700 transition">Mentions légales</a>
     </nav>
   </div>
 </header>
@@ -134,9 +91,9 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🍽️ RESTAURANTS</div>
       </div>
       <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/au%20bon%20choix.jpg')">Au Bon Choix</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/food%20truck%20fermier.jpg')">Food Truck Fermier</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/le%20loft%20pizza.jpg')">Le Loft</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/au_bon_choix.jpg')">Au Bon Choix</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/food_truck_fermier.jpg')">Food Truck Fermier</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/le_loft_pizza.jpg')">Le Loft</div>
       </div>
     </div>
 
@@ -147,12 +104,12 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🥖 ARTISANS DU GOÛT</div>
       </div>
       <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/janny%20fruits.jpg')">Janny fruits</div>        
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/le%20pepites%20bressanes.jpg')">Les Pépites Bressanes</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/lou%20pan.jpg')">LouPan</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Monts%20et%20Terroir.jpg')">Monts et Terroir</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/grain%20dpain.jpg')">Grain d'pain</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/boucherie_andré.jpg')">Boucherie André</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/janny_fruits.jpg')">Janny fruits</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/le_pepites_bressanes.jpg')">Les Pépites Bressanes</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/lou_pan.jpg')">LouPan</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Monts_et_Terroir.jpg')">Monts et Terroir</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/grain_dpain.jpg')">Grain d'pain</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/boucherie_andre.jpg')">Boucherie André</div>
       </div>
     </div>
 
@@ -164,9 +121,9 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
       </div>
       <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/autosur.jpg')">Autosur</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/auto%20securitas.jpg')">Auto Securitas</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/auto_securitas.jpg')">Auto Securitas</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/apc.jpg')">APC</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/123%20parebrise.jpg')">123 Parebrise</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/123_parebrise.jpg')">123 Parebrise</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/ada.jpg')">ADA</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/renault.jpg')">Renault</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/speedy.jpg')">Speedy</div>
@@ -174,19 +131,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
       </div>
     </div>
 
-    <!-- ANIMAL -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
-        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" alt="Animaux">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🐾 ANIMAL</div>
-      </div>
-      <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/food%20animo.jpg')">Food Animo</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/espace%20passion%20animalerie.jpg')">Espace Passion Animalerie</div>
-      </div>
-    </div>
-
-    <!-- MAISON -->
+    <!-- MAISON (exemple simplifié) -->
     <div class="col-span-1">
       <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('maison-content')">
         <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" alt="Maison et déco">
@@ -194,24 +139,25 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
       </div>
       <div id="maison-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Conforama.jpg')">Conforama</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/chaleur%20et%20bois.jpg')">Chaleur et bois</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/chaleur_et_bois.jpg')">Chaleur et bois</div>
       </div>
     </div>
-    <!-- TRAVAUX-->
+
+    <!-- TRAVAUX -->
     <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('TRAVAUX-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/TRAVAUX.jpg" alt="Maison et déco">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold"> Travaux</div>
+      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('travaux-content')">
+        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/TRAVAUX.jpg" alt="Travaux">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🏗️ TRAVAUX</div>
       </div>
-      <div id="TRAVAUX-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+      <div id="travaux-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/ecocuisine.jpg')">Ecocuisine</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/schmidt.jpg')">Schmidt</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/michel%20parisot.jpg')">Parisot Motoculture</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/michel_parisot.jpg')">Parisot Motoculture</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/sikkens.jpg')">Sikkens Solutions</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Les%20coqs%20de%20Bresse.jpg')">Les Coques de Bresse</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/habitat%20confort.jpg')">Habitat Confort</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Les_coqs_de_Bresse.jpg')">Les Coqs de Bresse</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/habitat_confort.jpg')">Habitat Confort</div>
       </div>
-      </div>
+    </div>
 
     <!-- TERROIR -->
     <div class="col-span-1">
@@ -244,12 +190,12 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🛒 QUOTIDIEN</div>
       </div>
       <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Salon%20de%20coiffure.jpg')">15th Avenue Coiffure</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Salon_de_coiffure.jpg')">15th Avenue Coiffure</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/salondecoiffure.jpg')">Renaissance Coiffure</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/a%20fleur%20de%20pot.jpg')">A Fleur de pot</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/a_fleur_de_pot.jpg')">A Fleur de pot</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/cigusto.jpg')">Cigusto</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/montbarbon.jpg')">Montbarbon</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/la%20rek1ke.jpg')">La Rek1que</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/la_rek1ke.jpg')">La Rek1que</div>
       </div>
     </div>
 
@@ -260,84 +206,54 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
         <div class="absolute inset-0 bg-gray-900 bg-opacity-60 rounded-2xl flex items-center justify-center text-white text-xl font-bold">🧸 ENFANTS</div>
       </div>
       <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/jouet%20club.jpg')">JouéClub</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/autour%20de%20bebe.jpg')">Autour de Bébé</div>
-
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/jouet_club.jpg')">JouéClub</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/autour_de_bebe.jpg')">Autour de Bébé</div>
+      </div>
     </div>
 
   </div>
 </section>
 
+<!-- MENTIONS LEGALES -->
+<section id="mentions">
+  <h2>Mentions Légales</h2>
+  <p>
+    Ce site est édité par le Comité Social et Économique de Renault Trucks Bourg-en-Bresse.<br>
+    Directeur de publication : Jean Dupont<br>
+    Adresse : 123 Rue de l’Industrie, 01000 Bourg-en-Bresse<br>
+    Email : contact@renault-trucks-cse.fr<br>
+    Téléphone : 04 00 00 00 00<br>
+    Hébergeur : GitHub Pages
+  </p>
+</section>
+
 <script>
 // Toggle categories
-function toggleCategory(id) {
-  const section = document.getElementById(id);
-  const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
-  document.querySelectorAll('.partner-content').forEach(item => { if(item.id !== id) item.classList.remove('active'); });
-  document.querySelectorAll('.category-card').forEach(cardEl => {
-    cardEl.classList.remove("shadow-red-500/50", "shadow-xl");
-    cardEl.classList.add("shadow-lg");
-  });
+function toggleCategory(id){
+  const section=document.getElementById(id);
+  const card=document.querySelector(`[onclick="toggleCategory('${id}')"]`);
+  document.querySelectorAll('.partner-content').forEach(item=>{if(item.id!==id)item.classList.remove('active');});
+  document.querySelectorAll('.category-card').forEach(cardEl=>{cardEl.classList.remove("shadow-red-500/50","shadow-xl"); cardEl.classList.add("shadow-lg");});
   section.classList.toggle('active');
   if(section.classList.contains('active')){
-    card.classList.remove("shadow-lg");
-    card.classList.add("shadow-xl", "shadow-red-500/50");
-  } else {
-    card.classList.remove("shadow-xl", "shadow-red-500/50");
-    card.classList.add("shadow-lg");
-  }
+    card.classList.remove("shadow-lg"); card.classList.add("shadow-xl","shadow-red-500/50");
+  }else{ card.classList.remove("shadow-xl","shadow-red-500/50"); card.classList.add("shadow-lg"); }
 }
 
-// Splash screen
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const splash = document.getElementById('splash');
-    splash.style.opacity = '0';
-    setTimeout(() => splash.style.display='none', 500);
-  }, 3000); // délai 3 secondes
-});
+// Splash
+window.addEventListener('load',()=>{ setTimeout(()=>{ const splash=document.getElementById('splash'); splash.style.opacity='0'; setTimeout(()=>splash.style.display='none',500);},3000); });
 
 // Modal
-function openModal(url) {
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImg');
-  modalImg.src = url;
-  modal.classList.add('active');
-}
-function closeModal() {
-  document.getElementById('imageModal').classList.remove('active');
-}
+function openModal(url){ const modal=document.getElementById('imageModal'); const modalImg=document.getElementById('modalImg'); modalImg.src=url; modal.classList.add('active'); }
+function closeModal(){ document.getElementById('imageModal').classList.remove('active'); }
 
 // PWA install banner
 let deferredPrompt;
-const installBanner = document.createElement('div');
-installBanner.style.cssText = `
-position: fixed; bottom: 20px; left: 20px; right: 20px;
-background: #dc2626; color: #fff; padding: 12px 20px; 
-border-radius: 12px; text-align: center; font-weight: bold; z-index: 10001;
-cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-`;
-installBanner.textContent = "Installer l'application sur votre écran d'accueil";
-installBanner.style.display = 'none';
-document.body.appendChild(installBanner);
-
-// Vérifie si déjà installée
-window.addEventListener('appinstalled', () => {
-  installBanner.style.display = 'none';
-});
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  if (window.matchMedia('(display-mode: standalone)').matches) return; // déjà installé
-  e.preventDefault();
-  deferredPrompt = e;
-  installBanner.style.display = 'block';
-  installBanner.addEventListener('click', async () => {
-    installBanner.style.display = 'none';
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    deferredPrompt = null;
-  });
-});
+const installBanner=document.createElement('div');
+installBanner.style.cssText=`position: fixed; bottom: 20px; left: 20px; right: 20px; background: #dc2626; color: #fff; padding: 12px 20px; border-radius: 12px; text-align: center; font-weight: bold; z-index: 10001; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);`;
+installBanner.textContent="Installer l'application sur votre écran d'accueil"; installBanner.style.display='none'; document.body.appendChild(installBanner);
+window.addEventListener('appinstalled',()=>{ installBanner.style.display='none'; });
+window.addEventListener('beforeinstallprompt',(e)=>{ if(window.matchMedia('(display-mode: standalone)').matches)return; e.preventDefault(); deferredPrompt=e; installBanner.style.display='block'; installBanner.addEventListener('click',async()=>{ installBanner.style.display='none'; deferredPrompt.prompt(); deferredPrompt=null; }); });
 </script>
 
 </body>
