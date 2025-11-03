@@ -1,65 +1,70 @@
-// Nom du cache et version
-const CACHE_NAME = 'cse-renault-cache-v1';
-
-// Fichiers à mettre en cache
+const CACHE_NAME = 'cse-renault-trucks-v1';
 const urlsToCache = [
-  '/', // start_url
+  '/',
   '/index.html',
   '/manifest.json',
-  '/assets/icons/icon-72.png',
-  '/assets/icons/icon-96.png',
-  '/assets/icons/icon-128.png',
-  '/assets/icons/icon-192.png',
-  '/assets/icons/icon-512.png',
-  // ajoute ici toutes tes images, CSS, JS essentiels
+  '/service-worker.js',
+  'https://cdn.tailwindcss.com',
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
+  // Logo et images principales
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg',
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/terroir.png',
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/enfants.webp',
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/services.png',
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/financement.webp',
+  // Ici tu peux ajouter toutes les images partenaires si nécessaire
 ];
 
-// Installation du service worker
-self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installation');
+// Installation du SW et mise en cache
+self.addEventListener('install', event => {
+  console.log('[Service Worker] Installation...');
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Mise en cache des fichiers essentiels');
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('[Service Worker] Caching assets...');
+        return cache.addAll(urlsToCache);
+      })
   );
   self.skipWaiting();
 });
 
-// Activation du service worker
-self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activation');
-  // Supprimer les anciens caches
+// Activation et nettoyage des anciens caches
+self.addEventListener('activate', event => {
+  console.log('[Service Worker] Activation...');
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            console.log('[Service Worker] Suppression ancien cache', key);
-            return caches.delete(key);
-          }
-        })
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
+      )
+    )
   );
   self.clients.claim();
 });
 
 // Interception des requêtes
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        // Retourner la ressource depuis le cache
-        return response;
+    caches.match(event.request).then(cachedResponse => {
+      if (cachedResponse) {
+        return cachedResponse; // renvoyer depuis le cache si disponible
       }
-      // Sinon, récupérer depuis le réseau
-      return fetch(event.request).catch(() => {
-        // Optionnel : on peut mettre une page fallback en cas d'échec
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
-      });
+      return fetch(event.request)
+        .then(networkResponse => {
+          return caches.open(CACHE_NAME).then(cache => {
+            // Ne pas mettre en cache les requêtes non-GET ou externes
+            if (event.request.method === 'GET' && event.request.url.startsWith(self.location.origin)) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        })
+        .catch(() => {
+          // Optionnel : fallback pour les pages hors-ligne
+          if (event.request.destination === 'document') {
+            return caches.match('/index.html');
+          }
+        });
     })
   );
 });
