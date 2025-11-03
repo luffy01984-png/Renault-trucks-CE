@@ -1,39 +1,28 @@
 {
   "name": "CSE Renault Trucks Bourg-en-Bresse",
   "short_name": "CSE Renault Trucks",
-  "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
-  "start_url": "/",
+  "start_url": "./index.html",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#dc2626",
+  "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
   "icons": [
     {
-      "src": "assets/icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/icon-192.png",
+      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-512.png",
+      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
+      "sizes": "1024x1024",
       "type": "image/png"
     }
   ],
-  "categories": ["business", "shopping", "entertainment"],
-  "lang": "fr-FR"
+  "splash_pages": null
 }
