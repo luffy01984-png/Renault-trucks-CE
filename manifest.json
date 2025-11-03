@@ -1,12 +1,12 @@
 {
   "name": "CSE Renault Trucks Bourg-en-Bresse",
   "short_name": "CSE Renault Trucks",
-  "start_url": "./index.html",
+  "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#dc2626",
-  "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
   "icons": [
     {
       "src": "assets/icons/icon-72.png",
@@ -33,5 +33,7 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "categories": ["business", "shopping", "entertainment"],
+  "lang": "fr-FR"
 }
