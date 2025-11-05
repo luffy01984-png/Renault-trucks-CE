@@ -15,7 +15,7 @@ const urlsToCache = [
 
   // Artisans du goût
   "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/janny%20fruits.jpg",
-  "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/le%20pepites%20bressanes.jpg",
+  "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Les_pepites_bressanes_new.png",
   "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/lou%20pan.jpg",
   "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/Monts%20et%20Terroir.jpg",
   "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/grain%20dpain.jpg",
