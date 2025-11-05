@@ -508,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const content = btn.nextElementSibling;
       const arrow = btn.querySelector(".arrow");
 
+      // Ferme les autres
       document.querySelectorAll(".accordion-content").forEach(c => {
         if (c !== content) {
           c.style.maxHeight = null;
@@ -518,19 +519,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (a !== arrow) a.classList.remove("rotate");
       });
 
-      if (content.style.maxHeight) {
+      // Ouvre ou ferme celui cliqué
+      if (content.classList.contains("open")) {
         content.style.maxHeight = null;
         content.classList.remove("open");
         arrow.classList.remove("rotate");
       } else {
-        content.style.maxHeight = content.scrollHeight + "px";
         content.classList.add("open");
         arrow.classList.add("rotate");
+        // Recalcule la hauteur réelle du contenu (après transition CSS)
+        requestAnimationFrame(() => {
+          content.style.maxHeight = content.scrollHeight + "px";
+        });
       }
     });
   });
 });
 </script>
+
 
 </body>
 </html>
