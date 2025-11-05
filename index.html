@@ -4,10 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avantages Partenaires | Renault Trucks CSE Bourg-en-Bresse</title>
+
+<!-- ✅ Tailwind + police -->
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
+
+<!-- ✅ PWA -->
+<link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#dc2626">
+
+<!-- ✅ iOS support -->
+<link rel="apple-touch-icon" href="./assets/icons/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CSE Renault Trucks">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <style>
 body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#f3f4f6; }
@@ -51,6 +61,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 .category-card img { width:100%; height:12rem; object-fit:cover; border-radius:1rem; }
 </style>
 </head>
+
 <body class="bg-gray-30 text-gray-700">
 
 <!-- Splash screen -->
@@ -272,6 +283,18 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
     Images : partenaires et sources libres de droits.
   </p>
 </section>
+  
+  <!-- PWA Service Worker -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('./sw.js')
+      .then(reg => console.log('✅ Service Worker enregistré :', reg.scope))
+      .catch(err => console.error('❌ Erreur SW :', err));
+  });
+}
+</script>
 
 <script>
 // Toggle categories
