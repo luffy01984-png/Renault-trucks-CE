@@ -93,7 +93,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 
 <!-- Modal -->
 <div id="imageModal">
-  <button onclick="closeModal()">Fermer</button>
+  <button>Fermer</button>
   <img id="modalImg" src="" alt="Partenaire">
 </div>
 
@@ -110,6 +110,105 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
     </nav>
   </div>
 </header>
+
+<!-- HERO -->
+<section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
+  <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+    Vos Avantages <span class="text-red-600">CSE Renault Trucks</span>
+  </h1>
+  <p class="text-gray-400 mt-1 text-sm uppercase tracking-wider">Bourg-en-Bresse</p>
+  <p class="text-gray-600 mt-4 max-w-xl mx-auto text-lg font-light">
+    Cliquez sur une catégorie pour découvrir toutes les offres exclusives négociées par votre Comité d'Entreprise. *Sur présentation du badge.
+  </p>
+</section>
+
+<script>
+// Toggle categories
+function toggleCategory(id) {
+  const section = document.getElementById(id);
+  const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
+  document.querySelectorAll('.partner-content').forEach(item => { if(item.id !== id) item.classList.remove('active'); });
+  document.querySelectorAll('.category-card').forEach(cardEl => {
+    cardEl.classList.remove("shadow-red-500/50", "shadow-xl");
+    cardEl.classList.add("shadow-lg");
+  });
+  section.classList.toggle('active');
+  if(section.classList.contains('active')){
+    card.classList.remove("shadow-lg");
+    card.classList.add("shadow-xl", "shadow-red-500/50");
+  } else {
+    card.classList.remove("shadow-xl", "shadow-red-500/50");
+    card.classList.add("shadow-lg");
+  }
+}
+
+// Splash screen
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    splash.style.opacity = '0';
+    setTimeout(() => splash.style.display='none', 500);
+  }, 3000); // délai 3 secondes
+});
+
+// Modal
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+const closeModalBtn = modal.querySelector('button');
+
+function openModal(url) {
+  modalImg.src = url;
+  modal.classList.add('active');
+  history.pushState({ modalOpen: true }, "");
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  if(history.state && history.state.modalOpen) history.back();
+}
+
+modal.addEventListener('click', (e) => {
+  if(e.target === modal) closeModal();
+});
+
+closeModalBtn.addEventListener('click', closeModal);
+
+window.addEventListener('popstate', () => {
+  if(modal.classList.contains('active')) closeModal();
+});
+
+// PWA install banner
+let deferredPrompt;
+const installBanner = document.createElement('div');
+installBanner.style.cssText = `
+position: fixed; bottom: 20px; left: 20px; right: 20px;
+background: #dc2626; color: #fff; padding: 12px 20px; 
+border-radius: 12px; text-align: center; font-weight: bold; z-index: 10001;
+cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+`;
+installBanner.textContent = "Installer l'application sur votre écran d'accueil";
+installBanner.style.display = 'none';
+document.body.appendChild(installBanner);
+
+// Vérifie si déjà installée
+window.addEventListener('appinstalled', () => {
+  installBanner.style.display = 'none';
+});
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  if (window.matchMedia('(display-mode: standalone)').matches) return; // déjà installé
+  e.preventDefault();
+  deferredPrompt = e;
+  installBanner.style.display = 'block';
+  installBanner.addEventListener('click', async () => {
+    installBanner.style.display = 'none';
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  });
+});
+</script>
+
 
 <!-- HERO -->
 <section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
