@@ -82,6 +82,23 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 
 /* Category cards */
 .category-card img { width:100%; height:12rem; object-fit:cover; border-radius: 1rem; }
+
+/* Accordéon Mentions Légales */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.accordion-content.open {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.rotate-90 {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
 </style>
 </head>
 <body class="bg-gray-30 text-gray-700">
@@ -354,7 +371,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
   </div>
 </section>
 
-  <section id="mentions" class="bg-gray-100 py-10 px-6 rounded-xl shadow-inner mt-10">
+  <!-- MENTIONS LEGALES -->
+<section id="mentions" class="bg-gray-100 py-10 px-6 rounded-xl shadow-inner mt-10">
   <h2 class="text-2xl font-bold text-red-700 mb-4">Mentions Légales</h2>
 
   <!-- 1. Éditeur du site (normal) -->
@@ -415,8 +433,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
   </p>
 </section>
 
-
-
 <script>
 // Toggle categories
 function toggleCategory(id) {
@@ -447,15 +463,41 @@ window.addEventListener('load', () => {
 });
 
 // Modal
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+const closeModalBtn = modal.querySelector('button');
 function openModal(url) {
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImg');
   modalImg.src = url;
   modal.classList.add('active');
 }
-function closeModal() {
-  document.getElementById('imageModal').classList.remove('active');
-}
+function closeModal() { modal.classList.remove('active'); }
+modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+closeModalBtn.addEventListener('click', closeModal);
+
+// Accordéon Mentions Légales
+document.querySelectorAll('.accordion-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+    const arrow = btn.querySelector('.arrow');
+    document.querySelectorAll('.accordion-content').forEach(c => {
+      if(c !== content) {
+        c.style.maxHeight = null;
+        c.classList.remove('open');
+        const a = c.previousElementSibling.querySelector('.arrow');
+        if(a) a.classList.remove('rotate-90');
+      }
+    });
+    if(content.style.maxHeight && content.style.maxHeight !== "0px") {
+      content.style.maxHeight = null;
+      content.classList.remove('open');
+      arrow.classList.remove('rotate-90');
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add('open');
+      arrow.classList.add('rotate-90');
+    }
+  });
+});
 
 // PWA install banner
 let deferredPrompt;
@@ -469,14 +511,9 @@ cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 installBanner.textContent = "Installer l'application sur votre écran d'accueil";
 installBanner.style.display = 'none';
 document.body.appendChild(installBanner);
-
-// Vérifie si déjà installée
-window.addEventListener('appinstalled', () => {
-  installBanner.style.display = 'none';
-});
-
+window.addEventListener('appinstalled', () => { installBanner.style.display = 'none'; });
 window.addEventListener('beforeinstallprompt', (e) => {
-  if (window.matchMedia('(display-mode: standalone)').matches) return; // déjà installé
+  if (window.matchMedia('(display-mode: standalone)').matches) return;
   e.preventDefault();
   deferredPrompt = e;
   installBanner.style.display = 'block';
@@ -488,6 +525,5 @@ window.addEventListener('beforeinstallprompt', (e) => {
   });
 });
 </script>
-
 </body>
 </html>
