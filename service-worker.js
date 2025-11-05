@@ -3,12 +3,11 @@ const FILES_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg',
   '/favicon.ico',
   // CSS / JS
   'https://cdn.tailwindcss.com',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-  // Image principale utilisée comme icône
-  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg'
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
 ];
 
 // INSTALL
@@ -28,12 +27,14 @@ self.addEventListener('activate', event => {
   console.log('[ServiceWorker] Activate');
   event.waitUntil(
     caches.keys().then(keyList => {
-      return Promise.all(keyList.map(key => {
-        if (key !== CACHE_NAME) {
-          console.log('[ServiceWorker] Removing old cache', key);
-          return caches.delete(key);
-        }
-      }));
+      return Promise.all(
+        keyList.map(key => {
+          if (key !== CACHE_NAME) {
+            console.log('[ServiceWorker] Removing old cache', key);
+            return caches.delete(key);
+          }
+        })
+      );
     })
   );
   self.clients.claim();
@@ -52,6 +53,7 @@ self.addEventListener('fetch', event => {
         });
       });
     }).catch(() => {
+      // fallback si offline et fichier non en cache
       if (event.request.destination === 'document') {
         return caches.match('/index.html');
       }
