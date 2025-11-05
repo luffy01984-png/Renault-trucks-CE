@@ -354,13 +354,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
   </div>
 </section>
 
-  
-<section id="mentions" class="bg-gray-100 py-10 px-6 rounded-xl shadow-inner mt-10">
+  <section id="mentions" class="bg-gray-100 py-10 px-6 rounded-xl shadow-inner mt-10">
   <h2 class="text-2xl font-bold text-red-700 mb-4">Mentions Légales</h2>
 
+  <!-- 1. Éditeur du site (normal) -->
   <h3 class="text-lg font-semibold text-gray-800 mt-4">1. Éditeur du site</h3>
   <p class="text-gray-700 leading-relaxed">
-    Ce site est édité par le <strong>Comité Social et Économique de Renault Trucks Bourg-en-Bresse</strong>.<br>
+    Ce site est édité par <strong>Comité Social et Économique de Renault Trucks Bourg-en-Bresse</strong>.<br>
     Directeur de publication : <strong>Arnaud Christian</strong><br>
     Adresse : 143 Avenue Amedée Mercier, 01000 Bourg-en-Bresse<br>
     WebMaster : <strong>Bouaraba Arab</strong><br>
@@ -368,40 +368,53 @@ window.addEventListener('beforeinstallprompt', (e) => {
     Téléphone : 04 00 00 00 00
   </p>
 
-  <h3 class="text-lg font-semibold text-gray-800 mt-4">2. Hébergement</h3>
-  <p class="text-gray-700 leading-relaxed">
-    Le site est hébergé par <strong>GitHub, Inc.</strong><br>
-    88 Colin P. Kelly Jr St, San Francisco, CA 94107, États-Unis<br>
-    Site web : <a href="https://pages.github.com" class="text-red-600 hover:underline">https://pages.github.com</a>
-  </p>
+  <!-- Accordéon pour les sections 2 à 5 -->
+  <div class="mt-6">
+    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
+      2. Hébergement <span class="arrow transition-transform">▶</span>
+    </button>
+    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
+      Le site est hébergé par <strong>GitHub, Inc.</strong><br>
+      88 Colin P. Kelly Jr St, San Francisco, CA 94107, États-Unis<br>
+      Site web : <a href="https://pages.github.com" class="text-red-600 hover:underline">https://pages.github.com</a>
+    </div>
 
-  <h3 class="text-lg font-semibold text-gray-800 mt-4">3. Propriété intellectuelle</h3>
-  <p class="text-gray-700 leading-relaxed">
-    L’ensemble des éléments du site (textes, images, graphismes, logo, etc.) sont la propriété exclusive du
-    <strong>CSE Renault Trucks Bourg-en-Bresse</strong>, sauf mention contraire. Toute reproduction, distribution ou
-    modification sans autorisation écrite est interdite.
-  </p>
+    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
+      3. Propriété intellectuelle <span class="arrow transition-transform">▶</span>
+    </button>
+    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
+      L’ensemble des éléments du site (textes, images, graphismes, logo, etc.) sont la propriété exclusive du
+      <strong>CSE Renault Trucks Bourg-en-Bresse</strong>, sauf mention contraire. Toute reproduction, distribution ou
+      modification sans autorisation écrite est interdite.
+    </div>
 
-  <h3 class="text-lg font-semibold text-gray-800 mt-4">4. Données personnelles</h3>
-  <p class="text-gray-700 leading-relaxed">
-    Ce site ne collecte pas de données personnelles, sauf si l’utilisateur choisit de nous contacter volontairement.
-    Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et de suppression de vos données.
-    Pour exercer ce droit : <a href="mailto:contact@renault-trucks-cse.fr" class="text-red-600 hover:underline">
-    contact@renault-trucks-cse.fr</a>.
-  </p>
+    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
+      4. Données personnelles <span class="arrow transition-transform">▶</span>
+    </button>
+    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
+      Ce site ne collecte pas de données personnelles, sauf si l’utilisateur choisit de nous contacter volontairement.
+      Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et de suppression de vos données.
+      Pour exercer ce droit : <a href="mailto:contact@renault-trucks-cse.fr" class="text-red-600 hover:underline">
+      contact@renault-trucks-cse.fr</a>.
+    </div>
 
-  <h3 class="text-lg font-semibold text-gray-800 mt-4">5. Responsabilité</h3>
-  <p class="text-gray-700 leading-relaxed">
-    Le CSE Renault Trucks Bourg-en-Bresse s’efforce d’assurer l’exactitude et la mise à jour des informations diffusées.
-    Il ne saurait être tenu responsable des erreurs, omissions ou de toute indisponibilité du site.
-  </p>
+    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
+      5. Responsabilité <span class="arrow transition-transform">▶</span>
+    </button>
+    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
+      Le CSE Renault Trucks Bourg-en-Bresse s’efforce d’assurer l’exactitude et la mise à jour des informations diffusées.
+      Il ne saurait être tenu responsable des erreurs, omissions ou de toute indisponibilité du site.
+    </div>
+  </div>
 
+  <!-- 6. Crédits (normal) -->
   <h3 class="text-lg font-semibold text-gray-800 mt-4">6. Crédits</h3>
   <p class="text-gray-700 leading-relaxed">
     Design et développement : <strong>Bouaraba Arab UEP8</strong><br>
     Images : partenaires et sources libres de droits.
   </p>
 </section>
+
 
 
 <script>
