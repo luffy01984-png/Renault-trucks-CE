@@ -1,28 +1,27 @@
-{
-  "name": "CSE Renault Trucks Bourg-en-Bresse",
-  "short_name": "CSE Renault Trucks",
-  "start_url": "/Renault-trucks-CE/index.html",
-  "scope": "/Renault-trucks-CE/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#dc2626",
-  "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
-  "icons": [
-    {
-      "src": "/Renault-trucks-CE/assets/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/Renault-trucks-CE/assets/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/Renault-trucks-CE/assets/icons/icon-1024.png",
-      "sizes": "1024x1024",
-      "type": "image/png"
-    }
-  ]
-}
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open("cse-renault-trucks-v1").then(cache => {
+      return cache.addAll([
+        "./",
+        "./index.html",
+        "./manifest.json"
+      ]);
+    })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== "cse-renault-trucks-v1").map(k => caches.delete(k)))
+    )
+  );
+  self.clients.claim();
+});
+
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request))
+  );
+});
