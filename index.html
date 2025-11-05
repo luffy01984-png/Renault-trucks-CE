@@ -67,6 +67,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   background-color: #fff;
   color: #dc2626;
 }
+.partner-link:last-child { margin-bottom: 0; }
 
 /* Modal */
 #imageModal {
@@ -79,19 +80,9 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 
 /* Category cards */
 .category-card img { width:100%; height:12rem; object-fit:cover; border-radius: 1rem; }
-
-/* Accordion */
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
 </style>
 </head>
+
 <body class="bg-gray-30 text-gray-700">
 
 <!-- Splash screen -->
@@ -362,94 +353,43 @@ window.addEventListener('beforeinstallprompt', (e) => {
   </div>
 </section>
 
-  <!-- MENTIONS LEGALES -->
-<section id="mentions" class="bg-gray-100 py-10 px-6 rounded-xl shadow-inner mt-10">
-  <h2 class="text-2xl font-bold text-red-700 mb-4">Mentions Légales</h2>
+  <!-- Mentions légales -->
+<section id="mentions" class="bg-white shadow-inner p-6 mt-8 rounded-xl">
+  <h2 class="text-2xl font-bold text-red-600 mb-4">Mentions légales</h2>
 
-  <!-- Éditeur -->
-  <h3 class="text-lg font-semibold text-gray-800 mt-4">1. Éditeur du site</h3>
-  <p class="text-gray-700 leading-relaxed">
-    Ce site est édité par <strong>Comité Social et Économique de Renault Trucks Bourg-en-Bresse</strong>.<br>
-    Directeur de publication : <strong>Arnaud Christian</strong><br>
-    Adresse : 143 Avenue Amedée Mercier, 01000 Bourg-en-Bresse<br>
-    WebMaster : <strong>Bouaraba Arab</strong><br>
-    Email : contact@renault-trucks-cse.fr<br>
-    Téléphone : 04 00 00 00 00
-  </p>
-
-  <!-- Accordéon Sections 2 à 5 -->
-  <div class="mt-6">
-    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
-      2. Hébergement <span class="arrow">▶</span>
-    </button>
-    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
-      Le site est hébergé par <strong>GitHub, Inc.</strong><br>
-      88 Colin P. Kelly Jr St, San Francisco, CA 94107, États-Unis<br>
-      Site web : <a href="https://pages.github.com" class="text-red-600 hover:underline">https://pages.github.com</a>
-    </div>
-
-    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
-      3. Propriété intellectuelle <span class="arrow">▶</span>
-    </button>
-    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
-      L’ensemble des éléments du site (textes, images, graphismes, logo, etc.) sont la propriété exclusive du
-      <strong>CSE Renault Trucks Bourg-en-Bresse</strong>, sauf mention contraire. Toute reproduction, distribution ou
-      modification sans autorisation écrite est interdite.
-    </div>
-
-    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
-      4. Données personnelles <span class="arrow">▶</span>
-    </button>
-    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
-      Ce site ne collecte pas de données personnelles, sauf si l’utilisateur choisit de nous contacter volontairement.
-      Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et de suppression de vos données.
-      Pour exercer ce droit : <a href="mailto:contact@renault-trucks-cse.fr" class="text-red-600 hover:underline">
-      contact@renault-trucks-cse.fr</a>.
-    </div>
-
-    <button class="accordion-btn w-full text-left bg-gray-200 px-4 py-2 rounded flex justify-between items-center font-semibold">
-      5. Responsabilité <span class="arrow">▶</span>
-    </button>
-    <div class="accordion-content text-gray-700 bg-white border-l-2 border-red-600 px-4 py-2 rounded mb-2">
-      Le CSE Renault Trucks Bourg-en-Bresse s’efforce d’assurer l’exactitude et la mise à jour des informations diffusées.
-      Il ne saurait être tenu responsable des erreurs, omissions ou de toute indisponibilité du site.
-    </div>
+  <button class="accordion-btn">1. Éditeur du site <span class="arrow">▶</span></button>
+  <div class="accordion-content">
+    <p>Renault Trucks CSE Bourg-en-Bresse<br>Adresse : Bourg-en-Bresse<br>Email : contact@renaulttrucks-cse.fr</p>
   </div>
 
-  <!-- Crédits -->
-  <h3 class="text-lg font-semibold text-gray-800 mt-4">6. Crédits</h3>
-  <p class="text-gray-700 leading-relaxed">
-    Design et développement : <strong>Bouaraba Arab UEP8</strong><br>
-    Images : partenaires et sources libres de droits.
-  </p>
+  <button class="accordion-btn">2. Responsable de publication <span class="arrow">▶</span></button>
+  <div class="accordion-content">
+    <p>Jean Dupont – Président du CSE Renault Trucks Bourg-en-Bresse</p>
+  </div>
+
+  <button class="accordion-btn">3. Hébergement du site <span class="arrow">▶</span></button>
+  <div class="accordion-content">
+    <p>GitHub Pages – Hébergement statique</p>
+  </div>
+
+  <button class="accordion-btn">4. Propriété intellectuelle <span class="arrow">▶</span></button>
+  <div class="accordion-content">
+    <p>Les contenus, logos et images sont la propriété exclusive du CSE Renault Trucks ou de leurs auteurs respectifs.</p>
+  </div>
+
+  <button class="accordion-btn">5. Protection des données <span class="arrow">▶</span></button>
+  <div class="accordion-content">
+    <p>Aucune donnée personnelle n’est collectée par ce site. Aucun cookie n’est déposé.</p>
+  </div>
+
+  <button class="accordion-btn">6. Contact <span class="arrow">▶</span></button>
+  <div class="accordion-content">
+    <p>Pour toute demande, veuillez contacter le CSE Renault Trucks Bourg-en-Bresse à l’adresse ci-dessus.</p>
+  </div>
 </section>
 
+<!-- Scripts -->
 <script>
-// Accordéon Mentions
-document.querySelectorAll('.accordion-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const content = btn.nextElementSibling;
-    const arrow = btn.querySelector('.arrow');
-
-    if(content.style.maxHeight && content.style.maxHeight !== "0px") {
-      // Fermer
-      content.style.maxHeight = null;
-      arrow.style.transform = 'rotate(0deg)';
-    } else {
-      // Fermer tous les autres
-      document.querySelectorAll('.accordion-content').forEach(c => {
-        c.style.maxHeight = null;
-        const a = c.previousElementSibling.querySelector('.arrow');
-        if(a) a.style.transform = 'rotate(0deg)';
-      });
-      // Ouvrir le bon
-      content.style.maxHeight = content.scrollHeight + "px";
-      arrow.style.transform = 'rotate(90deg)';
-    }
-  });
-});
-
-
 // Toggle categories
 function toggleCategory(id) {
   const section = document.getElementById(id);
@@ -486,19 +426,25 @@ const closeModalBtn = modal.querySelector('button');
 function openModal(url) {
   modalImg.src = url;
   modal.classList.add('active');
+  history.pushState({ modalOpen: true }, "");
 }
-
 function closeModal() {
   modal.classList.remove('active');
+  if(history.state && history.state.modalOpen) history.back();
 }
-
 modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 closeModalBtn.addEventListener('click', closeModal);
+window.addEventListener('popstate', () => { if(modal.classList.contains('active')) closeModal(); });
 
-// PWA banner
+// PWA install banner
 let deferredPrompt;
 const installBanner = document.createElement('div');
-installBanner.style.cssText = `position: fixed; bottom: 20px; left: 20px; right: 20px; background: #dc2626; color: #fff; padding: 12px 20px; border-radius: 12px; text-align: center; font-weight: bold; z-index: 10001; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);`;
+installBanner.style.cssText = `
+position: fixed; bottom: 20px; left: 20px; right: 20px;
+background: #dc2626; color: #fff; padding: 12px 20px; 
+border-radius: 12px; text-align: center; font-weight: bold; z-index: 10001;
+cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+`;
 installBanner.textContent = "Installer l'application sur votre écran d'accueil";
 installBanner.style.display = 'none';
 document.body.appendChild(installBanner);
@@ -512,7 +458,76 @@ window.addEventListener('beforeinstallprompt', (e) => {
   installBanner.addEventListener('click', async () => {
     installBanner.style.display = 'none';
     deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
     deferredPrompt = null;
+  });
+});
+</script>
+
+<!-- Script pour l’accordéon -->
+<style>
+  .accordion-btn {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background-color: #f3f4f6;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .accordion-btn:hover { background-color: #e5e7eb; }
+  .arrow { transition: transform 0.3s ease; }
+  .arrow.rotate { transform: rotate(90deg); }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: white;
+    padding: 0 1rem;
+    border-left: 3px solid #dc2626;
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+  }
+  .accordion-content.open {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const accordions = document.querySelectorAll(".accordion-btn");
+
+  accordions.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const content = btn.nextElementSibling;
+      const arrow = btn.querySelector(".arrow");
+
+      document.querySelectorAll(".accordion-content").forEach(c => {
+        if (c !== content) {
+          c.style.maxHeight = null;
+          c.classList.remove("open");
+        }
+      });
+      document.querySelectorAll(".accordion-btn .arrow").forEach(a => {
+        if (a !== arrow) a.classList.remove("rotate");
+      });
+
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        content.classList.remove("open");
+        arrow.classList.remove("rotate");
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        content.classList.add("open");
+        arrow.classList.add("rotate");
+      }
+    });
   });
 });
 </script>
