@@ -432,19 +432,23 @@ document.querySelectorAll('.accordion-btn').forEach(btn => {
     const arrow = btn.querySelector('.arrow');
 
     if(content.style.maxHeight && content.style.maxHeight !== "0px") {
+      // Fermer
       content.style.maxHeight = null;
       arrow.style.transform = 'rotate(0deg)';
     } else {
+      // Fermer tous les autres
       document.querySelectorAll('.accordion-content').forEach(c => {
         c.style.maxHeight = null;
         const a = c.previousElementSibling.querySelector('.arrow');
         if(a) a.style.transform = 'rotate(0deg)';
       });
+      // Ouvrir le bon
       content.style.maxHeight = content.scrollHeight + "px";
       arrow.style.transform = 'rotate(90deg)';
     }
   });
 });
+
 
 // Toggle categories
 function toggleCategory(id) {
