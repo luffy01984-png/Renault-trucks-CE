@@ -1,28 +1,28 @@
 {
   "name": "CSE Renault Trucks Bourg-en-Bresse",
   "short_name": "CSE Renault Trucks",
-  "start_url": "./index.html",
+  "description": "Découvrez les avantages exclusifs négociés par votre Comité d'Entreprise Renault Trucks.",
+  "start_url": "/cse-renault-trucks/index.html",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#dc2626",
-  "description": "Avantages exclusifs pour les salariés du CE Renault Trucks Bourg-en-Bresse.",
+  "orientation": "portrait-primary",
+  "scope": "/cse-renault-trucks/",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
+      "src": "/cse-renault-trucks/assets/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
+      "src": "/cse-renault-trucks/assets/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/1761728183491.jpg",
+      "src": "/cse-renault-trucks/assets/icons/icon-1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
     }
-  ],
-  "splash_pages": null
+  ]
 }
