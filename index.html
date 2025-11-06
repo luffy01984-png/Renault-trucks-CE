@@ -166,15 +166,20 @@ function closeModal() {
   if(history.state && history.state.modalOpen) history.back();
 }
 
+// Fermer en cliquant autour
 modal.addEventListener('click', (e) => {
   if(e.target === modal) closeModal();
 });
+
+// ✅ Fermer en cliquant sur l’image
+modalImg.addEventListener('click', () => closeModal());
 
 closeModalBtn.addEventListener('click', closeModal);
 
 window.addEventListener('popstate', () => {
   if(modal.classList.contains('active')) closeModal();
 });
+
 
 // PWA install banner
 let deferredPrompt;
