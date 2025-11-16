@@ -177,7 +177,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 .nav-link { 
   color: #9ca3af; 
   text-decoration: none; 
-  font-weight: 500; 
+  font-weight: 600; 
   padding: 0.5rem 1rem; 
   border-radius: 9999px; 
   transition: all 0.3s ease;
@@ -188,8 +188,8 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   color: #dc2626;
 }
 .nav-link.active { 
-  background-color: #dc2626; 
-  color: #fff; 
+  background-color: #dc2626 !important; 
+  color: #ffffff !important; 
 }
 
 /* Responsive grid for partner-content */
@@ -291,24 +291,66 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 
 <!-- Modal -->
 <div id="imageModal">
-  <button>Fermer</button>
+  <button aria-label="Fermer">✕ Fermer</button>
   <img id="modalImg" src="" alt="Partenaire">
 </div>
 
+<!-- Scroll to top button -->
+<button id="scrollTopBtn" aria-label="Retour en haut">↑</button>
+
 <!-- HEADER -->
-<header class="bg-white shadow-xl sticky top-0 z-50 hidden-before-splash">
+<header class="bg-white shadow-xl sticky top-0 z-50">
   <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
+    <!-- Logo et texte -->
     <div class="flex items-center space-x-2">
-      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Header.webp" alt="Logo Renault Trucks" class="h-24 rounded-md">
+      <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Header.webp" alt="Logo Renault Trucks" class="h-20 sm:h-24 rounded-md">
       <span class="text-xs font-bold text-red-600 uppercase tracking-widest hidden sm:inline">CE Bourg-en-Bresse</span>
     </div>
-    <nav class="space-x-4 text-sm font-semibold">
+
+    <!-- Navbar -->
+    <nav class="flex items-center space-x-2 sm:space-x-4 text-sm">
       <a href="#categories" class="nav-link" id="nav-partenaires">Partenaires</a>
       <a href="#mentions" class="nav-link" id="nav-mentions">Mentions</a>
     </nav>
   </div>
-</div>
 </header>
+
+<script>
+  // Sélection des liens
+  const navPartenaires = document.getElementById('nav-partenaires');
+  const navMentions = document.getElementById('nav-mentions');
+
+  // Gestion clic pour scroll et active
+  navPartenaires.addEventListener('click', () => {
+    navPartenaires.classList.add('active');
+    navMentions.classList.remove('active');
+    document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  navMentions.addEventListener('click', () => {
+    navMentions.classList.add('active');
+    navPartenaires.classList.remove('active');
+    document.getElementById('mentions').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Détection scroll pour active link automatique
+  const categoriesSection = document.getElementById('categories');
+  const mentionsSection = document.getElementById('mentions');
+
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 150; // Ajuste pour le header sticky
+    if (categoriesSection && mentionsSection) {
+      if (scrollPos >= mentionsSection.offsetTop) {
+        navMentions.classList.add('active');
+        navPartenaires.classList.remove('active');
+      } else if (scrollPos >= categoriesSection.offsetTop) {
+        navPartenaires.classList.add('active');
+        navMentions.classList.remove('active');
+      }
+    }
+  });
+</script>
+
 
 <!-- HERO -->
 <section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
@@ -599,62 +641,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 3000);
 });
 
-// ===== Toggle categories (final, mobile-friendly) =====
+
+// ===== Toggle categories fluide et responsive =====
 function toggleCategory(id) {
   const section = document.getElementById(id);
   const card = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
-
-  // Fermer les autres catégories
+  
+  // Fermer toutes les autres catégories
   document.querySelectorAll('.partner-content').forEach(item => {
-    if(item.id !== id) item.classList.remove('active');
+    if (item.id !== id) {
+      item.classList.remove('active');
+    }
   });
-
-  // Reset ombres des cartes
+  
+  // Reset des ombres sur toutes les cartes
   document.querySelectorAll('.category-card').forEach(cardEl => {
     cardEl.classList.remove("shadow-red-500/50", "shadow-xl");
     cardEl.classList.add("shadow-lg");
   });
-
-  // Déterminer si on ouvre ou ferme la section
+  
   const opening = !section.classList.contains('active');
   section.classList.toggle('active');
-
+  
   if (opening) {
-    // Ajouter l'ombre spéciale à la carte active
+    // Carte active : ajouter ombre spéciale
     card.classList.remove("shadow-lg");
     card.classList.add("shadow-xl", "shadow-red-500/50");
-
-    // ⚡ Attendre la fin de la transition CSS de max-height
-    const onTransitionEnd = (e) => {
-      if (e.propertyName !== 'max-height') return;
-
+    
+    // Attendre que TOUTES les transitions soient terminées (fermeture + ouverture)
+    setTimeout(() => {
       const header = document.querySelector('header');
       const headerHeight = header ? header.offsetHeight : 0;
-
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-
-      // Calcul du scroll pour que le top de la section soit visible sous le header
-      const scrollTarget = Math.max(0, sectionTop - headerHeight - 16); // 16px padding
-
-      window.scrollTo({
-        top: scrollTarget,
-        behavior: 'smooth'
+      
+      // Position de la CARTE (pas du contenu)
+      const cardTop = card.getBoundingClientRect().top + window.scrollY;
+      
+      // Scroll pour que la carte soit visible sous le header
+      const scrollTarget = cardTop - headerHeight - 20; // 20px de marge
+      
+      window.scrollTo({ 
+        top: Math.max(0, scrollTarget), 
+        behavior: 'smooth' 
       });
-
-      section.removeEventListener('transitionend', onTransitionEnd);
-    };
-
-    section.addEventListener('transitionend', onTransitionEnd);
-
+    }, 600); // Augmenté à 600ms pour laisser le temps aux transitions CSS (0.5s max-height + marge)
+    
   } else {
-    // Carte désactivée : réinitialiser l'ombre
+    // Carte désactivée : reset ombre
     card.classList.remove("shadow-xl", "shadow-red-500/50");
     card.classList.add("shadow-lg");
   }
 }
-
-
-
 
 // ===== Modal =====
 const modal = document.getElementById('imageModal');
