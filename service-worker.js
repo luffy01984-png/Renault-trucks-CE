@@ -24,7 +24,7 @@ const urlsToCache = [
   'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/financement.webp',
 
   // PARTENAIRES RESTAURANTS
-  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/allpizzabuffet.webp',
+  'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/buffetpizza.webp',
   'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/food%20truck%20fermier.webp',
   'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/LeLoft.webp',
   'https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/La-Paella.webp',
