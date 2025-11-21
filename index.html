@@ -987,7 +987,7 @@ document.querySelectorAll(".accordion-btn").forEach(btn => {
   });
 });
  if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js') // chemin relatif
+      navigator.serviceWorker.register('/Renault-trucks-CE/service-worker.js') // chemin relatif
         .then(() => console.log('Service Worker enregistré ✔'))
         .catch(err => console.error('SW: Échec ❌', err));
 
