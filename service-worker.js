@@ -1,5 +1,5 @@
 // CHANGE LA VERSION ICI à chaque déploiement
-const CACHE_NAME = 'renault-trucks-cse-v2.9'; 
+const CACHE_NAME = 'renault-trucks-cse-v2.9.1'; 
 const PRECACHE = [
   './',
   './index.html',
