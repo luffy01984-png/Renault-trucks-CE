@@ -988,19 +988,19 @@ document.querySelectorAll(".accordion-btn").forEach(btn => {
   });
 });
  if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Renault-trucks-CE/service-worker.js') // chemin relatif
-        .then(() => console.log('Service Worker enregistré ✔'))
-        .catch(err => console.error('SW: Échec ❌', err));
+  navigator.serviceWorker.register('/Renault-trucks-CE/service-worker.js')
+    .then(() => console.log('Service Worker enregistré ✔'))
+    .catch(err => console.error('SW: Échec ❌', err));
 
-      let refreshing = false;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (!refreshing) {
-          refreshing = true;
-          console.log('SW: Nouvelle version détectée, rechargement automatique…');
-          window.location.reload();
-        }
-      });
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      console.log('SW: Nouvelle version détectée, rechargement automatique…');
+      window.location.reload();
     }
+  });
+}
 </script>
 </body>
 </html>
