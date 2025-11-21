@@ -1,4 +1,4 @@
-const CACHE_NAME = 'renault-trucks-cse-v2.1';
+const CACHE_NAME = 'renault-trucks-cse-v2.2';
 const PRECACHE = [
   '/',
   '/index.html',
