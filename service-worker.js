@@ -1,12 +1,12 @@
-const CACHE_NAME = 'renault-trucks-cse-v2.3';
+const CACHE_NAME = 'renault-trucks-cse-v2.4';
 const PRECACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/assets/style.css',
-  '/assets/app.js',
-  '/assets/Header.webp',
-  '/assets/elecctra.webp'
+  './',
+  './index.html',
+  './manifest.json',
+  './assets/style.css',
+  './assets/app.js',
+  './assets/Header.webp',
+  './assets/elecctra.webp'
 ];
 
 self.addEventListener('install', event => {
@@ -35,13 +35,13 @@ self.addEventListener('fetch', event => {
   if (request.destination === 'document' ||
       request.destination === 'script' ||
       request.destination === 'style') {
-    // Network-first
+    // Network-first avec fallback
     event.respondWith(
       fetch(request).then(networkResponse => {
-        const responseClone = networkResponse.clone(); // 🔹 clone immédiat
+        const responseClone = networkResponse.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(request, responseClone));
         return networkResponse;
-      }).catch(() => caches.match(request))
+      }).catch(() => caches.match(request).catch(() => caches.match('./')))
     );
   } else {
     // Cache-first pour images et fonts
