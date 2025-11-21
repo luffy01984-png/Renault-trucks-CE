@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,6 +11,28 @@
 <meta name="theme-color" content="#dc2626">
 
 <style>
+  /* Permet d'afficher les sous-catégories en liste verticale (comme les mentions) */
+.partner-content.list-layout.active {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Remet la grille pour les logos À L'INTÉRIEUR de l'accordéon */
+.accordion-content .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes mobile */
+    gap: 0.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .accordion-content .partner-grid {
+        gap: 1rem;
+    }
+}
 body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#f3f4f6; }
 
 /* Splash screen */
@@ -406,7 +429,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
        <!-- RESTAURANTS -->
-    <div class="col-span-1">
+<div class="col-span-1">
   <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
        onclick="toggleCategory('resto-content')">
     <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Restaurant.webp" 
@@ -418,6 +441,7 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   </div>
   <div id="resto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/buffetpizza.webp')">AllPizza&Pasta Buffet</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Bollyfood.webp')">BollyFood</div>
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/food%20truck%20fermier.webp')">Food Truck Fermier</div>
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/LeLoft.webp')">Le Loft</div>
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Lemarrakech1.webp')">Le Marrakech</div>
@@ -428,76 +452,128 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   </div>
 </div>
 
+<!-- ARTISANS DU GOÛT -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('gout-content')">
+    <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800" 
+         alt="Artisans du Goût"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      ARTISANS DU GOÛT
+    </div>
+  </div>
+  <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/biocoop.webp')">Biocoop</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/boucherie_andré.webp')">Boucherie André</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Cerdon.webp')">Cerdon AOC Gabin Grobon</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/grain%20dpain.webp')">Grain d'pain</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/janny%20fruits.webp')">Janny fruits</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/la_cezee.webp')">La Cézée</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Les_pepites_bressanes_new.webp')">Les Pépites Bressanes</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/lou%20pan.webp')">LouPan</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Monts%20et%20Terroir.webp')">Monts et Terroir</div>    
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Papilles_Ain_solites.webp')">Papilles Ain Solites</div>
+  </div>
+</div>
 
-    <!-- ARTISANS DU GOÛT -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('gout-content')">
-        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800" alt="Artisans du Goût">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold"> ARTISANS DU GOÛT</div>
-      </div>
-      <div id="gout-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/biocoop.webp')">Biocoop</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/boucherie_andré.webp')">Boucherie André</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Cerdon.webp')">Cerdon AOC Gabin Grobon</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/grain%20dpain.webp')">Grain d'pain</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/janny%20fruits.webp')">Janny fruits</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/la_cezee.webp')">La Cézée</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Les_pepites_bressanes_new.webp')">Les Pépites Bressanes</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/lou%20pan.webp')">LouPan</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Monts%20et%20Terroir.webp')">Monts et Terroir</div>   
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Papilles_Ain_solites.webp')">Papilles Ain Solites</div>
+<!-- MAISON & TRAVAUX -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('cat-maison')">
+    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+         alt="Maison" 
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      🏠 MAISON & TRAVAUX
+    </div>
+  </div>
+  <div id="cat-maison" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg list-layout bg-gray-50">
+    <button class="accordion-btn">
+      <span class="font-semibold">Achat & Financement</span>
+      <span class="arrow">▶</span>
+    </button>
+    <div class="accordion-content">
+      <div class="partner-grid">
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/hymosti.webp')">Himosty</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/La_centrale_de_finacement.webp')">La centrale du Financement</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Meilleur-taux.webp')">MeilleurTaux</div>        
       </div>
     </div>
-
-   <!-- TRAVAUX-->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('TRAVAUX-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/maison_travaux.jpg" alt="Maison et déco">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">MAISON/TRAVAUX</div>
-      </div>
-      <div id="TRAVAUX-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Arbres_Co.webp')">Arbres & CO</div>
+    <button class="accordion-btn">
+      <span class="font-semibold">Equipement & Renovation</span>
+      <span class="arrow">▶</span>
+    </button>
+    <div class="accordion-content">
+      <div class="partner-grid">
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/AfrEnergie.webp')">A.F Energies</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/CarrelageBressan.webp')">Carrelage BRESSAN</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/chaleur%20et%20bois.webp')">Chaleur et bois</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/habitat%20confort.webp')">Habitat Confort</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/polyhabitat.webp')">PolyHabitat</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/sikkens.webp')">Sikkens Solutions</div>        
+      </div>
+    </div>
+    <button class="accordion-btn">
+      <span class="font-semibold">Cuisine/Electromenager</span>
+      <span class="arrow">▶</span>
+    </button>
+    <div class="accordion-content">
+      <div class="partner-grid">
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Conforama.webp')">Conforama</div>
         <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Cuisinella.webp')">Cuisinella</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/DSCV.webp')">DSCV Frelons</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/ecocuisine.webp')">Ecocuisine</div>        
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/habitat%20confort.webp')">Habitat Confort</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Les%20coqs%20de%20Bresse.webp')">Les Coques de Bresse</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/MirePoix.webp')">MirePoix</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/michel%20parisot.webp')">Parisot Motoculture</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/schmidt.webp')">Schmidt</div>      
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/sikkens.webp')">Sikkens Solutions</div>       
-        </div>
-      </div> 
-
-   <!-- AUTOMOBILE -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('auto-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" alt="Automobile">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold"> AUTOMOBILE</div>
-      </div>
-      <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/0%E2%82%AC_PareBrise.webp')">0€ PareBrise</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/123%20parebrise.webp')">123 Parebrise</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/apc.webp')">APC</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/auto%20securitas.webp')">Auto Securitas</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Autosur_new.webp')">Autosur</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/CtEasy.com.webp')">CtEasy.com</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/renault.webp')">Renault</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/RJAuto.webp')">RJ Auto Services</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/speedy.webp')">Speedy</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Vulco.webp')">Vulco</div>
-        
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/ecocuisine.webp')">Ecocuisine</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/schmidt.webp')">Schmidt</div>
       </div>
     </div>
+    <button class="accordion-btn">
+      <span class="font-semibold">🌻 Jardin & Extérieur</span>
+      <span class="arrow">▶</span>
+    </button>
+    <div class="accordion-content">
+      <div class="partner-grid">
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Arbres_Co.webp')">Arbres & CO</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/DSCV.webp')">DSCV Frelons</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Irripiscine.webp')">IrriPiscine</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Les%20coqs%20de%20Bresse.webp')">Les Coques de Bresse</div>
+        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/michel%20parisot.webp')">Parisot Motoculture</div>        
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Prêt a Porter -->
+<!-- AUTOMOBILE -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('auto-content')">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/futuristic-black-glowing-car-desktop-wallpaper-preview.jpg" 
+         alt="Automobile"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      AUTOMOBILE
+    </div>
+  </div>
+  <div id="auto-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/images/0%E2%82%AC_PareBrise.webp')">0€ PareBrise</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/123%20parebrise.webp')">123 Parebrise</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/apc.webp')">APC</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/auto%20securitas.webp')">Auto Securitas</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Autosur_new.webp')">Autosur</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/CtEasy.com.webp')">CtEasy.com</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/renault.webp')">Renault</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/RJAuto.webp')">RJ Auto Services</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/speedy.webp')">Speedy</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Vulco.webp')">Vulco</div>
+  </div>
+</div>
+
+<!-- PRÊT-À-PORTER -->
 <div class="col-span-1">
   <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
        onclick="toggleCategory('vetement-lingerie')">
-    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Pretaporter.webp" alt="Prêt a Porter">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Pretaporter.webp" 
+         alt="Prêt a Porter"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
     <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
       PRÊT-À-PORTER
     </div>
@@ -508,16 +584,17 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   </div>
 </div>
 
-<!-- Beauté / Bien-être -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
+<!-- BEAUTÉ / BIEN-ÊTRE -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
        onclick="toggleCategory('beaute-bienetre')">
-    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Beaut%C3%A9-bien.webp" alt="Beauté / Bien-être">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/Beaut%C3%A9-bien.webp" 
+         alt="Beauté / Bien-être"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
     <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
       BEAUTÉ / BIEN-ÊTRE
     </div>
   </div>
-
   <div id="beaute-bienetre" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/15ThAvenue.webp')">15th Avenue Coiffure</div>
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Gallerie%20102.webp')">Galerie102</div>
@@ -526,81 +603,101 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
   </div>
 </div>
 
-<!-- Culture / Loisirs -->
+<!-- CULTURE / LOISIRS -->
 <div class="col-span-1">
   <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden"
        onclick="toggleCategory('culture')">
-    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/LogoCulture.webp" alt="Culture / Loisirs">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/LogoCulture.webp" 
+         alt="Culture / Loisirs"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
     <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
       CULTURE / LOISIRS
     </div>
   </div>
-
   <div id="culture" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/declic-ludik.webp')">Déclic Ludik</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Defi01.webp')">Défi01</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/LaTannerie.webp')">La Tannerie</div>
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Librairie_papeterie.webp')">Librairie du Théâtre</div>
     <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/montbarbon.webp')">Montbarbon</div>
   </div>
 </div>    
-   
 
-    <!-- QUOTIDIEN -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('quotidien-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/services.png" alt="Quotidien">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold"></div>
-      </div>
-      <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-       
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/a%20fleur%20de%20pot.webp')">A Fleur de pot</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Ainterjob.webp')">Ainter'Job</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Ca-cree-.webp')">Ca Crée Ca Cause</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/cigusto.webp')">Cigusto</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/ConceptOptique.webp')">Concept_Optique</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/la%20rek1ke.webp')">La Rek1que</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Shivaa.webp')">Shiva</div>
-      </div>
-    </div>   
-    
-
-
-   <!-- ENFANTS -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('enfants-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/enfants.webp" alt="Enfants">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">AUTOUR DE L'ENFANT</div>
-      </div>
-      <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/autour%20de%20bebe.webp')">Autour de Bébé</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/KingJouet.webp')">KingJouet</div>
+<!-- QUOTIDIEN -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('quotidien-content')">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/services.png" 
+         alt="Quotidien"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      QUOTIDIEN
     </div>
-    </div>
+  </div>
+  <div id="quotidien-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/a%20fleur%20de%20pot.webp')">A Fleur de pot</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Ainterjob.webp')">Ainter'Job</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Ca-cree-.webp')">Ca Crée Ca Cause</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/cigusto.webp')">Cigusto</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/ConceptOptique.webp')">Concept_Optique</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/la%20rek1ke.webp')">La Rek1que</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Shivaa.webp')">Shiva</div>
+  </div>
+</div>   
 
-   <!-- ANIMAL -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('animal-content')">
-        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" alt="Animaux">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold"> ANIMAUX</div>
-      </div>
-      <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/espace_passon_new.webp')">Espace Passion Animalerie</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/food%20animo.webp')">Food Animo</div>        
-      </div>
+<!-- AUTOUR DE L'ENFANT -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('enfants-content')">
+    <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/enfants.webp" 
+         alt="Enfants"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      AUTOUR DE L'ENFANT
     </div>
+  </div>
+  <div id="enfants-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/autour%20de%20bebe.webp')">Autour de Bébé</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/KingJouet.webp')">KingJouet</div>
+  </div>
+</div>
 
-   <!-- FINANCEMENT -->
-    <div class="col-span-1">
-      <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" onclick="toggleCategory('event-content')">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/financement.webp" alt="Financement">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold"> FINANCEMENT</div>
-      </div>
-      <div id="event-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/hymosti.webp')">Himosty</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/La_centrale_de_finacement.webp')">La centrale du Financement</div>
-        <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Meilleur-taux.webp')">MeilleurTaux</div>
-                
-      </div>
+<!-- ANIMAUX -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('animal-content')">
+    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=800" 
+         alt="Animaux"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      ANIMAUX
     </div>
+  </div>
+  <div id="animal-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/espace_passon_new.webp')">Espace Passion Animalerie</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/food%20animo.webp')">Food Animo</div>        
+  </div>
+</div>
+
+    <!-- HOTELS / VOYAGES -->
+<div class="col-span-1">
+  <div class="category-card relative group cursor-pointer transform hover:scale-[1.02] transition duration-300 shadow-lg rounded-2xl overflow-hidden" 
+       onclick="toggleCategory('travel-content')">
+    <img src="https://maybanton.com/wp-content/uploads/2023/05/valise-voyage-luxe-hotel-chambre.jpeg" 
+         alt="Hôtels et Voyages"
+         class="w-full h-36 md:h-44 lg:h-56 object-cover rounded-2xl">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50 rounded-2xl flex items-center justify-center text-white text-xl font-bold">
+      HOTELS / VOYAGES
+    </div>
+  </div>
+
+  <div id="travel-content" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Greethotel.webp')">Greet Hotels</div>
+    <div class="partner-link" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Le-griffon.webp')">Le Griffon d'Or</div>    
+  </div>
+</div>
+
 
   </div>
 </section>
@@ -811,39 +908,98 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
-// ===== Badge automatique nombre de partenaires =====
-document.querySelectorAll('.category-card').forEach(card => {
-  const id = card.getAttribute('onclick')?.match(/'(.+?)'/)?.[1];
-  if(id) {
-    const count = document.getElementById(id)?.querySelectorAll('.partner-link').length || 0;
-    const badge = document.createElement('div');
-    badge.className = "absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow";
-    badge.textContent = count + " Partenaire" + (count > 1 ? "s" : "");
-    card.appendChild(badge);
-  }
+// ===== Badge Compteur Automatique (Version CORRIGÉE pour gérer les accordéons et les listes) =====
+document.querySelectorAll('[onclick^="toggleCategory"]').forEach(trigger => {
+    // 1. Détecter l'ID de la carte de contenu (ex: 'gout-content')
+    const idMatch = trigger.getAttribute('onclick').match(/'(.+?)'/);
+    if (!idMatch) return;
+
+    const contentId = idMatch[1];
+    const content = document.getElementById(contentId);
+
+    if (!content) return; 
+
+    // 2. Compter tous les partenaires, quelle que soit la profondeur (fonctionne pour les accordéons comme Maison)
+    const count = content.querySelectorAll('.partner-link').length; 
+    
+    // 3. La div où nous voulons attacher le badge est le 'trigger' lui-même (la div qui a l'onclick)
+    let headerDiv = trigger; 
+
+    if(count > 0) {
+        // Supprimer l'ancien badge s'il existe (pour éviter les doublons lors des rechargements)
+        let existingBadge = headerDiv.querySelector('.badge-compteur');
+        if (existingBadge) {
+            existingBadge.remove();
+        }
+
+        // Créer et attacher le nouveau badge
+        let badge = document.createElement('div');
+        // Ajout de la classe badge-compteur pour un meilleur ciblage futur
+        badge.className = "absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10 badge-compteur";
+        
+        // Attacher le badge au déclencheur (la div qui a l'image/titre)
+        headerDiv.appendChild(badge);
+        
+        badge.textContent = count + " Partenaire" + (count > 1 ? "s" : "");
+    }
 });
 
-// ===== Accordion =====
+// ===== Accordion (Version Modifiée pour l'Exclusivité) =====
 document.querySelectorAll(".accordion-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const content = btn.nextElementSibling;
+
+    // 1. GESTION DE L'EXCLUSIVITÉ (Fermeture des autres)
+    document.querySelectorAll(".accordion-btn").forEach(otherBtn => {
+      const otherContent = otherBtn.nextElementSibling;
+      
+      // Si ce n'est pas le bouton cliqué ET que son contenu est ouvert
+      if (otherBtn !== btn && otherContent.classList.contains("open")) {
+        otherContent.style.maxHeight = null;
+        otherContent.classList.remove("open");
+        
+        // Retirer les classes des boutons et flèches des autres onglets
+        otherBtn.classList.remove("active");
+        const otherArrow = otherBtn.querySelector(".arrow");
+        if (otherArrow) otherArrow.classList.remove("rotate");
+      }
+    });
+    // FIN GESTION EXCLUSIVITÉ
+
+    // 2. OUVERTURE / FERMETURE DU BOUTON CLIQUÉ
     const arrow = btn.querySelector(".arrow");
 
-    document.querySelectorAll(".accordion-btn").forEach(b => { if(b !== btn) b.classList.remove("active"); });
-
     if(content.classList.contains("open")) { 
+      // Fermeture
       content.style.maxHeight = null; 
       content.classList.remove("open"); 
-      arrow.classList.remove("rotate"); 
+      if (arrow) arrow.classList.remove("rotate");
       btn.classList.remove("active");
     } else { 
+      // Ouverture
       content.classList.add("open"); 
-      arrow.classList.add("rotate"); 
+      if (arrow) arrow.classList.add("rotate"); 
       btn.classList.add("active");
+      
+      // On utilise requestAnimationFrame pour une lecture correcte de scrollHeight
       requestAnimationFrame(() => { content.style.maxHeight = content.scrollHeight + "px"; }); 
     }
   });
 });
+ if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/TEST/sw.js')
+    .then(() => console.log('Service Worker enregistré ✔'))
+    .catch(err => console.error('SW: Échec ❌', err));
+
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      console.log('SW: Nouvelle version détectée, rechargement automatique…');
+      window.location.reload();
+    }
+  });
+}
 </script>
 </body>
 </html>
