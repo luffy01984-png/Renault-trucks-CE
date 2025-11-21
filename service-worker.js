@@ -1,4 +1,5 @@
-const CACHE_NAME = 'renault-trucks-cse-vauto';
+// CHANGE LA VERSION ICI à chaque déploiement
+const CACHE_NAME = 'renault-trucks-cse-v2.7'; 
 const PRECACHE = [
   './',
   './index.html',
@@ -32,11 +33,10 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch : network-first pour fichiers critiques, cache-first pour images/CSS
+// Fetch : network-first pour fichiers critiques, cache-first pour les autres
 self.addEventListener('fetch', event => {
   const { request } = event;
 
-  // Fichiers critiques : index.html et app.js
   if (request.destination === 'document' || request.url.endsWith('index.html') || request.url.endsWith('app.js')) {
     event.respondWith(
       fetch(request)
@@ -47,7 +47,6 @@ self.addEventListener('fetch', event => {
         .catch(() => caches.match(request))
     );
   } else {
-    // Cache-first pour les autres (CSS, images, fonts)
     event.respondWith(
       caches.match(request).then(cached => cached || fetch(request))
     );
