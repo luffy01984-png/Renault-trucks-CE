@@ -34,30 +34,6 @@
 }
 body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#f3f4f6; }
 
-/* Splash screen */
-#splash {
-  position: fixed; inset: 0; width: 100vw; height: 100vh;
-  background: #dc2626; display: none; flex-direction: column; justify-content: center; align-items: center;
-  z-index: 10000; transition: opacity 0.8s ease;
-}
-#splash span {
-  color: #fff;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  text-align: center;
-}
-#splash img {
-  width: 70vw;
-  max-width: 500px;
-  height: auto;
-  object-fit: contain;
-  animation: zoomIn 2s ease-in-out forwards;
-}
-@keyframes zoomIn {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
 
 /* Partner content toggle */
 .partner-content { 
@@ -330,12 +306,6 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 </head>
 
 <body class="bg-gray-100 text-black">
-
-<!-- Splash screen -->
-<div id="splash">
-  <span>VOTRE CSE VOUS PROPOSE</span>
-  <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/elecctra.webp" alt="Splash">
-</div>
 
 <!-- Modal -->
 <div id="imageModal">
@@ -763,30 +733,6 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 </section>
 
 <script>
-// ===== Splash screen avec option =====
-const SPLASH_ENABLED = false; // ← Mets à true pour réactiver le splashscreen
-
-document.addEventListener('DOMContentLoaded', () => {
-  const splash = document.getElementById('splash');
-
-  if (!SPLASH_ENABLED) {
-    // Désactivation temporaire : on masque directement
-    splash.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    return;
-  }
-
-  // Version active du splashscreen
-  document.body.style.overflow = 'hidden';
-  setTimeout(() => {
-    splash.style.opacity = '0';
-    setTimeout(() => {
-      splash.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }, 800);
-  }, 3000);
-});
-
 
 // ===== Toggle categories fluide et responsive =====
 function toggleCategory(id) {
