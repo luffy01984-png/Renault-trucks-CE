@@ -371,24 +371,24 @@ body { font-family: 'Inter', sans-serif; margin:0; padding:0; background-color:#
 
 
 <!-- HERO -->
-<section class="bg-white text-gray-900 text-center py-12 px-4 shadow-md">
-  <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-    Vos Avantages <span class="text-red-600">CSE Renault Trucks</span>
-  </h1>
-  <p class="text-black-400 mt-1 text-sm uppercase tracking-wider"><strong>Bourg-en-Bresse</strong></p>
-  <p class="text-gray-600 mt-2 max-w-xl mx-auto text-lg font-light">
-    Cliquez sur une catégorie pour découvrir toutes les offres exclusives négociées par votre Comité d'Entreprise.*Sur présentation du badge.
-    <!-- PROMO BOX -->
-<section class="bg-red-600 text-white text-center py-4 px-4 mt-6 rounded-lg shadow-lg">
-  <h2 class="text-2xl font-bold uppercase tracking-wide">
-    🎉 Nouveaux Partenaires !
-  </h2>
-  <p class="text-lg mt-1 font-semibold">
-    Maison B: <span class="text-yellow-300">De-5à10%</span>
-    Azureva :  <span class="text-yellow-300">-10%</span>
-  </p>
-</section>
-  </p>
+<section class="bg-gradient-to-b from-blue-900 to-blue-700 text-white text-center py-12 px-4 shadow-md relative overflow-hidden" id="hero-section" style="min-height: 400px;">
+  <canvas id="snowCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+  <div style="position: relative; z-index: 2;">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+      Vos Avantages <span class="text-red-400">CSE Renault Trucks</span>
+    </h1>
+    <p class="text-blue-100 mt-1 text-sm uppercase tracking-wider"><strong>Bourg-en-Bresse</strong></p>
+    <p class="text-blue-50 mt-2 max-w-xl mx-auto text-lg font-light">
+      Cliquez sur une catégorie pour découvrir toutes les offres exclusives négociées par votre Comité d'Entreprise.*Sur présentation du badge.
+    </p>
+    <section class="bg-red-600 text-white text-center py-4 px-4 mt-6 rounded-lg shadow-lg inline-block">
+      <h2 class="text-2xl font-bold uppercase tracking-wide">83 PARTENAIRES !</h2>
+      <p class="text-lg mt-1 font-semibold">
+      <span class="text-yellow-300">N'hésitez pas à profiter de </span>
+      <span class="text-yellow-300">vos avantages</span>
+      </p>
+    </section>
+  </div>
 </section>
 
 <!-- CATEGORIES -->
@@ -966,6 +966,84 @@ document.querySelectorAll(".accordion-btn").forEach(btn => {
     }
   });
 }
+  
+// Animation de Neige avec Accumulation
+const canvas = document.getElementById('snowCanvas');
+const ctx = canvas.getContext('2d');
+const heroSection = document.getElementById('hero-section');
+
+function resizeCanvas() {
+  canvas.width = heroSection.offsetWidth;
+  canvas.height = heroSection.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const snowflakes = [];
+const numFlakes = 150;
+const groundLevel = canvas.height - 20;
+const accumulatedSnow = [];
+
+for (let i = 0; i < canvas.width; i++) {
+  accumulatedSnow[i] = 0;
+}
+
+for (let i = 0; i < numFlakes; i++) {
+  snowflakes.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    radius: Math.random() * 3 + 1,
+    speed: Math.random() * 1 + 0.5,
+    drift: Math.random() * 0.5 - 0.25
+  });
+}
+
+function drawSnow() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+  for (let i = 0; i < canvas.width; i++) {
+    if (accumulatedSnow[i] > 0) {
+      ctx.fillRect(i, groundLevel - accumulatedSnow[i], 180, accumulatedSnow[i]);
+    }
+  }
+  
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.shadowBlur = 3;
+  ctx.shadowColor = 'white';
+  
+  snowflakes.forEach(flake => {
+    ctx.beginPath();
+    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+    ctx.fill();
+    
+    flake.y += flake.speed;
+    flake.x += flake.drift;
+    
+    const xPos = Math.floor(flake.x);
+    if (xPos >= 0 && xPos < canvas.width) {
+      if (flake.y >= groundLevel - accumulatedSnow[xPos] - flake.radius) {
+        accumulatedSnow[xPos] = Math.min(accumulatedSnow[xPos] + 0.5, 60);
+        flake.y = -10;
+        flake.x = Math.random() * canvas.width;
+      }
+    }
+    
+    if (flake.y > canvas.height) {
+      flake.y = -10;
+      flake.x = Math.random() * canvas.width;
+    }
+    if (flake.x > canvas.width) flake.x = 0;
+    if (flake.x < 0) flake.x = canvas.width;
+  });
+  
+  requestAnimationFrame(drawSnow);
+}
+
+drawSnow();
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
