@@ -1,13 +1,10 @@
 // CHANGE LA VERSION ICI à chaque déploiement
-const CACHE_NAME = 'renault-trucks-cse-v3.4.9'; 
+const CACHE_NAME = 'renault-trucks-cse-v3.5.0';
 const PRECACHE = [
   './',
   './index.html',
   './manifest.json',
-  './assets/style.css',
-  './assets/app.js',
-  './assets/Header.webp',
-  './assets/elecctra.webp'
+  './assets/Header.webp'
 ];
 
 // Installation : pré-cache
@@ -37,7 +34,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { request } = event;
 
-  if (request.destination === 'document' || request.url.endsWith('index.html') || request.url.endsWith('app.js')) {
+  if (request.destination === 'document' || request.url.endsWith('index.html')) {
     event.respondWith(
       fetch(request)
         .then(networkResponse => {
