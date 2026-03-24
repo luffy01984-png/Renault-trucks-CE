@@ -446,53 +446,43 @@
 
 
 
-  <!-- HERO: NEW PARTNER PROMOBOX -->
+  <!-- HERO: NEW PARTNER PROMOBOX (CASTORAMA) -->
   <section id="promo-box" class="relative py-12 lg:py-20 overflow-hidden bg-[#1a1a1a]">
     <!-- Background Design Elements -->
-    <div
-      class="absolute top-0 right-0 w-1/2 h-full bg-red-600/10 skew-x-12 transform translate-x-20 pointer-events-none">
-    </div>
-    <div
-      class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-red-600/5 -skew-x-12 transform -translate-x-20 pointer-events-none">
-    </div>
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none">
-    </div>
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-[#fde01b]/10 skew-x-12 transform translate-x-20 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[#0066cc]/5 -skew-x-12 transform -translate-x-20 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#fde01b]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="relative max-w-6xl mx-auto px-4">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="flex flex-col-reverse lg:flex-row items-center gap-12">
 
         <!-- Left Side: Content -->
-        <div class="flex-1 text-center lg:text-left space-y-8 z-10">
-          <div
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600 text-white text-sm font-bold tracking-widest uppercase animate-pulse">
+        <div class="flex-1 w-full lg:w-1/2 text-center lg:text-left space-y-8 z-10">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#fde01b] text-[#0066cc] text-sm font-bold tracking-widest uppercase animate-pulse shadow-[0_0_15px_rgba(253,224,27,0.4)]">
             <span class="relative flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0066cc] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-[#0066cc]"></span>
             </span>
-            Nouveau Partenaire
+            Offre Spéciale
           </div>
 
           <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
-            Découvrez <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Au Petit
-              Motard</span>
+            Préparez vos projets avec <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#fde01b] to-yellow-500">Castorama</span>
           </h1>
 
           <p class="text-xl text-gray-400 max-w-2xl">
-            Nous sommes ravis d'accueillir <span class="text-white font-semibold">Au Petit Motard</span> parmi nos
-            partenaires
-            officiels. Profitez de tarifs préférentiels sur presentation de votre badge.
+            Nous sommes ravis de vous proposer cette offre <span class="text-white font-semibold">Castorama</span>.
+            Profitez d'avantages exclusifs pour toutes vos envies de bricolage et d'aménagement sur présentation de votre badge.
           </p>
 
           <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
             <button
-              onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/aupetitmotard.webp')"
-              class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold shadow-xl shadow-red-600/20 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2">
-              Voir l'offre exclusive
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                </path>
+              onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/remise_castorama.webp')"
+              class="px-8 py-4 bg-[#fde01b] hover:bg-yellow-400 text-[#0066cc] rounded-xl font-bold shadow-xl shadow-yellow-500/20 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2">
+              Agrandir l'offre
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
             </button>
             <a href="#categories"
@@ -501,28 +491,132 @@
             </a>
           </div>
         </div>
+
+        <!-- Right Side: Animation & Image -->
+        <div class="flex-1 w-full lg:w-1/2 relative min-h-[400px] flex items-center justify-center z-10 perspective-1000">
+          
+          <!-- DIY Animation Container (Sawing Wood) -->
+          <div id="hero-diy-anim" class="absolute inset-0 bg-[#1a1a1a]/80 border-2 border-[#fde01b]/50 rounded-3xl flex flex-col items-center justify-center backdrop-blur-md transition-all duration-1000 overflow-hidden shadow-2xl">
+            
+            <h3 class="absolute top-8 text-2xl font-black text-[#fde01b] uppercase tracking-widest drop-shadow-md">Découpe de l'offre...</h3>
+            
+            <div class="relative w-full max-w-[250px] h-40 mt-10">
+              <!-- The Wood -->
+              <div class="absolute bottom-6 left-0 w-full h-14 bg-[#cd853f] rounded border-y-2 border-[#8b4513] shadow-lg overflow-hidden shrink-0">
+                <!-- Wood grain -->
+                <div class="absolute top-2 w-full h-px bg-[#8b4513]/40"></div>
+                <div class="absolute top-6 w-full h-px bg-[#8b4513]/40"></div>
+                <div class="absolute top-10 w-full h-px bg-[#8b4513]/40"></div>
+                
+                <!-- The Cut (growing vertical line) -->
+                <div class="absolute top-0 w-1.5 bg-[#4a2408] animate-[sawCut_2.5s_ease-in-out_forwards]" style="left: 48%;"></div>
+              </div>
+              
+              <!-- The Saw -->
+              <div class="absolute animate-[sawDrop_2.5s_ease-in-out_forwards]" style="left: 15%; top: -15px; width: 140px; height: 60px;">
+                <svg viewBox="0 0 100 50" class="w-full h-full animate-[sawingWood_0.2s_linear_infinite]">
+                  <!-- Blade -->
+                  <path d="M 0 40 L 80 40 L 80 15 L 0 25 Z" fill="#cbd5e1"/>
+                  <!-- Teeth (zig zag) -->
+                  <path d="M 0 40 L 5 45 L 10 40 L 15 45 L 20 40 L 25 45 L 30 40 L 35 45 L 40 40 L 45 45 L 50 40 L 55 45 L 60 40 L 65 45 L 70 40 L 75 45 L 80 40 Z" fill="#94a3b8"/>
+                  <!-- Handle Handlebars -->
+                  <path d="M 75 10 L 95 10 A 5 5 0 0 1 100 15 L 100 45 A 5 5 0 0 1 95 50 L 75 50 L 70 45 Z" fill="#fde01b"/>
+                  <!-- Handle Hole -->
+                  <path d="M 82 20 L 93 20 A 2 2 0 0 1 95 22 L 95 38 A 2 2 0 0 1 93 40 L 82 40 Z" fill="#1a1a1a"/>
+                  <!-- Screws -->
+                  <circle cx="78" cy="15" r="2" fill="#0066cc"/>
+                  <circle cx="78" cy="45" r="2" fill="#0066cc"/>
+                </svg>
+              </div>
+              
+              <!-- Sawdust (particles) -->
+              <div id="sawdust-container" class="absolute bottom-4 w-12 h-6 flex justify-center gap-1.5 opacity-0 animate-[dustFade_2s_ease-in-out_0.5s_forwards]" style="left: 42%;">
+                <div class="w-2 h-2 bg-[#d2b48c] rounded-full animate-[flyOutLeft_0.5s_ease-out_infinite]"></div>
+                <div class="w-2 h-2 bg-[#deb887] rounded-full animate-[flyOutRight_0.4s_ease-out_infinite_0.1s]"></div>
+                <div class="w-1.5 h-1.5 bg-[#8b4513] rounded-full animate-[flyOutLeft_0.6s_ease-out_infinite_0.2s]"></div>
+                <div class="w-2 h-2 bg-[#d2b48c] rounded-full animate-[flyOutRight_0.5s_ease-out_infinite_0.3s]"></div>
+              </div>
+            </div>
+
+            <!-- Loader bar replacement (Optional, keeping the structural element hidden so the JS doesn't error out, or adapt JS) -->
+            <div id="hero-diy-progress" class="hidden"></div>
+          </div>
+
+          <!-- Final Image Container -->
+          <img id="hero-final-img" src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/remise_castorama.webp" class="absolute inset-0 w-full h-full object-contain rounded-3xl opacity-0 scale-90 transition-all duration-1000 ease-in-out cursor-pointer hover:scale-105 pointer-events-none" alt="Offre Castorama" onclick="openModal(this.src)">
+          
+        </div>
       </div>
     </div>
   </section>
 
   <style>
-    /* Custom animations for the PromoBox if needed beyond Tailwind */
-    @keyframes slow-zoom {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.05);
-      }
+    @keyframes sawingWood {
+      0% { transform: translateX(0px) translateY(0px) rotate(5deg); }
+      50% { transform: translateX(-30px) translateY(5px) rotate(5deg); }
+      100% { transform: translateX(0px) translateY(0px) rotate(5deg); }
     }
-
-    .animate-slow-zoom {
-      animation: slow-zoom 10s infinite ease-in-out;
+    @keyframes sawCut {
+      0% { height: 0%; top: 0; }
+      20% { height: 0%; top: 0; }
+      90% { height: 120%; top: -10%; }
+      100% { height: 120%; top: -10%; }
+    }
+    @keyframes sawDrop {
+      0% { top: -15px; }
+      10% { top: -15px; }
+      90% { top: 38px; }
+      100% { top: 38px; }
+    }
+    @keyframes flyOutLeft {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(-25px, 20px) scale(0); opacity: 0; }
+    }
+    @keyframes flyOutRight {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(25px, 20px) scale(0); opacity: 0; }
+    }
+    @keyframes dustFade {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .perspective-1000 {
+      perspective: 1000px;
     }
   </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const animBox = document.getElementById('hero-diy-anim');
+      const progressBar = document.getElementById('hero-diy-progress');
+      const finalImg = document.getElementById('hero-final-img');
+
+      if(animBox && progressBar && finalImg) {
+        // Start progress immediately after load
+        setTimeout(() => {
+          progressBar.style.width = '100%';
+        }, 100);
+
+        // After animation completes (2.5s), swap the visibility naturally
+        setTimeout(() => {
+          // Fade out animation box with 3D transform effect
+          animBox.style.transform = 'rotateY(90deg)';
+          animBox.style.opacity = '0';
+          
+          setTimeout(() => {
+            animBox.style.display = 'none';
+            // Fade in the image
+            finalImg.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+            finalImg.classList.add('opacity-100', 'scale-100');
+            finalImg.style.filter = 'drop-shadow(0 25px 35px rgba(0,0,0,0.5))';
+          }, 400); // Wait for the rotation halfway
+          
+        }, 2600);
+      }
+    });
+  </script>
 
   <!-- CATEGORIES -->
   <section id="categories" class="max-w-6xl mx-auto py-4 px-4">
