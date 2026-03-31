@@ -453,44 +453,32 @@
     <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-pulse" style="animation-delay: 2s;"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-200 rounded-full mix-blend-multiply filter blur-[150px] opacity-30 pointer-events-none"></div>
 
-    <!-- Easter Animation Layer -->
-    <div id="easter-layer" class="absolute inset-0 z-20 overflow-hidden transition-opacity duration-1000 bg-gradient-to-b from-sky-200 to-sky-400">
+    <!-- Flash Animation Layer -->
+    <div id="flash-layer" class="absolute inset-0 z-20 flex flex-col items-center justify-center overflow-hidden transition-opacity duration-1000 bg-gradient-to-br from-red-600 via-red-500 to-orange-500">
       
-      <!-- Sun -->
-      <div class="absolute top-10 right-10 w-24 h-24 bg-yellow-300 rounded-full shadow-[0_0_60px_rgba(253,224,71,1)] animate-pulse"></div>
+      <!-- Flashing lightning effect -->
+      <div class="absolute inset-0 bg-yellow-400 opacity-0 flash-bg pointer-events-none z-0"></div>
+      
+      <!-- Speed lines -->
+      <div class="speed-line sl-1 absolute bg-white h-1 opacity-40 z-0"></div>
+      <div class="speed-line sl-2 absolute bg-yellow-300 h-2 flex opacity-30 z-0"></div>
+      <div class="speed-line sl-3 absolute bg-white h-1 opacity-50 z-0"></div>
+
+      <!-- Icon -->
+      <svg class="w-24 h-24 sm:w-32 sm:h-32 text-yellow-300 drop-shadow-[0_0_20px_rgba(253,224,71,0.8)] mb-6 z-10 pulse-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path>
+      </svg>
       
       <!-- Text -->
-      <div class="absolute top-[10%] w-full text-center px-4">
-        <h1 class="text-5xl sm:text-7xl font-extrabold text-white drop-shadow-md mb-2 animate-bounce z-10 relative">
-          Offre spéciale Pâques !
-        </h1>
-        <p class="text-xl sm:text-2xl text-yellow-100 font-bold z-10 relative drop-shadow px-4">
-          Le CSE vous réserve une surprise...
-        </p>
-      </div>
-
-      <!-- Ground -->
-      <div class="absolute bottom-0 left-0 w-full h-[25%] bg-[#4ade80] border-t-8 border-[#16a34a]"></div>
-
-      <!-- Flowers -->
-      <div class="absolute text-4xl z-10" style="bottom: 23%; left: 15%;">🌷</div>
-      <div class="absolute text-3xl z-10" style="bottom: 22%; left: 50%;">🌻</div>
-      <div class="absolute text-4xl z-10" style="bottom: 23%; left: 85%;">🌸</div>
-
-      <!-- Eggs under the peaks (32% and 67%) -->
-      <div class="absolute text-5xl sm:text-6xl z-20 pointer-events-none" style="bottom: 24%; left: 30%;">
-        🥚<span class="text-4xl sm:text-5xl">🍫</span>
-      </div>
-      <div class="absolute text-5xl sm:text-6xl z-20 pointer-events-none" style="bottom: 24%; left: 65%;">
-        🧺<span class="text-3xl sm:text-4xl">🥚</span>
-      </div>
-
-      <!-- Chocolate Bunny -->
-      <div class="bunny-x absolute bottom-[25%] z-30 pointer-events-none">
-        <div class="bunny-y flex items-end">
-          <span class="text-4xl sm:text-6xl -mr-3 sm:-mr-4 drop-shadow-lg z-10" style="transform: rotate(-15deg);">🍫</span>
-          <span class="text-7xl sm:text-9xl chocolate-filter drop-shadow-lg">🐇</span>
+      <div class="z-10 text-center px-4">
+        <div class="inline-block transform -skew-x-12">
+          <h1 class="text-6xl sm:text-8xl font-black text-white tracking-tighter uppercase drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] zoom-in-text">
+            Offre Flash
+          </h1>
         </div>
+        <p class="mt-4 text-2xl sm:text-4xl text-yellow-300 font-extrabold uppercase tracking-widest slide-up-text drop-shadow-md">
+          Ne ratez pas ça !
+        </p>
       </div>
     </div>
 
@@ -509,8 +497,8 @@
       
       <!-- Promo Box -->
       <div class="relative group mx-auto cursor-pointer max-w-2xl transform hover:scale-[1.02] transition-all duration-300 shadow-2xl rounded-2xl bg-white overflow-hidden border-4 border-white"
-           onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paques.webp')">
-         <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paque.webp" alt="Promotion Partenaire" class="w-full h-auto object-contain max-h-[50vh]">
+           onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paque.webp')">
+         <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paques.webp" alt="Promotion Partenaire" class="w-full h-auto object-contain max-h-[50vh]">
          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
             <span class="text-white font-bold text-lg bg-red-600 px-6 py-2 rounded-full text-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">🔍 Agrandir l'image</span>
          </div>
@@ -528,44 +516,70 @@
   </section>
 
   <style>
-    /* Chocolate Bunny Jump Animation */
-    .bunny-x {
-      left: -30%;
-      animation: run-x 4s linear forwards;
+    /* Flash Sale Animations */
+    .flash-bg {
+      animation: lightning 2s infinite;
     }
-    .bunny-y {
-      animation: jump-y 1s ease-in-out infinite;
-      transform-origin: bottom center;
-    }
-    .chocolate-filter {
-      filter: sepia(1) saturate(5) hue-rotate(-30deg) brightness(0.6);
+    @keyframes lightning {
+      0%, 9%, 11%, 19%, 21%, 100% { opacity: 0; }
+      10%, 20% { opacity: 0.4; }
     }
 
-    @keyframes run-x {
-      0% { left: -30%; }
-      100% { left: 120%; }
+    .pulse-icon {
+      animation: pulseIcon 1.5s infinite;
+    }
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(253,224,71,0.5)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 30px rgba(253,224,71,1)); }
     }
 
-    /* Total jump takes 1s. Up for 0.5s, Down for 0.5s */
-    @keyframes jump-y {
-      0%, 100% { transform: translateY(0) scaleY(0.9) scaleX(1.1); }
-      50% { transform: translateY(-160px) scaleY(1.05) scaleX(0.9) rotate(8deg); }
+    .zoom-in-text {
+      transform-origin: center;
+      animation: zoomInText 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    @keyframes zoomInText {
+      100% { transform: scale(1); opacity: 1;}
+    }
+
+    .slide-up-text {
+      animation: slideUpText 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    @keyframes slideUpText {
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .speed-line {
+      width: 150vw;
+      transform: translateX(100vw);
+      box-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+    .sl-1 { top: 20%; animation: speed 0.8s linear infinite 0.1s; }
+    .sl-2 { top: 50%; animation: speed 0.6s linear infinite 0.4s; }
+    .sl-3 { top: 80%; animation: speed 0.9s linear infinite; }
+
+    @keyframes speed {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-150vw); }
     }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const easterLayer = document.getElementById('easter-layer');
+      const flashLayer = document.getElementById('flash-layer');
       const promoLayer = document.getElementById('promo-layer');
       
-      if (easterLayer && promoLayer) {
-        // Wait 4.2 seconds to let the bunny hop away before fading
+      if (flashLayer && promoLayer) {
+        // Flash animation duration is fast: 3.2 seconds
         setTimeout(() => {
-          easterLayer.classList.remove('opacity-100');
-          easterLayer.classList.add('opacity-0');
+          flashLayer.classList.remove('opacity-100');
+          flashLayer.classList.add('opacity-0');
           
           setTimeout(() => {
-            easterLayer.style.display = 'none';
+            flashLayer.style.display = 'none';
             promoLayer.classList.remove('hidden');
             promoLayer.classList.add('flex');
             
@@ -574,7 +588,7 @@
               promoLayer.classList.add('opacity-100', 'scale-100');
             }, 50);
           }, 1000); 
-        }, 4200);
+        }, 3200);
       }
     });
   </script>
