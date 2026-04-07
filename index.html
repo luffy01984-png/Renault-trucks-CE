@@ -453,37 +453,51 @@
     <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-pulse" style="animation-delay: 2s;"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-200 rounded-full mix-blend-multiply filter blur-[150px] opacity-30 pointer-events-none"></div>
 
-    <!-- Flash Animation Layer -->
-    <div id="flash-layer" class="absolute inset-0 z-20 flex flex-col items-center justify-center overflow-hidden transition-opacity duration-1000 bg-gradient-to-br from-red-600 via-red-500 to-orange-500">
+    <!-- New Premium Flash Animation Layer -->
+    <div id="flash-layer" class="absolute inset-0 z-30 flex flex-col items-center justify-center overflow-hidden transition-all duration-500 ease-out bg-[#111827] before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.4)_0%,rgba(17,24,39,1)_70%)] before:z-0 opacity-100 origin-center will-change-[transform,opacity,filter]">
       
-      <!-- Flashing lightning effect -->
-      <div class="absolute inset-0 bg-yellow-400 opacity-0 flash-bg pointer-events-none z-0"></div>
-      
-      <!-- Speed lines -->
-      <div class="speed-line sl-1 absolute bg-white h-1 opacity-40 z-0"></div>
-      <div class="speed-line sl-2 absolute bg-yellow-300 h-2 flex opacity-30 z-0"></div>
-      <div class="speed-line sl-3 absolute bg-white h-1 opacity-50 z-0"></div>
-
-      <!-- Icon -->
-      <svg class="w-24 h-24 sm:w-32 sm:h-32 text-yellow-300 drop-shadow-[0_0_20px_rgba(253,224,71,0.8)] mb-6 z-10 pulse-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path>
-      </svg>
-      
-      <!-- Text -->
-      <div class="z-10 text-center px-4">
-        <div class="inline-block transform -skew-x-12">
-          <h1 class="text-6xl sm:text-8xl font-black text-white tracking-tighter uppercase drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] zoom-in-text">
-            Offre Flash
-          </h1>
-        </div>
-        <p class="mt-4 text-2xl sm:text-4xl text-yellow-300 font-extrabold uppercase tracking-widest slide-up-text drop-shadow-md">
-          Ne ratez pas ça !
-        </p>
+      <!-- Energy Rings -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <div class="absolute w-[120vw] h-[120vw] sm:w-[60vw] sm:h-[60vw] border-[1px] border-red-500/40 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+        <div class="absolute w-[80vw] h-[80vw] sm:w-[40vw] sm:h-[40vw] border-[2px] border-yellow-500/30 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite_0.5s]"></div>
       </div>
+      
+      <!-- Icon Container -->
+      <div class="relative z-10 flex items-center justify-center mb-6 icon-reveal">
+        <div class="absolute inset-0 bg-yellow-400 blur-[40px] opacity-50 rounded-full animate-pulse"></div>
+        <div class="bg-gradient-to-br from-red-600 to-orange-500 p-5 rounded-3xl transform -rotate-12 shadow-[0_0_30px_rgba(220,38,38,0.8)] border border-red-400/50">
+          <svg class="w-20 h-20 sm:w-24 sm:h-24 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Text Container -->
+      <div class="z-10 text-center relative px-4 flex flex-col items-center">
+        <!-- Modern 3D/Neon Text -->
+        <h1 class="text-7xl sm:text-[9rem] font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-yellow-100 via-yellow-400 to-yellow-600 animate-text-focus-in leading-none filter drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
+          Offre
+        </h1>
+        <h1 class="text-7xl sm:text-[9rem] font-black uppercase text-white tracking-wide leading-none mt-1 sm:mt-[-10px] drop-shadow-[0_0_35px_rgba(239,68,68,0.9)] glitch-text" data-text="FLASH">
+          FLASH
+        </h1>
+        
+        <div class="mt-8 relative w-max slide-reveal-badge">
+          <div class="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 rounded-full blur-md opacity-75"></div>
+          <div class="relative bg-[#111827]/80 backdrop-blur-xl border border-white/20 rounded-full px-8 py-3 shadow-2xl">
+            <p class="text-lg sm:text-2xl text-yellow-300 font-extrabold uppercase tracking-widest">
+              Exclusivité Partenaires
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Subtle Scanline overlay -->
+      <div class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0)_50%,rgba(0,0,0,0.2)_50%)] bg-[length:100%_4px] z-20 opacity-40 mix-blend-overlay"></div>
     </div>
 
     <!-- Partner Promo Layer -->
-    <div id="promo-layer" class="relative z-10 w-full max-w-5xl mx-auto px-4 text-center space-y-6 transition-all duration-1000 opacity-0 scale-95 hidden flex-col items-center">
+    <div id="promo-layer" class="relative z-10 w-full max-w-5xl mx-auto px-4 text-center space-y-6 transition-all duration-[1000ms] ease-out opacity-0 scale-95 hidden flex-col items-center will-change-[transform,opacity]">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-600 text-sm font-bold tracking-wide backdrop-blur-sm shadow-[0_0_15px_rgba(236,72,153,0.3)]">
         <svg class="w-4 h-4 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -492,16 +506,28 @@
       </div>
       
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-800 tracking-tight leading-tight mb-4">
-        Découvrez l'offre exclusive de notre <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Partenaire</span>
+        Découvrez les offres exclusives de nos <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Partenaires</span>
       </h2>
       
-      <!-- Promo Box -->
-      <div class="relative group mx-auto cursor-pointer max-w-2xl transform hover:scale-[1.02] transition-all duration-300 shadow-2xl rounded-2xl bg-white overflow-hidden border-4 border-white"
-           onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paque.webp')">
-         <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paque.webp" alt="Promotion Partenaire" class="w-full h-auto object-contain max-h-[50vh]">
-         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-            <span class="text-white font-bold text-lg bg-red-600 px-6 py-2 rounded-full text-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">🔍 Agrandir l'image</span>
-         </div>
+      <!-- Promo Boxes Container -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto px-2">
+        <!-- Promo Box 1 (Paque.webp) -->
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition-all duration-300 shadow-xl rounded-2xl bg-white overflow-hidden border-4 border-white flex flex-col justify-center"
+             onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paque.webp')">
+           <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/paque.webp" alt="Promotion Partenaire 1" class="w-full h-auto object-contain max-h-[40vh]">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <span class="text-white font-bold text-sm sm:text-base bg-red-600 px-4 py-2 rounded-full text-center shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">🔍 Agrandir l'image</span>
+           </div>
+        </div>
+
+        <!-- Promo Box 2 (Partenaire 2) -->
+        <div class="relative group cursor-pointer transform hover:scale-[1.02] transition-all duration-300 shadow-xl rounded-2xl bg-white overflow-hidden border-4 border-white flex flex-col justify-center"
+             onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/flash_fromage.webp')">
+           <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/flash_fromage.webp" alt="Promotion Partenaire 2" class="w-full h-auto object-contain max-h-[40vh]">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <span class="text-white font-bold text-sm sm:text-base bg-red-600 px-4 py-2 rounded-full text-center shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">🔍 Agrandir l'image</span>
+           </div>
+        </div>
       </div>
 
       <div class="pt-6">
@@ -516,54 +542,76 @@
   </section>
 
   <style>
-    /* Flash Sale Animations */
-    .flash-bg {
-      animation: lightning 2s infinite;
+    /* New Premium Flash Sale Animations */
+    .icon-reveal {
+      animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      transform: scale(0);
     }
-    @keyframes lightning {
-      0%, 9%, 11%, 19%, 21%, 100% { opacity: 0; }
-      10%, 20% { opacity: 0.4; }
-    }
-
-    .pulse-icon {
-      animation: pulseIcon 1.5s infinite;
-    }
-    @keyframes pulseIcon {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(253,224,71,0.5)); }
-      50% { transform: scale(1.1); filter: drop-shadow(0 0 30px rgba(253,224,71,1)); }
+    @keyframes popIn {
+      100% { transform: scale(1) rotate(-12deg); }
     }
 
-    .zoom-in-text {
-      transform-origin: center;
-      animation: zoomInText 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      opacity: 0;
-      transform: scale(0.5);
+    .animate-text-focus-in {
+      animation: textFocusIn 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+      will-change: transform, opacity, filter;
     }
-    @keyframes zoomInText {
-      100% { transform: scale(1); opacity: 1;}
-    }
-
-    .slide-up-text {
-      animation: slideUpText 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s forwards;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    @keyframes slideUpText {
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes textFocusIn {
+      0% { filter: blur(8px); opacity: 0; transform: translateY(-20px); }
+      100% { filter: blur(0px); opacity: 1; transform: translateY(0); }
     }
 
-    .speed-line {
-      width: 150vw;
-      transform: translateX(100vw);
-      box-shadow: 0 0 10px rgba(255,255,255,0.8);
+    .glitch-text {
+      position: relative;
+      animation: pulseGlow 2s infinite alternate;
     }
-    .sl-1 { top: 20%; animation: speed 0.8s linear infinite 0.1s; }
-    .sl-2 { top: 50%; animation: speed 0.6s linear infinite 0.4s; }
-    .sl-3 { top: 80%; animation: speed 0.9s linear infinite; }
+    .glitch-text::before, .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+    }
+    .glitch-text::before {
+      color: #0ff;
+      z-index: -1;
+      animation: glitch-anim-1 3s infinite linear alternate-reverse;
+    }
+    .glitch-text::after {
+      color: #f0f;
+      z-index: -2;
+      animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim-1 {
+      0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+      20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+      40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+      60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+      80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
+      100% { clip-path: inset(30% 0 40% 0); transform: translate(1px, -1px); }
+    }
+    @keyframes glitch-anim-2 {
+      0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+      20% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 1px); }
+      40% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -2px); }
+      60% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 2px); }
+      80% { clip-path: inset(50% 0 30% 0); transform: translate(1px, -1px); }
+      100% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, 1px); }
+    }
 
-    @keyframes speed {
-      0% { transform: translateX(100vw); }
-      100% { transform: translateX(-150vw); }
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 15px rgba(239,68,68,0.5); }
+      100% { text-shadow: 0 0 30px rgba(239,68,68,0.9), 0 0 15px rgba(255,255,255,0.6); }
+    }
+
+    .slide-reveal-badge {
+      clip-path: inset(0 100% 0 0);
+      animation: revealBadge 0.8s cubic-bezier(0.77, 0, 0.175, 1) 0.6s forwards;
+      transform: translateY(10px);
+    }
+    @keyframes revealBadge {
+      to { clip-path: inset(0 0 0 0); transform: translateY(0); }
     }
   </style>
 
@@ -573,22 +621,29 @@
       const promoLayer = document.getElementById('promo-layer');
       
       if (flashLayer && promoLayer) {
-        // Flash animation duration is fast: 3.2 seconds
+        // Dramatic entrance and exit for new animation
         setTimeout(() => {
+          // Optimization: Reduced scale slightly and blur to keep FPS high
+          flashLayer.style.transform = 'scale(1.15)';
           flashLayer.classList.remove('opacity-100');
           flashLayer.classList.add('opacity-0');
+          flashLayer.style.filter = 'blur(4px) brightness(1.2)';
           
           setTimeout(() => {
             flashLayer.style.display = 'none';
             promoLayer.classList.remove('hidden');
             promoLayer.classList.add('flex');
             
-            setTimeout(() => {
+            // Force hardware layout recalculation before transitioning to avoid stutters
+            void promoLayer.offsetHeight;
+            
+            // requestAnimationFrame guarantees the previous layout paints before animating
+            requestAnimationFrame(() => {
               promoLayer.classList.remove('opacity-0', 'scale-95');
               promoLayer.classList.add('opacity-100', 'scale-100');
-            }, 50);
-          }, 1000); 
-        }, 3200);
+            });
+          }, 500); // Temps réduit pour l'effet de zoom/fade
+        }, 1500); // L'animation ne dure plus que 1.5s
       }
     });
   </script>
