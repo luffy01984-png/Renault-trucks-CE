@@ -444,6 +444,73 @@
       z-index: 10;
       padding-bottom: 2rem;
     }
+
+    /* Animated Premium Badge Styles */
+    .badge-container {
+      perspective: 1000px;
+    }
+
+    .premium-badge-card {
+      position: relative;
+      width: 290px;
+      aspect-ratio: 1160 / 748;
+      border: 2px solid #ef4444;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 68, 68, 0.25);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      animation: badgeFloat 6s ease-in-out infinite, badgeGlow 4s ease-in-out infinite alternate;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #111;
+    }
+
+    @media (min-width: 640px) {
+      .premium-badge-card {
+        width: 480px;
+      }
+    }
+
+    .premium-badge-card:hover {
+      transform: rotateY(8deg) rotateX(8deg) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(239, 68, 68, 0.55);
+    }
+
+    /* Reflection shine line effect */
+    .premium-badge-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 45%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.2) 52%,
+        rgba(255, 255, 255, 0.08) 54%,
+        transparent 60%
+      );
+      transform: rotate(-15deg);
+      animation: shineSweep 7s infinite linear;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1.2deg); }
+    }
+
+    @keyframes badgeGlow {
+      0% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.25); border-color: #ef4444; }
+      100% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 45px rgba(239, 68, 68, 0.45); border-color: #f87171; }
+    }
+
+    @keyframes shineSweep {
+      0% { transform: translate(-30%, -30%) rotate(-15deg); }
+      20%, 100% { transform: translate(30%, 30%) rotate(-15deg); }
+    }
   </style>
 </head>
 
@@ -521,23 +588,28 @@
     
     <!-- Moving Tapes -->
     <div class="warning-tape tape-1">
-      <div class="tape-content">OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • </div>
-      <div class="tape-content">OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • </div>
+      <div class="tape-content">PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • </div>
+      <div class="tape-content">PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • </div>
     </div>
     
     <div class="warning-tape tape-2">
-      <div class="tape-content">OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • </div>
-      <div class="tape-content">OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • OFFRE LIMITÉE • </div>
+      <div class="tape-content">VOS PRIVILÈGES CSE • RENAULT TRUCKS • VOS PRIVILÈGES CSE • RENAULT TRUCKS • </div>
+      <div class="tape-content">VOS PRIVILÈGES CSE • RENAULT TRUCKS • VOS PRIVILÈGES CSE • RENAULT TRUCKS • </div>
     </div>
     
     <div class="hero-content-wrapper relative z-10 w-full max-w-5xl mx-auto px-4 flex flex-col items-center">
       
-      <!-- Impact Card -->
-      <div class="impact-card relative rounded-2xl w-full max-w-xl text-center overflow-hidden transform hover:scale-[1.03] transition-transform duration-300">
-        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/electra.webp" alt="Offre Limitée" class="w-full h-auto cursor-pointer object-cover" style="aspect-ratio: 1080/1614;" onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/electra.webp')">
-        <div class="py-4 bg-black/40 backdrop-blur-sm border-t-2 border-red-600">
-          <p class="text-white text-xl sm:text-2xl font-black uppercase tracking-widest italic">À retirer au guichet de votre CSE</p>
+      <!-- Animated Premium Badge Container -->
+      <div class="badge-container flex flex-col items-center">
+        <div class="premium-badge-card">
+          <!-- Real badge image -->
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/badge1.webp" alt="Badge Renault Trucks" class="w-full h-full object-cover">
         </div>
+
+        <!-- Premium typography warning message -->
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white text-center mt-10 tracking-tight max-w-3xl leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] px-4">
+          Pensez à <span class="text-red-500 relative inline-block group">présenter votre badge<span class="absolute bottom-0 left-0 w-full h-1 bg-red-600 rounded animate-pulse"></span></span> pour bénéficier de vos avantages !
+        </h1>
       </div>
     </div>
   </section>
