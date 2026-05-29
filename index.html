@@ -356,160 +356,90 @@
       scrollbar-width: none;
     }
 
-    /* Impact/Percutant Hero Animation */
-    .impact-hero-bg {
-      background: #0a0a0a;
-      background-image: repeating-linear-gradient(
-        -45deg,
-        #111 0,
-        #111 20px,
-        #050505 20px,
-        #050505 40px
-      );
+    /* Modern Premium Hero Section */
+    .modern-hero-bg {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(at 10% 20%, rgba(220, 38, 38, 0.06) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(30, 41, 59, 0.05) 0px, transparent 50%),
+        radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 20px 20px;
       position: relative;
       overflow: hidden;
+      animation: ambientGlow 15s ease-in-out infinite alternate;
     }
 
-    .warning-tape {
-      position: absolute;
-      width: 200vw;
-      height: 70px;
-      background: #ef4444;
-      color: #000;
-      font-weight: 900;
-      font-size: 2.5rem;
-      line-height: 70px;
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      display: flex;
-      z-index: 5;
-      box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
-    }
-
-    .tape-content {
-      white-space: nowrap;
-      animation: tapeScroll 15s linear infinite;
-      padding-right: 20px;
-    }
-
-    @keyframes tapeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .tape-1 {
-      top: 5%;
-      transform: rotate(-5deg) translateX(-10vw);
-    }
-
-    .tape-2 {
-      bottom: 5%;
-      transform: rotate(5deg) translateX(-10vw);
-      background: #fff;
-      color: #ef4444;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-    }
-
-    @media (max-width: 640px) {
-      .tape-1 { top: 15px; }
-      .tape-2 { bottom: 15px; }
-      .warning-tape { 
-        font-size: 1.5rem; 
-        height: 50px; 
-        line-height: 50px; 
-      }
-    }
-
-    .tape-2 .tape-content {
-      animation-direction: reverse;
-    }
-
-    .impact-card {
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 2px solid #ef4444;
-      border-top: 6px solid #ef4444;
-      box-shadow: 0 0 50px rgba(239, 68, 68, 0.3), inset 0 0 20px rgba(239, 68, 68, 0.2);
-      animation: pulseCard 3s infinite alternate;
-    }
-
-    @keyframes pulseCard {
-      0% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.3), inset 0 0 10px rgba(239, 68, 68, 0.2); }
-      100% { box-shadow: 0 0 80px rgba(239, 68, 68, 0.7), inset 0 0 40px rgba(239, 68, 68, 0.5); }
+    @keyframes ambientGlow {
+      0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+      50% { background-position: 30% 20%, -30% -20%, 0% 0%; }
+      100% { background-position: 100% 100%, 100% 100%, 0% 0%; }
     }
 
     .hero-content-wrapper {
       position: relative;
       z-index: 10;
-      padding-bottom: 2rem;
     }
 
-    /* Animated Premium Badge Styles */
-    .badge-container {
-      perspective: 1000px;
+
+    /* Glassmorphic Info Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(220, 38, 38, 0.08);
+      border-left: 4px solid #dc2626;
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     }
 
-    .premium-badge-card {
-      position: relative;
-      width: 290px;
-      aspect-ratio: 1160 / 748;
-      border: 2px solid #ef4444;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 68, 68, 0.25);
-      overflow: hidden;
-      transform-style: preserve-3d;
-      animation: badgeFloat 6s ease-in-out infinite, badgeGlow 4s ease-in-out infinite alternate;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-color: #111;
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(220, 38, 38, 0.25);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 15px 40px rgba(220, 38, 38, 0.08), 0 0 25px rgba(220, 38, 38, 0.02);
     }
 
-    @media (min-width: 640px) {
-      .premium-badge-card {
-        width: 480px;
-      }
-    }
-
-    .premium-badge-card:hover {
-      transform: rotateY(8deg) rotateX(8deg) scale(1.02);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(239, 68, 68, 0.55);
-    }
-
-    /* Reflection shine line effect */
-    .premium-badge-card::before {
-      content: '';
+    /* RFID Pulse Signal Rings */
+    .signal-ring {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 45%,
-        rgba(255, 255, 255, 0.08) 50%,
-        rgba(255, 255, 255, 0.2) 52%,
-        rgba(255, 255, 255, 0.08) 54%,
-        transparent 60%
-      );
-      transform: rotate(-15deg);
-      animation: shineSweep 7s infinite linear;
-      pointer-events: none;
-      z-index: 10;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #ef4444;
+      border-radius: 50%;
+      animation: signalPulse 2.5s cubic-bezier(0.25, 0, 0, 1) infinite;
+      opacity: 0;
+    }
+    
+    .signal-ring:nth-child(2) {
+      animation-delay: 0.8s;
     }
 
-    @keyframes badgeFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1.2deg); }
+    .signal-ring:nth-child(3) {
+      animation-delay: 1.6s;
     }
 
-    @keyframes badgeGlow {
-      0% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.25); border-color: #ef4444; }
-      100% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 45px rgba(239, 68, 68, 0.45); border-color: #f87171; }
+    @keyframes signalPulse {
+      0% { transform: scale(0.6); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
     }
 
-    @keyframes shineSweep {
-      0% { transform: translate(-30%, -30%) rotate(-15deg); }
-      20%, 100% { transform: translate(30%, 30%) rotate(-15deg); }
+    /* Swing Bell Animation */
+    .bell-ring {
+      animation: bellSwing 4s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    @keyframes bellSwing {
+      0%, 100% { transform: rotate(0); }
+      5% { transform: rotate(15deg); }
+      10% { transform: rotate(-12deg); }
+      15% { transform: rotate(10deg); }
+      20% { transform: rotate(-8deg); }
+      25% { transform: rotate(6deg); }
+      30% { transform: rotate(-4deg); }
+      35% { transform: rotate(2deg); }
+      40% { transform: rotate(0); }
     }
   </style>
 </head>
@@ -583,34 +513,66 @@
 
 
 
-  <!-- HERO SECTION - HIGH IMPACT -->
-  <section id="hero" class="impact-hero-bg relative pt-24 pb-36 sm:pt-32 sm:pb-48 border-b-4 border-red-600 min-h-[75vh] flex flex-col justify-center items-center">
-    
-    <!-- Moving Tapes -->
-    <div class="warning-tape tape-1">
-      <div class="tape-content">PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • </div>
-      <div class="tape-content">PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • PRÉSENTEZ VOTRE BADGE • AVANTAGES SALARIÉS • </div>
-    </div>
-    
-    <div class="warning-tape tape-2">
-      <div class="tape-content">VOS PRIVILÈGES CSE • RENAULT TRUCKS • VOS PRIVILÈGES CSE • RENAULT TRUCKS • </div>
-      <div class="tape-content">VOS PRIVILÈGES CSE • RENAULT TRUCKS • VOS PRIVILÈGES CSE • RENAULT TRUCKS • </div>
-    </div>
-    
-    <div class="hero-content-wrapper relative z-10 w-full max-w-5xl mx-auto px-4 flex flex-col items-center">
+  <!-- HERO SECTION - MODERN & INTERACTIVE -->
+  <section id="hero" class="modern-hero-bg relative pt-6 pb-6 sm:pt-20 sm:pb-20 border-b-4 border-red-600 min-h-[auto] sm:min-h-[50vh] flex flex-col justify-center items-center">
+    <div class="hero-content-wrapper relative z-10 w-full max-w-4xl mx-auto px-4 flex flex-col items-center text-center space-y-4 sm:space-y-8">
       
-      <!-- Animated Premium Badge Container -->
-      <div class="badge-container flex flex-col items-center">
-        <div class="premium-badge-card">
-          <!-- Real badge image -->
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/badge1.webp" alt="Badge Renault Trucks" class="w-full h-full object-cover">
-        </div>
-
-        <!-- Premium typography warning message -->
-        <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white text-center mt-10 tracking-tight max-w-3xl leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] px-4">
-          Pensez à <span class="text-red-500 relative inline-block group">présenter votre badge<span class="absolute bottom-0 left-0 w-full h-1 bg-red-600 rounded animate-pulse"></span></span> pour bénéficier de vos avantages !
+      <div>
+        <span class="text-[10px] sm:text-xs font-bold text-red-600 uppercase tracking-widest bg-red-55/60 px-2.5 py-1 rounded-full border border-red-200/60">
+          Avantages CSE Renault Trucks
+        </span>
+        <h1 class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mt-2 sm:mt-6 tracking-tight leading-tight max-w-2xl mx-auto">
+          Vos Avantages CSE, <br class="hidden sm:inline" />
+          <span class="text-red-600 relative inline-block">
+            Accessibles en Tout Temps
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-red-600 rounded"></span>
+          </span>
         </h1>
+        <p class="text-slate-600 mt-2 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
+          Profitez toute l'année d'offres exceptionnelles négociées spécialement pour vous auprès de nos nombreux partenaires.
+        </p>
       </div>
+      
+      <!-- Info Cards Grid - Optimized for Mobile Above-The-Fold (compact list style on mobile, grid on desktop) -->
+      <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3 sm:gap-6 w-full max-w-3xl">
+        <!-- Card 1 -->
+        <div class="glass-card p-3 sm:p-6 flex flex-row sm:flex-col items-center text-left sm:text-center space-x-3 sm:space-x-0 sm:space-y-4">
+          <div class="relative w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 bg-red-50 rounded-full border border-red-200/50">
+            <div class="signal-ring"></div>
+            <div class="signal-ring"></div>
+            <div class="signal-ring"></div>
+            <svg class="w-4.5 h-4.5 sm:w-6 sm:h-6 text-red-600 relative z-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0z" />
+            </svg>
+          </div>
+          <div class="space-y-0.5 sm:space-y-2 flex-1">
+            <h3 class="text-slate-900 font-bold text-xs sm:text-lg">Présentez votre Badge</h3>
+            <p class="text-slate-600 text-[10px] sm:text-sm leading-snug sm:leading-relaxed">
+              Présentez votre badge professionnel lors du passage en caisse pour appliquer vos tarifs réduits immédiatement.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="glass-card p-3 sm:p-6 flex flex-row sm:flex-col items-center text-left sm:text-center space-x-3 sm:space-x-0 sm:space-y-4">
+          <div class="relative w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 bg-red-50 rounded-full border border-red-200/50">
+            <svg class="w-4.5 h-4.5 sm:w-6 sm:h-6 text-red-600 bell-ring" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+            <span class="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 flex h-2 w-2 sm:h-3 sm:w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-green-500"></span>
+            </span>
+          </div>
+          <div class="space-y-0.5 sm:space-y-2 flex-1">
+            <h3 class="text-slate-900 font-bold text-xs sm:text-lg">Restez Connectés</h3>
+            <p class="text-slate-600 text-[10px] sm:text-sm leading-snug sm:leading-relaxed">
+              Connectez-vous régulièrement sur ce site pour découvrir les nouveaux partenaires ajoutés.
+            </p>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </section>
 
