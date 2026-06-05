@@ -441,6 +441,282 @@
       35% { transform: rotate(2deg); }
       40% { transform: rotate(0); }
     }
+
+    /* Immersive Hero Section Styling */
+    .kebab-hero-bg {
+      background-color: #0b0f19;
+      background-image: 
+        radial-gradient(at 10% 20%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(239, 68, 68, 0.08) 0px, transparent 50%),
+        radial-gradient(circle at center, rgba(249, 115, 22, 0.05) 0px, transparent 70%),
+        radial-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kebab-hero-bg::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to top, #f3f4f6, transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Grill Container & Interactive Gates */
+    .grill-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: #111827;
+      border: 4px solid #1f2937;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .grill-container {
+        height: 280px;
+      }
+    }
+
+    /* Hot Coals & Heat Glow when closed */
+    .grill-bed {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, #7f1d1d 10%, #111827 80%);
+      z-index: 2;
+      transition: opacity 0.5s ease;
+    }
+
+    .grill-heating-elements {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 20px 0;
+      z-index: 3;
+      transition: opacity 0.5s ease;
+    }
+
+    .grill-element {
+      height: 6px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, #ea580c, #f97316, #ea580c, transparent);
+      box-shadow: 0 0 15px #f97316, 0 0 25px #ea580c;
+      animation: heatingGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes heatingGlow {
+      0% { opacity: 0.6; filter: brightness(0.8); }
+      100% { opacity: 1; filter: brightness(1.2); }
+    }
+
+    /* Grill Gate Sliding Panels */
+    .grill-gate-left, .grill-gate-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background: repeating-linear-gradient(90deg, #1e293b, #1e293b 8px, #334155 12px, #0f172a 16px);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+      z-index: 5;
+      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grill-gate-left {
+      left: 0;
+      border-right: 2px solid #0f172a;
+    }
+
+    .grill-gate-right {
+      right: 0;
+      border-left: 2px solid #0f172a;
+    }
+
+    /* Handle bars on the grill gates */
+    .grill-handle {
+      width: 16px;
+      height: 100px;
+      background: linear-gradient(90deg, #64748b, #cbd5e1, #475569);
+      border-radius: 8px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+
+    .grill-gate-left .grill-handle {
+      margin-left: auto;
+      margin-right: 15px;
+    }
+
+    .grill-gate-right .grill-handle {
+      margin-right: auto;
+      margin-left: 15px;
+    }
+
+    /* Open state behavior */
+    .grill-container.open .grill-gate-left {
+      transform: translateX(-100%);
+    }
+
+    .grill-container.open .grill-gate-right {
+      transform: translateX(100%);
+    }
+
+    .grill-container.open .grill-bed,
+    .grill-container.open .grill-heating-elements {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Flyer image behind the gates */
+    .grill-flyer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 4;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.5s ease 0.2s, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+    }
+
+    .grill-container.open .grill-flyer {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Tap hint animation */
+    .tap-hint {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      color: #ea580c;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      z-index: 6;
+      border: 1px solid rgba(234, 88, 12, 0.4);
+      animation: pulseAlert 1.5s infinite;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .grill-container.open .tap-hint {
+      opacity: 0;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -2px) scale(1.03); box-shadow: 0 0 10px rgba(234, 88, 12, 0.3); }
+    }
+
+    /* Heat Wave Shimmer effect when open */
+    .grill-heatwave {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(234, 88, 12, 0.05), transparent);
+      z-index: 7;
+      opacity: 0;
+      pointer-events: none;
+      mix-blend-mode: color-dodge;
+    }
+
+    .grill-container.open .grill-heatwave {
+      animation: shimmerWave 2s linear infinite;
+      opacity: 1;
+    }
+
+    @keyframes shimmerWave {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
+    }
+
+    /* Hover effect for large screens */
+    @media (min-width: 1024px) {
+      .grill-container:hover .grill-gate-left {
+        transform: translateX(-100%);
+      }
+      .grill-container:hover .grill-gate-right {
+        transform: translateX(100%);
+      }
+      .grill-container:hover .grill-bed,
+      .grill-container:hover .grill-heating-elements {
+        opacity: 0;
+      }
+      .grill-container:hover .grill-flyer {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .grill-container:hover .tap-hint {
+        opacity: 0;
+      }
+      .grill-container:hover .grill-heatwave {
+        animation: shimmerWave 2s linear infinite;
+        opacity: 1;
+      }
+    }
+
+    /* Kebab Grill Sizzling & Smoke Animations */
+    .sizzle-flame {
+      animation: flameSizzle 1.8s ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+    
+    @keyframes flameSizzle {
+      0% {
+        transform: scale(0.9) rotate(-2deg);
+        filter: drop-shadow(0 0 3px #f97316) brightness(1);
+      }
+      50% {
+        transform: scale(1.1) rotate(3deg);
+        filter: drop-shadow(0 0 8px #ef4444) brightness(1.2);
+      }
+      100% {
+        transform: scale(0.95) rotate(-1deg);
+        filter: drop-shadow(0 0 4px #f59e0b) brightness(1.1);
+      }
+    }
+
+    .smoke-particle {
+      position: absolute;
+      background: rgba(150, 150, 150, 0.2);
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: riseAndFade 2.5s ease-out infinite;
+      opacity: 0;
+      bottom: 60%;
+    }
+
+    @keyframes riseAndFade {
+      0% {
+        transform: translateY(0) scale(0.4);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-35px) scale(1.5);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 
@@ -513,62 +789,71 @@
 
 
 
-  <!-- HERO SECTION - MODERN & INTERACTIVE -->
-  <section id="hero" class="modern-hero-bg relative pt-6 pb-6 sm:pt-20 sm:pb-20 border-b-4 border-red-600 min-h-[auto] sm:min-h-[50vh] flex flex-col justify-center items-center">
-    <div class="hero-content-wrapper relative z-10 w-full max-w-4xl mx-auto px-4 flex flex-col items-center text-center space-y-4 sm:space-y-8">
+  <!-- HERO SECTION - IMMERSIVE KEBAB GRILL -->
+  <section id="hero" class="kebab-hero-bg relative pt-12 pb-12 sm:pt-24 sm:pb-24 border-b-4 border-orange-600 min-h-[auto] sm:min-h-[60vh] flex flex-col justify-center items-center">
+    <div class="hero-content-wrapper relative z-10 w-full max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       
-      <div>
-        <span class="text-[10px] sm:text-xs font-bold text-red-600 uppercase tracking-widest bg-red-55/60 px-2.5 py-1 rounded-full border border-red-200/60">
-          Avantages CSE Renault Trucks
+      <!-- Text content -->
+      <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 sm:space-y-6">
+        <span class="text-[10px] sm:text-xs font-bold text-orange-500 uppercase tracking-widest bg-orange-950/60 px-3.5 py-1.5 rounded-full border border-orange-500/30">
+          🔥 Nouveau Partenaire
         </span>
-        <h1 class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mt-2 sm:mt-6 tracking-tight leading-tight max-w-2xl mx-auto">
-          Vos Avantages CSE, <br class="hidden sm:inline" />
-          <span class="text-red-600 relative inline-block">
-            Accessibles en Tout Temps
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-red-600 rounded"></span>
-          </span>
-        </h1>
-        <p class="text-slate-600 mt-2 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
-          Profitez toute l'année d'offres exceptionnelles négociées spécialement pour vous auprès de nos nombreux partenaires.
-        </p>
+        
+            Voir les autres catégories
+          </a>
+        </div>
       </div>
       
-      <!-- Info Cards Grid - Optimized for Mobile Above-The-Fold (compact list style on mobile, grid on desktop) -->
-      <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3 sm:gap-6 w-full max-w-3xl">
-        <!-- Card 1 -->
-        <div class="glass-card p-3 sm:p-6 flex flex-row sm:flex-col items-center text-left sm:text-center space-x-3 sm:space-x-0 sm:space-y-4">
-          <div class="relative w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 bg-red-50 rounded-full border border-red-200/50">
-            <div class="signal-ring"></div>
-            <div class="signal-ring"></div>
-            <div class="signal-ring"></div>
-            <svg class="w-4.5 h-4.5 sm:w-6 sm:h-6 text-red-600 relative z-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0z" />
-            </svg>
-          </div>
-          <div class="space-y-0.5 sm:space-y-2 flex-1">
-            <h3 class="text-slate-900 font-bold text-xs sm:text-lg">Présentez votre Badge</h3>
-            <p class="text-slate-600 text-[10px] sm:text-sm leading-snug sm:leading-relaxed">
-              Présentez votre badge professionnel lors du passage en caisse pour appliquer vos tarifs réduits immédiatement.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Card 2 -->
-        <div class="glass-card p-3 sm:p-6 flex flex-row sm:flex-col items-center text-left sm:text-center space-x-3 sm:space-x-0 sm:space-y-4">
-          <div class="relative w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 bg-red-50 rounded-full border border-red-200/50">
-            <svg class="w-4.5 h-4.5 sm:w-6 sm:h-6 text-red-600 bell-ring" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-            <span class="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 flex h-2 w-2 sm:h-3 sm:w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-green-500"></span>
-            </span>
-          </div>
-          <div class="space-y-0.5 sm:space-y-2 flex-1">
-            <h3 class="text-slate-900 font-bold text-xs sm:text-lg">Restez Connectés</h3>
-            <p class="text-slate-600 text-[10px] sm:text-sm leading-snug sm:leading-relaxed">
-              Connectez-vous régulièrement sur ce site pour découvrir les nouveaux partenaires ajoutés.
-            </p>
+      <!-- Interactive Grill Reveal Component -->
+      <div class="lg:col-span-5 w-full flex justify-center">
+        <div class="w-full max-w-sm">
+          <div class="grill-container" id="interactiveGrill" onclick="this.classList.toggle('open')">
+            <!-- Bed of hot coals -->
+            <div class="grill-bed"></div>
+            
+            <!-- Glowing elements -->
+            <div class="grill-heating-elements">
+              <div class="grill-element"></div>
+              <div class="grill-element"></div>
+              <div class="grill-element"></div>
+            </div>
+            
+            <!-- Flame SVG animations peaking through -->
+            <div class="absolute inset-0 flex items-end justify-center space-x-6 pb-4 z-3 pointer-events-none">
+              <!-- Left Flame -->
+              <svg class="w-10 h-10 text-orange-500 sizzle-flame opacity-70" fill="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.2s;">
+                <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+              </svg>
+              <!-- Center Flame -->
+              <svg class="w-14 h-14 text-red-500 sizzle-flame" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+              </svg>
+              <!-- Right Flame -->
+              <svg class="w-10 h-10 text-orange-500 sizzle-flame opacity-70" fill="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.4s;">
+                <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+              </svg>
+            </div>
+            
+            <!-- Left Gate -->
+            <div class="grill-gate-left">
+              <div class="grill-handle"></div>
+            </div>
+            
+            <!-- Right Gate -->
+            <div class="grill-gate-right">
+              <div class="grill-handle"></div>
+            </div>
+            
+            <!-- Kebab Flyer Image (hidden behind grates) -->
+            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Misterkebab1.webp" alt="Flyer Kebab Grill" class="grill-flyer" />
+            
+            <!-- Heat Wave layer -->
+            <div class="grill-heatwave"></div>
+            
+            <!-- Hover/Tap alert indicator -->
+            <div class="tap-hint">
+              🔥 CLIQUEZ POUR OUVRIR LE GRILL
+            </div>
           </div>
         </div>
       </div>
@@ -631,6 +916,9 @@
               <div class="partner-link"
                 onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/CoCoBresil.webp')">
                 COCO Bresil</div>
+              <div class="partner-link"
+                onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Misterkebab1.webp')">
+                Mister Grill</div>
               <div class="partner-link"
                 onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/LeLoft.webp')">
                 Le Loft</div>
