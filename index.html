@@ -442,280 +442,77 @@
       40% { transform: rotate(0); }
     }
 
-    /* Immersive Hero Section Styling */
-    .kebab-hero-bg {
+    /* --- WINTER MUSIC HERO --- */
+    .winter-hero-bg {
       background-color: #0b0f19;
       background-image: 
-        radial-gradient(at 10% 20%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
-        radial-gradient(at 90% 80%, rgba(239, 68, 68, 0.08) 0px, transparent 50%),
-        radial-gradient(circle at center, rgba(249, 115, 22, 0.05) 0px, transparent 70%),
-        radial-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 20px 20px;
+        radial-gradient(at 10% 20%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(circle at center, rgba(6, 182, 212, 0.08) 0px, transparent 70%),
+        radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px;
       position: relative;
       overflow: hidden;
+      transition: background-color 1s ease;
+      animation: ambientWinterGlow 15s ease-in-out infinite alternate;
     }
 
-    .kebab-hero-bg::before {
+    @keyframes ambientWinterGlow {
+      0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+      50% { background-position: 20% 15%, -20% -15%, 0% 0%; }
+      100% { background-position: 40% 30%, -40% -30%, 0% 0%; }
+    }
+
+    .winter-hero-bg::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 100px;
+      height: 120px;
       background: linear-gradient(to top, #f3f4f6, transparent);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* Grill Container & Interactive Gates */
-    .grill-container {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      background: #111827;
-      border: 4px solid #1f2937;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.8);
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    @media (max-width: 640px) {
-      .grill-container {
-        height: 280px;
-      }
-    }
-
-    /* Hot Coals & Heat Glow when closed */
-    .grill-bed {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, #7f1d1d 10%, #111827 80%);
       z-index: 2;
-      transition: opacity 0.5s ease;
-    }
-
-    .grill-heating-elements {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      padding: 20px 0;
-      z-index: 3;
-      transition: opacity 0.5s ease;
-    }
-
-    .grill-element {
-      height: 6px;
-      width: 100%;
-      background: linear-gradient(90deg, transparent, #ea580c, #f97316, #ea580c, transparent);
-      box-shadow: 0 0 15px #f97316, 0 0 25px #ea580c;
-      animation: heatingGlow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes heatingGlow {
-      0% { opacity: 0.6; filter: brightness(0.8); }
-      100% { opacity: 1; filter: brightness(1.2); }
-    }
-
-    /* Grill Gate Sliding Panels */
-    .grill-gate-left, .grill-gate-right {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 50%;
-      background: repeating-linear-gradient(90deg, #1e293b, #1e293b 8px, #334155 12px, #0f172a 16px);
-      box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-      z-index: 5;
-      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .grill-gate-left {
-      left: 0;
-      border-right: 2px solid #0f172a;
-    }
-
-    .grill-gate-right {
-      right: 0;
-      border-left: 2px solid #0f172a;
-    }
-
-    /* Handle bars on the grill gates */
-    .grill-handle {
-      width: 16px;
-      height: 100px;
-      background: linear-gradient(90deg, #64748b, #cbd5e1, #475569);
-      border-radius: 8px;
-      border: 1px solid #1e293b;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-
-    .grill-gate-left .grill-handle {
-      margin-left: auto;
-      margin-right: 15px;
-    }
-
-    .grill-gate-right .grill-handle {
-      margin-right: auto;
-      margin-left: 15px;
-    }
-
-    /* Open state behavior */
-    .grill-container.open .grill-gate-left {
-      transform: translateX(-100%);
-    }
-
-    .grill-container.open .grill-gate-right {
-      transform: translateX(100%);
-    }
-
-    .grill-container.open .grill-bed,
-    .grill-container.open .grill-heating-elements {
-      opacity: 0;
       pointer-events: none;
     }
 
-    /* Flyer image behind the gates */
-    .grill-flyer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      z-index: 4;
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.5s ease 0.2s, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
-    }
-
-    .grill-container.open .grill-flyer {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Tap hint animation */
-    .tap-hint {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
-      color: #ea580c;
-      padding: 8px 16px;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      z-index: 6;
-      border: 1px solid rgba(234, 88, 12, 0.4);
-      animation: pulseAlert 1.5s infinite;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .grill-container.open .tap-hint {
-      opacity: 0;
-    }
-
-    @keyframes pulseAlert {
-      0%, 100% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
-      50% { opacity: 1; transform: translate(-50%, -2px) scale(1.03); box-shadow: 0 0 10px rgba(234, 88, 12, 0.3); }
-    }
-
-    /* Heat Wave Shimmer effect when open */
-    .grill-heatwave {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(transparent, rgba(234, 88, 12, 0.05), transparent);
-      z-index: 7;
-      opacity: 0;
-      pointer-events: none;
-      mix-blend-mode: color-dodge;
-    }
-
-    .grill-container.open .grill-heatwave {
-      animation: shimmerWave 2s linear infinite;
-      opacity: 1;
-    }
-
-    @keyframes shimmerWave {
-      0% { transform: translateY(100%); }
-      100% { transform: translateY(-100%); }
-    }
-
-    /* Hover effect for large screens */
-    @media (min-width: 1024px) {
-      .grill-container:hover .grill-gate-left {
-        transform: translateX(-100%);
-      }
-      .grill-container:hover .grill-gate-right {
-        transform: translateX(100%);
-      }
-      .grill-container:hover .grill-bed,
-      .grill-container:hover .grill-heating-elements {
-        opacity: 0;
-      }
-      .grill-container:hover .grill-flyer {
-        opacity: 1;
-        transform: scale(1);
-      }
-      .grill-container:hover .tap-hint {
-        opacity: 0;
-      }
-      .grill-container:hover .grill-heatwave {
-        animation: shimmerWave 2s linear infinite;
-        opacity: 1;
-      }
-    }
-
-    /* Kebab Grill Sizzling & Smoke Animations */
-    .sizzle-flame {
-      animation: flameSizzle 1.8s ease-in-out infinite alternate;
-      transform-origin: bottom center;
+    /* Equalizer Animating Bars */
+    .eq-bar {
+      transition: height 0.1s ease;
+      animation: pulseEQ 1.5s ease-in-out infinite alternate;
+      box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
     }
     
-    @keyframes flameSizzle {
+    @keyframes pulseEQ {
       0% {
-        transform: scale(0.9) rotate(-2deg);
-        filter: drop-shadow(0 0 3px #f97316) brightness(1);
-      }
-      50% {
-        transform: scale(1.1) rotate(3deg);
-        filter: drop-shadow(0 0 8px #ef4444) brightness(1.2);
+        height: 10%;
+        filter: brightness(0.8);
       }
       100% {
-        transform: scale(0.95) rotate(-1deg);
-        filter: drop-shadow(0 0 4px #f59e0b) brightness(1.1);
+        height: 100%;
+        filter: brightness(1.3) drop-shadow(0 0 6px rgba(99, 102, 241, 0.6));
       }
     }
 
-    .smoke-particle {
-      position: absolute;
-      background: rgba(150, 150, 150, 0.2);
-      border-radius: 50%;
-      filter: blur(2px);
-      animation: riseAndFade 2.5s ease-out infinite;
-      opacity: 0;
-      bottom: 60%;
+    .sound-active .eq-bar {
+      animation-duration: 0.6s !important;
+      box-shadow: 0 0 14px rgba(236, 72, 153, 0.6);
     }
 
-    @keyframes riseAndFade {
-      0% {
-        transform: translateY(0) scale(0.4);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.5;
-      }
-      100% {
-        transform: translateY(-35px) scale(1.5);
-        opacity: 0;
-      }
+    /* Canvas full screen overlay */
+    #snowCanvas {
+      mix-blend-mode: screen;
+    }
+
+    /* Glassmorphic card styling for winter poster */
+    .winter-poster-card {
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(6, 182, 212, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
@@ -789,77 +586,354 @@
 
 
 
-  <!-- HERO SECTION - IMMERSIVE KEBAB GRILL -->
-  <section id="hero" class="kebab-hero-bg relative pt-12 pb-12 sm:pt-24 sm:pb-24 border-b-4 border-orange-600 min-h-[auto] sm:min-h-[60vh] flex flex-col justify-center items-center">
-    <div class="hero-content-wrapper relative z-10 w-full max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+  <!-- HERO SECTION - WINTER & MUSIC FESTIVAL -->
+  <section id="hero" class="winter-hero-bg relative pt-12 pb-12 sm:pt-20 sm:pb-20 border-b-4 border-cyan-800 min-h-[auto] sm:min-h-[60vh] flex flex-col justify-center items-center overflow-hidden">
+    <!-- Canvas for falling snow -->
+    <canvas id="snowCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-1"></canvas>
+    
+    <!-- Ambient Northern Lights glow overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/20 to-slate-950 pointer-events-none z-0"></div>
+    
+    <!-- Wrapper for contents -->
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-4 flex flex-col items-center">
       
-      <!-- Text content -->
-      <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 sm:space-y-6">
-        <span class="text-[10px] sm:text-xs font-bold text-orange-500 uppercase tracking-widest bg-orange-950/60 px-3.5 py-1.5 rounded-full border border-orange-500/30">
-          🔥 Nouveau Partenaire
+      <!-- ZONE 1: INTRO ANIMATION (visible initially) -->
+      <div id="winterAnimationZone" class="w-full flex flex-col items-center justify-center space-y-8 text-center transition-all duration-700 ease-out">
+        
+        <!-- Badge -->
+        <span class="inline-flex items-center space-x-1.5 text-[10px] sm:text-xs font-bold text-cyan-300 uppercase tracking-widest bg-cyan-950/60 px-4 py-1.5 rounded-full border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.2)] animate-pulse">
+          <span>❄️</span>
+          <span>Festival d'Hiver CSE</span>
+          <span>🎵</span>
         </span>
         
-            Voir les autres catégories
-          </a>
+        <!-- Main animated heading -->
+        <div class="space-y-3">
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-cyan-200 to-indigo-100 tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            Une Symphonie <br class="sm:hidden">Hivernale
+          </h1>
+          <p class="text-sm sm:text-lg text-cyan-200/80 max-w-lg mx-auto font-medium">
+            Laissez-vous emporter par la magie de la musique et des fêtes...
+          </p>
+        </div>
+
+        <!-- Equalizer & Interactive Play/Sound Button -->
+        <div class="relative flex flex-col items-center justify-center p-6 bg-slate-900/40 rounded-3xl border border-white/5 backdrop-blur-md shadow-2xl max-w-sm w-full">
+          <!-- Audio control -->
+          <button id="soundToggleBtn" class="mb-6 flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold px-5 py-2.5 rounded-full shadow-[0_4px_15px_rgba(6,182,212,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 z-20">
+            <span id="soundIcon">🔊</span>
+            <span id="soundText">Activer la Musique</span>
+          </button>
+          
+          <!-- Equalizer bars -->
+          <div class="flex items-end justify-center space-x-1 h-16 w-64 px-4 overflow-hidden relative" id="eqContainer">
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 20%; animation-delay: 0.1s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 40%; animation-delay: 0.3s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 60%; animation-delay: 0.5s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 35%; animation-delay: 0.2s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 80%; animation-delay: 0.7s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 50%; animation-delay: 0.4s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 90%; animation-delay: 0.9s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 70%; animation-delay: 0.6s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 30%; animation-delay: 0.3s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 55%; animation-delay: 0.8s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 85%; animation-delay: 0.5s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 45%; animation-delay: 0.2s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 25%; animation-delay: 0.4s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 75%; animation-delay: 0.7s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 95%; animation-delay: 0.1s;"></div>
+            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 60%; animation-delay: 0.3s;"></div>
+          </div>
+        </div>
+
+        <!-- Timer / Progress Skip Action -->
+        <div class="flex flex-col items-center space-y-2 w-full max-w-xs">
+          <button id="skipBtn" class="text-xs font-semibold text-cyan-200/60 hover:text-cyan-200 bg-slate-950/40 hover:bg-slate-950/60 border border-white/5 hover:border-cyan-500/20 px-4 py-2 rounded-full transition-all duration-300 flex items-center space-x-2 z-20">
+            <span>Passer l'introduction</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+          </button>
+          <!-- Progress bar -->
+          <div class="w-full h-1 bg-slate-950/60 rounded-full overflow-hidden border border-white/5">
+            <div id="introProgressBar" class="h-full bg-cyan-400 w-full transition-all linear duration-100"></div>
+          </div>
         </div>
       </div>
-      
-      <!-- Interactive Grill Reveal Component -->
-      <div class="lg:col-span-5 w-full flex justify-center">
-        <div class="w-full max-w-sm">
-          <div class="grill-container" id="interactiveGrill" onclick="this.classList.toggle('open')">
-            <!-- Bed of hot coals -->
-            <div class="grill-bed"></div>
-            
-            <!-- Glowing elements -->
-            <div class="grill-heating-elements">
-              <div class="grill-element"></div>
-              <div class="grill-element"></div>
-              <div class="grill-element"></div>
-            </div>
-            
-            <!-- Flame SVG animations peaking through -->
-            <div class="absolute inset-0 flex items-end justify-center space-x-6 pb-4 z-3 pointer-events-none">
-              <!-- Left Flame -->
-              <svg class="w-10 h-10 text-orange-500 sizzle-flame opacity-70" fill="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.2s;">
-                <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-              </svg>
-              <!-- Center Flame -->
-              <svg class="w-14 h-14 text-red-500 sizzle-flame" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-              </svg>
-              <!-- Right Flame -->
-              <svg class="w-10 h-10 text-orange-500 sizzle-flame opacity-70" fill="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.4s;">
-                <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-              </svg>
-            </div>
-            
-            <!-- Left Gate -->
-            <div class="grill-gate-left">
-              <div class="grill-handle"></div>
-            </div>
-            
-            <!-- Right Gate -->
-            <div class="grill-gate-right">
-              <div class="grill-handle"></div>
-            </div>
-            
-            <!-- Kebab Flyer Image (hidden behind grates) -->
-            <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/Misterkebab1.webp" alt="Flyer Kebab Grill" class="grill-flyer" />
-            
-            <!-- Heat Wave layer -->
-            <div class="grill-heatwave"></div>
-            
-            <!-- Hover/Tap alert indicator -->
-            <div class="tap-hint">
-              🔥 CLIQUEZ POUR OUVRIR LE GRILL
-            </div>
-          </div>
+
+      <!-- ZONE 2: FINAL FLYER SHOWCASE (initially hidden) -->
+      <div id="winterPosterZone" class="hidden w-full max-w-xl flex-col items-center space-y-6 text-center transform scale-95 opacity-0 transition-all duration-1000 ease-out">
+        <div class="relative group winter-poster-card p-3 sm:p-4 bg-slate-900/60 border border-white/10 rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden backdrop-blur-md">
+          <!-- Aurora background glow inside card -->
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-indigo-500/10 opacity-60 pointer-events-none"></div>
+          
+          <!-- Image -->
+          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/winterfestival1.webp" 
+               alt="Winter Festival Flyer" 
+               class="rounded-2xl max-w-full h-auto object-contain max-h-[60vh] sm:max-h-[65vh] shadow-inner relative z-10 transition-transform duration-500 group-hover:scale-[1.01]" />
+          
+          <!-- Dynamic frosty reflection sweep on hover -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-20 pointer-events-none"></div>
+        </div>
+        
+        <!-- Actions after animation -->
+        <div class="flex items-center space-x-4 z-20">
+          <button id="replayBtn" class="flex items-center space-x-2 bg-slate-950/50 hover:bg-slate-950/80 border border-cyan-500/30 hover:border-cyan-400 text-cyan-200 hover:text-white px-5 py-2.5 rounded-full font-semibold transition-all duration-300 text-sm shadow-[0_0_15px_rgba(6,182,212,0.1)] transform hover:scale-105 active:scale-95">
+            <span>🔄</span>
+            <span>Revoir l'animation</span>
+          </button>
+          <a href="#categories" class="flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-6 py-2.5 rounded-full font-bold transition-all duration-300 text-sm shadow-[0_4px_15px_rgba(6,182,212,0.3)] transform hover:scale-105 active:scale-95">
+            <span>Découvrir les offres</span>
+            <span>👇</span>
+          </a>
         </div>
       </div>
       
     </div>
   </section>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('snowCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let animationFrameId = null;
+      let flakes = [];
+      let noteParticles = [];
+      let animationEnded = false;
+      
+      // Timer variables
+      const duration = 6000;
+      let startTime = null;
+      let progressFrameId = null;
+      
+      // Audio variables
+      const audio = new Audio("https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/Helmut%20Fritz.mp3");
+      audio.loop = true;
+      audio.preload = "auto";
+      
+      function resizeCanvas() {
+        const rect = canvas.parentNode.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+      }
+      
+      class Flake {
+        constructor() {
+          this.reset(true);
+        }
+        
+        reset(initY = false) {
+          this.x = Math.random() * canvas.width;
+          this.y = initY ? Math.random() * canvas.height : -10;
+          this.r = Math.random() * 3 + 1;
+          this.speed = Math.random() * 1.5 + 0.5;
+          this.swing = Math.random() * 0.02 + 0.005;
+          this.swingStep = Math.random() * 100;
+        }
+        
+        update() {
+          this.y += this.speed;
+          this.swingStep += this.swing;
+          this.x += Math.sin(this.swingStep) * 0.5;
+          
+          if (this.y > canvas.height || this.x < -10 || this.x > canvas.width + 10) {
+            this.reset();
+          }
+        }
+        
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+          ctx.fill();
+        }
+      }
+      
+      class NoteParticle {
+        constructor() {
+          this.reset(true);
+        }
+        
+        reset(initY = false) {
+          this.x = Math.random() * canvas.width;
+          this.y = initY ? canvas.height + Math.random() * 200 : canvas.height + 20;
+          this.speed = Math.random() * 0.8 + 0.4;
+          this.opacity = Math.random() * 0.6 + 0.3;
+          this.scale = Math.random() * 0.6 + 0.6;
+          this.char = ["♩", "♪", "♫", "♬"][Math.floor(Math.random() * 4)];
+          this.angle = Math.random() * 360;
+          this.spin = Math.random() * 0.8 - 0.4;
+        }
+        
+        update() {
+          this.y -= this.speed;
+          this.angle += this.spin;
+          this.opacity -= 0.0015;
+          
+          if (this.y < -20 || this.opacity <= 0) {
+            this.reset();
+          }
+        }
+        
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.angle * Math.PI / 180);
+          ctx.fillStyle = `rgba(165, 180, 252, ${this.opacity})`;
+          ctx.font = `${Math.floor(18 * this.scale)}px sans-serif`;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = 'rgba(99, 102, 241, 0.4)';
+          ctx.fillText(this.char, 0, 0);
+          ctx.restore();
+        }
+      }
+      
+      function initParticles() {
+        resizeCanvas();
+        flakes = [];
+        noteParticles = [];
+        const flakeCount = Math.min(80, Math.floor(canvas.width / 10));
+        for (let i = 0; i < flakeCount; i++) {
+          flakes.push(new Flake());
+        }
+        for (let i = 0; i < 8; i++) {
+          noteParticles.push(new NoteParticle());
+        }
+      }
+      
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        flakes.forEach(flake => {
+          flake.update();
+          flake.draw();
+        });
+        
+        if (!animationEnded) {
+          noteParticles.forEach(note => {
+            note.update();
+            note.draw();
+          });
+        }
+        
+        animationFrameId = requestAnimationFrame(animateParticles);
+      }
+      
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Sound system
+      function stopMusic() {
+        audio.pause();
+        audio.currentTime = 0;
+        const soundIcon = document.getElementById('soundIcon');
+        const soundText = document.getElementById('soundText');
+        if (soundIcon) soundIcon.textContent = '🔊';
+        if (soundText) soundText.textContent = 'Activer la Musique';
+        
+        const eqContainer = document.getElementById('eqContainer');
+        if (eqContainer) {
+          eqContainer.classList.remove('sound-active');
+        }
+      }
+      
+      const soundBtn = document.getElementById('soundToggleBtn');
+      if (soundBtn) {
+        // Update default button text on load to fit custom song
+        const soundText = document.getElementById('soundText');
+        if (soundText) soundText.textContent = 'Activer la Musique';
+        
+        soundBtn.addEventListener('click', () => {
+          const eqContainer = document.getElementById('eqContainer');
+          
+          if (audio.paused) {
+            audio.play().catch(err => console.log("Playback failed:", err));
+            document.getElementById('soundIcon').textContent = '🔇';
+            document.getElementById('soundText').textContent = 'Couper le son';
+            if (eqContainer) eqContainer.classList.add('sound-active');
+          } else {
+            stopMusic();
+          }
+        });
+      }
+      
+      // Timer / transition control
+      function startIntroTimer() {
+        startTime = Date.now();
+        animationEnded = false;
+        updateProgressBar();
+      }
+      
+      function updateProgressBar() {
+        if (animationEnded) return;
+        const elapsed = Date.now() - startTime;
+        const pct = Math.max(0, 100 - (elapsed / duration) * 100);
+        const progressEl = document.getElementById('introProgressBar');
+        if (progressEl) {
+          progressEl.style.width = pct + '%';
+        }
+        
+        if (elapsed < duration) {
+          progressFrameId = requestAnimationFrame(updateProgressBar);
+        } else {
+          endIntroAnimation();
+        }
+      }
+      
+      function endIntroAnimation() {
+        if (animationEnded) return;
+        animationEnded = true;
+        
+        stopMusic();
+        if (progressFrameId) cancelAnimationFrame(progressFrameId);
+        
+        const animZone = document.getElementById('winterAnimationZone');
+        const posterZone = document.getElementById('winterPosterZone');
+        
+        if (animZone && posterZone) {
+          animZone.classList.add('opacity-0', 'scale-95');
+          
+          setTimeout(() => {
+            animZone.classList.add('hidden');
+            posterZone.classList.remove('hidden');
+            posterZone.offsetHeight; // force reflow
+            posterZone.classList.remove('opacity-0', 'scale-95');
+            posterZone.classList.add('opacity-100', 'scale-100');
+          }, 700);
+        }
+      }
+      
+      const skipBtn = document.getElementById('skipBtn');
+      if (skipBtn) {
+        skipBtn.addEventListener('click', endIntroAnimation);
+      }
+      
+      const replayBtn = document.getElementById('replayBtn');
+      if (replayBtn) {
+        replayBtn.addEventListener('click', () => {
+          const animZone = document.getElementById('winterAnimationZone');
+          const posterZone = document.getElementById('winterPosterZone');
+          
+          if (animZone && posterZone) {
+            posterZone.classList.add('opacity-0', 'scale-95');
+            
+            setTimeout(() => {
+              posterZone.classList.add('hidden');
+              animZone.classList.remove('hidden');
+              animZone.offsetHeight;
+              animZone.classList.remove('opacity-0', 'scale-95');
+              animZone.classList.add('opacity-100', 'scale-100');
+              
+              startIntroTimer();
+            }, 700);
+          }
+        });
+      }
+      
+      // Initialize
+      initParticles();
+      animateParticles();
+      startIntroTimer();
+    })();
+  </script>
 
   <!-- CATEGORIES -->
   <section id="categories" class="max-w-6xl mx-auto py-4 px-4">
