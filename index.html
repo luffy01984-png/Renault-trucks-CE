@@ -442,77 +442,132 @@
       40% { transform: rotate(0); }
     }
 
-    /* --- WINTER MUSIC HERO --- */
-    .winter-hero-bg {
-      background-color: #0b0f19;
+    /* --- LASER ÉPILATION HERO (CTRL+Z) --- */
+    .laser-hero-bg {
+      background-color: #080c14;
       background-image: 
-        radial-gradient(at 10% 20%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
-        radial-gradient(at 90% 80%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(circle at center, rgba(6, 182, 212, 0.08) 0px, transparent 70%),
-        radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px;
+        radial-gradient(at 15% 20%, rgba(220, 38, 38, 0.28) 0px, transparent 55%),
+        radial-gradient(at 85% 80%, rgba(244, 63, 94, 0.18) 0px, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.1) 0px, transparent 70%),
+        radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
       position: relative;
       overflow: hidden;
-      transition: background-color 1s ease;
-      animation: ambientWinterGlow 15s ease-in-out infinite alternate;
+      animation: ambientLaserGlow 14s ease-in-out infinite alternate;
     }
 
-    @keyframes ambientWinterGlow {
-      0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
-      50% { background-position: 20% 15%, -20% -15%, 0% 0%; }
-      100% { background-position: 40% 30%, -40% -30%, 0% 0%; }
+    @keyframes ambientLaserGlow {
+      0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+      50% { background-position: 20% 15%, -20% -15%, 0% 0%, 0% 0%; }
+      100% { background-position: 40% 30%, -40% -30%, 0% 0%, 0% 0%; }
     }
 
-    .winter-hero-bg::before {
+    .laser-hero-bg::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 120px;
+      height: 90px;
       background: linear-gradient(to top, #f3f4f6, transparent);
       z-index: 2;
       pointer-events: none;
     }
 
-    /* Equalizer Animating Bars */
-    .eq-bar {
-      transition: height 0.1s ease;
-      animation: pulseEQ 1.5s ease-in-out infinite alternate;
-      box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
-    }
-    
-    @keyframes pulseEQ {
-      0% {
-        height: 10%;
-        filter: brightness(0.8);
-      }
-      100% {
-        height: 100%;
-        filter: brightness(1.3) drop-shadow(0 0 6px rgba(99, 102, 241, 0.6));
-      }
-    }
-
-    .sound-active .eq-bar {
-      animation-duration: 0.6s !important;
-      box-shadow: 0 0 14px rgba(236, 72, 153, 0.6);
-    }
-
-    /* Canvas full screen overlay */
-    #snowCanvas {
-      mix-blend-mode: screen;
-    }
-
-    /* Glassmorphic card styling for winter poster */
-    .winter-poster-card {
-      background: rgba(15, 23, 42, 0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Laser flyer container */
+    .laser-flyer-card {
+      background: #0f172a;
+      border: 1px solid rgba(239, 68, 68, 0.35);
       box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.4),
-        0 0 40px rgba(6, 182, 212, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 25px 60px -10px rgba(0, 0, 0, 0.7),
+        0 0 35px rgba(220, 38, 38, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .laser-flyer-card:hover {
+      border-color: rgba(239, 68, 68, 0.6);
+      box-shadow: 
+        0 30px 70px -10px rgba(0, 0, 0, 0.8),
+        0 0 45px rgba(220, 38, 38, 0.4);
+    }
+
+    /* Laser beam traveling line */
+    .laser-beam {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(239, 68, 68, 0.5) 10%,
+        #ff1e56 25%, 
+        #ffffff 50%, 
+        #ff1e56 75%, 
+        rgba(239, 68, 68, 0.5) 90%,
+        transparent 100%);
+      box-shadow: 
+        0 0 8px #ffffff,
+        0 0 18px #ff1e56,
+        0 0 36px #ef4444,
+        0 0 60px rgba(220, 38, 38, 0.8);
+      z-index: 30;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: opacity 0.2s ease;
+    }
+
+    /* Laser handpiece applicator head */
+    .laser-handpiece {
+      position: absolute;
+      top: 50%;
+      width: 38px;
+      height: 38px;
+      transform: translate(-50%, -50%);
+      z-index: 32;
+      pointer-events: none;
+      filter: drop-shadow(0 0 12px #ff0055) drop-shadow(0 0 20px #ef4444);
+    }
+
+    /* Dark veil overlay */
+    .laser-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10, 14, 23, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%);
+      z-index: 20;
+      pointer-events: none;
+      will-change: clip-path;
+    }
+
+    /* Medical Laser Grid overlay */
+    .laser-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(239, 68, 68, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(239, 68, 68, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Canvas for laser sparks */
+    #laserCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 28;
+      pointer-events: none;
+    }
+
+    /* White flash finish */
+    .laser-flash-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 30, 86, 0.7) 40%, transparent 80%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 35;
+      transition: opacity 0.5s ease-out;
     }
   </style>
 </head>
@@ -586,352 +641,525 @@
 
 
 
-  <!-- HERO SECTION - WINTER & MUSIC FESTIVAL -->
-  <section id="hero" class="winter-hero-bg relative pt-12 pb-12 sm:pt-20 sm:pb-20 border-b-4 border-cyan-800 min-h-[auto] sm:min-h-[60vh] flex flex-col justify-center items-center overflow-hidden">
-    <!-- Canvas for falling snow -->
-    <canvas id="snowCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-1"></canvas>
+  <!-- HERO SECTION - LASER ÉPILATION & DÉTATOUAGE (CTRL+Z) -->
+  <section id="hero" class="laser-hero-bg relative pt-8 pb-14 sm:pt-12 sm:pb-20 border-b-4 border-red-700 min-h-[auto] sm:min-h-[60vh] flex flex-col justify-center items-center overflow-hidden">
     
-    <!-- Ambient Northern Lights glow overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/20 to-slate-950 pointer-events-none z-0"></div>
-    
-    <!-- Wrapper for contents -->
+    <!-- Ambient Red Laser Light aura -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/20 to-slate-950 pointer-events-none z-0"></div>
+
+    <!-- Wrapper -->
     <div class="relative z-10 w-full max-w-5xl mx-auto px-4 flex flex-col items-center">
       
-      <!-- ZONE 1: INTRO ANIMATION (visible initially) -->
-      <div id="winterAnimationZone" class="w-full flex flex-col items-center justify-center space-y-8 text-center transition-all duration-700 ease-out">
-        
-        <!-- Badge -->
-        <span class="inline-flex items-center space-x-1.5 text-[10px] sm:text-xs font-bold text-cyan-300 uppercase tracking-widest bg-cyan-950/60 px-4 py-1.5 rounded-full border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.2)] animate-pulse">
-          <span>❄️</span>
-          <span>Festival d'Hiver CSE</span>
-          <span>🎵</span>
-        </span>
-        
-        <!-- Main animated heading -->
-        <div class="space-y-3">
-          <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-cyan-200 to-indigo-100 tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-            Une Symphonie <br class="sm:hidden">Hivernale
-          </h1>
-          <p class="text-sm sm:text-lg text-cyan-200/80 max-w-lg mx-auto font-medium">
-            Laissez-vous emporter par la magie de la musique et des fêtes...
-          </p>
+      <!-- Top Header / Badges & Info -->
+      <div class="text-center space-y-3 mb-6 max-w-2xl">
+        <div class="inline-flex items-center space-x-2 text-[10px] sm:text-xs font-extrabold text-red-300 uppercase tracking-widest bg-red-950/80 px-4 py-1.5 rounded-full border border-red-500/40 shadow-[0_0_20px_rgba(239,68,68,0.3)] animate-pulse">
+          <span class="inline-block w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
+          <span>NOUVEAU PARTENAIRE • ÉPILATION LASER & DÉTATOUAGE</span>
+          <span class="inline-block w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
         </div>
+        </h1>
+        <p class="text-sm sm:text-base text-gray-300 max-w-xl mx-auto font-medium">
+          Profitez d'un tarif préférentiel exclusif pour les salariés Renault Trucks à Bourg-en-Bresse.
+        </p>
 
-        <!-- Equalizer & Interactive Play/Sound Button -->
-        <div class="relative flex flex-col items-center justify-center p-6 bg-slate-900/40 rounded-3xl border border-white/5 backdrop-blur-md shadow-2xl max-w-sm w-full">
-          <!-- Audio control -->
-          <button id="soundToggleBtn" class="mb-6 flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold px-5 py-2.5 rounded-full shadow-[0_4px_15px_rgba(6,182,212,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 z-20">
-            <span id="soundIcon">🔊</span>
-            <span id="soundText">Activer la Musique</span>
-          </button>
-          
-          <!-- Equalizer bars -->
-          <div class="flex items-end justify-center space-x-1 h-16 w-64 px-4 overflow-hidden relative" id="eqContainer">
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 20%; animation-delay: 0.1s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 40%; animation-delay: 0.3s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 60%; animation-delay: 0.5s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 35%; animation-delay: 0.2s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 80%; animation-delay: 0.7s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 50%; animation-delay: 0.4s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 90%; animation-delay: 0.9s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 70%; animation-delay: 0.6s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 30%; animation-delay: 0.3s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 55%; animation-delay: 0.8s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 85%; animation-delay: 0.5s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 45%; animation-delay: 0.2s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 25%; animation-delay: 0.4s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 75%; animation-delay: 0.7s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 95%; animation-delay: 0.1s;"></div>
-            <div class="eq-bar w-1.5 bg-gradient-to-t from-cyan-400 to-indigo-500 rounded-full" style="height: 60%; animation-delay: 0.3s;"></div>
+        <!-- Laser HUD Status Bar -->
+        <div class="flex items-center justify-center space-x-3 sm:space-x-6 pt-1 text-[11px] sm:text-xs font-mono text-gray-400">
+          <div class="flex items-center space-x-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-emerald-400 font-semibold" id="laserStatusIndicator">BALAYAGE LASER EN COURS</span>
           </div>
-        </div>
-
-        <!-- Timer / Progress Skip Action -->
-        <div class="flex flex-col items-center space-y-2 w-full max-w-xs">
-          <button id="skipBtn" class="text-xs font-semibold text-cyan-200/60 hover:text-cyan-200 bg-slate-950/40 hover:bg-slate-950/60 border border-white/5 hover:border-cyan-500/20 px-4 py-2 rounded-full transition-all duration-300 flex items-center space-x-2 z-20">
-            <span>Passer l'introduction</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
-          </button>
-          <!-- Progress bar -->
-          <div class="w-full h-1 bg-slate-950/60 rounded-full overflow-hidden border border-white/5">
-            <div id="introProgressBar" class="h-full bg-cyan-400 w-full transition-all linear duration-100"></div>
+          <div class="hidden sm:inline text-gray-600">|</div>
+          <div class="hidden sm:flex items-center space-x-1">
           </div>
         </div>
       </div>
 
-      <!-- ZONE 2: FINAL FLYER SHOWCASE (initially hidden) -->
-      <div id="winterPosterZone" class="hidden w-full max-w-xl flex-col items-center space-y-6 text-center transform scale-95 opacity-0 transition-all duration-1000 ease-out">
-        <div class="relative group winter-poster-card p-3 sm:p-4 bg-slate-900/60 border border-white/10 rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden backdrop-blur-md">
-          <!-- Aurora background glow inside card -->
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-indigo-500/10 opacity-60 pointer-events-none"></div>
-          
-          <!-- Image -->
-          <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/winterfestival1.webp" 
-               alt="Winter Festival Flyer" 
-               class="rounded-2xl max-w-full h-auto object-contain max-h-[60vh] sm:max-h-[65vh] shadow-inner relative z-10 transition-transform duration-500 group-hover:scale-[1.01]" />
-          
-          <!-- Dynamic frosty reflection sweep on hover -->
-          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-20 pointer-events-none"></div>
-        </div>
+      <!-- MAIN LASER SCANNER BOX -->
+      <div class="relative w-full max-w-3xl flex flex-col items-center">
         
-        <!-- Actions after animation -->
-        <div class="flex items-center space-x-4 z-20">
-          <button id="replayBtn" class="flex items-center space-x-2 bg-slate-950/50 hover:bg-slate-950/80 border border-cyan-500/30 hover:border-cyan-400 text-cyan-200 hover:text-white px-5 py-2.5 rounded-full font-semibold transition-all duration-300 text-sm shadow-[0_0_15px_rgba(6,182,212,0.1)] transform hover:scale-105 active:scale-95">
-            <span>🔄</span>
-            <span>Revoir l'animation</span>
-          </button>
-          <a href="#categories" class="flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-6 py-2.5 rounded-full font-bold transition-all duration-300 text-sm shadow-[0_4px_15px_rgba(6,182,212,0.3)] transform hover:scale-105 active:scale-95">
-            <span>Découvrir les offres</span>
-            <span>👇</span>
-          </a>
+        <!-- CARD CONTAINER -->
+        <div id="laserCardContainer" class="laser-flyer-card w-full relative group cursor-pointer aspect-[16/9] max-h-[62vh] rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-red-500/30">
+          
+          <!-- REVEALED IMAGE -->
+          <img id="laserRevealedImg" 
+               src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/pilationctrl.webp" 
+               alt="Offre Épilation Laser et Détatouage Ctrl+Z - Renault Trucks CSE" 
+               class="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-[1.01]" 
+               loading="eager" />
+
+          <!-- HIGH-TECH COVER VEIL (revealed by laser sweep) -->
+          <div id="laserCoverVeil" class="laser-veil flex flex-col items-center justify-center p-6 text-center laser-grid-pattern">
+            <!-- Reticle / Medical Laser Crosshair -->
+            <div class="relative flex flex-col items-center justify-center space-y-4">
+              <div class="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+                <!-- Circular targeting rings -->
+                <div class="absolute inset-0 rounded-full border border-red-500/30 animate-spin" style="animation-duration: 10s;"></div>
+                <div class="absolute inset-2 rounded-full border-2 border-dashed border-red-500/50 animate-spin" style="animation-duration: 6s; animation-direction: reverse;"></div>
+                <div class="absolute inset-5 rounded-full border border-red-400/40"></div>
+                <!-- Crosshairs -->
+                <div class="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent"></div>
+                <div class="absolute h-full w-[1px] bg-gradient-to-b from-transparent via-red-500/60 to-transparent"></div>
+                <!-- Glowing central laser diode -->
+                <div class="w-3.5 h-3.5 rounded-full bg-red-500 shadow-[0_0_14px_#ff0055] animate-ping"></div>
+              </div>
+
+              <div class="space-y-1">
+                <span class="text-xs sm:text-sm font-mono tracking-widest text-red-400 uppercase font-bold">
+                  ⚡ Émission Laser Médicale Active
+                </span>
+                <p class="text-[11px] sm:text-xs text-gray-400 font-mono">
+                  Révélation de l'offre partenaire exclusive...
+                </p>
+              </div>
+
+              <!-- Animated scanner progress HUD -->
+              <div class="w-48 sm:w-64 bg-slate-800/80 rounded-full h-2 overflow-hidden border border-red-500/30 p-0.5">
+                <div id="laserProgressBar" class="h-full bg-gradient-to-r from-red-600 via-rose-500 to-red-400 rounded-full w-0 transition-all duration-75"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LASER BEAM (Traveling Line) -->
+          <div id="laserBeamLine" class="laser-beam" style="top: 0%; opacity: 1;">
+            <!-- Laser Applicator Head (follows beam) -->
+            <div id="laserHandpiece" class="laser-handpiece" style="left: 50%;">
+              <svg viewBox="0 0 40 40" class="w-full h-full">
+                <!-- Outer laser lens ring -->
+                <circle cx="20" cy="20" r="14" fill="none" stroke="#ff2a5f" stroke-width="2" opacity="0.8" />
+                <circle cx="20" cy="20" r="8" fill="#ffffff" filter="drop-shadow(0 0 6px #ff0055)" />
+                <circle cx="20" cy="20" r="3" fill="#ff0044" />
+                <!-- Emitter cross flares -->
+                <line x1="2" y1="20" x2="38" y2="20" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+                <line x1="20" y1="2" x2="20" y2="38" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Canvas for laser sparks and photon particles -->
+          <canvas id="laserCanvas"></canvas>
+
+          <!-- White/Ruby flash bloom on finish -->
+          <div id="laserFlashOverlay" class="laser-flash-overlay"></div>
+
+          <!-- Hover zoom hint (after reveal) -->
+          <div id="zoomHintBadge" class="hidden absolute bottom-3 right-3 bg-slate-900/85 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-red-500/30 shadow-lg pointer-events-none z-20 flex items-center space-x-1.5">
+            <span>🔍</span>
+            <span>Cliquer pour zoomer</span>
+          </div>
         </div>
+
+        <!-- CONTROLS & ACTION BUTTONS -->
+        <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-3 mt-4">
+          
+          <!-- Secondary / Animation helpers -->
+          <div class="flex items-center space-x-2">
+            <!-- Sound Toggle (Synthesizer) -->
+            <button id="laserSoundBtn" type="button" class="bg-slate-900/70 hover:bg-slate-800 text-gray-300 hover:text-white border border-red-500/20 hover:border-red-500/50 text-xs px-3.5 py-2 rounded-xl transition-all flex items-center space-x-1.5 shadow-sm active:scale-95" title="Activer / Couper les effets sonores">
+              <span id="laserSoundIcon">🔇</span>
+              <span id="laserSoundText">Son Laser</span>
+            </button>
+
+            <!-- Replay Button -->
+            <button id="laserReplayBtn" type="button" class="bg-slate-900/70 hover:bg-slate-800 text-gray-300 hover:text-white border border-red-500/20 hover:border-red-500/50 text-xs px-3.5 py-2 rounded-xl transition-all flex items-center space-x-1.5 shadow-sm active:scale-95">
+              <span>🔄</span>
+              <span>Revoir l'effet</span>
+            </button>
+
+            <!-- Skip Button (during scan) -->
+            <button id="laserSkipBtn" type="button" class="bg-red-950/60 hover:bg-red-900/80 text-red-200 border border-red-500/30 text-xs px-3.5 py-2 rounded-xl transition-all flex items-center space-x-1.5 active:scale-95">
+              <span>⚡</span>
+              <span>Passer</span>
+            </button>
+          </div>
+
+          <!-- Primary Call to Actions -->
+          <div class="flex items-center space-x-2.5 w-full sm:w-auto justify-end">
+            <!-- Open Modal Button -->
+            <button id="laserZoomBtn" type="button" class="flex-1 sm:flex-initial bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-red-500/40 shadow-lg hover:shadow-red-500/20 transition-all flex items-center justify-center space-x-2 active:scale-95">
+              <span>🔍</span>
+              <span>Agrandir l'offre</span>
+            </button>
+
+            <!-- Scroll to Categories Button -->
+            <a href="#categories" class="flex-1 sm:flex-initial bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-[0_4px_16px_rgba(220,38,38,0.4)] transition-all flex items-center justify-center space-x-1.5 active:scale-95">
+              <span>Voir les partenaires</span>
+              <span>👇</span>
+            </a>
+          </div>
+
+        </div>
+
       </div>
-      
+
     </div>
   </section>
 
   <script>
-    (function() {
-      const canvas = document.getElementById('snowCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+    (function () {
+      const cardContainer = document.getElementById('laserCardContainer');
+      const coverVeil = document.getElementById('laserCoverVeil');
+      const beamLine = document.getElementById('laserBeamLine');
+      const handpiece = document.getElementById('laserHandpiece');
+      const progressBar = document.getElementById('laserProgressBar');
+      const canvas = document.getElementById('laserCanvas');
+      const flashOverlay = document.getElementById('laserFlashOverlay');
+      const statusIndicator = document.getElementById('laserStatusIndicator');
+      const zoomHintBadge = document.getElementById('zoomHintBadge');
+      const skipBtn = document.getElementById('laserSkipBtn');
+      const replayBtn = document.getElementById('laserReplayBtn');
+      const zoomBtn = document.getElementById('laserZoomBtn');
+      const soundBtn = document.getElementById('laserSoundBtn');
+      const soundIcon = document.getElementById('laserSoundIcon');
+      const soundText = document.getElementById('laserSoundText');
+
+      const PARTNER_IMAGE_URL = "https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/pilationctrl.webp";
+
+      let ctx = canvas ? canvas.getContext('2d') : null;
+      let sparks = [];
+      let isRevealed = false;
       let animationFrameId = null;
-      let flakes = [];
-      let noteParticles = [];
-      let animationEnded = false;
-      
-      // Timer variables
-      const duration = 6000;
-      let startTime = null;
-      let progressFrameId = null;
-      
-      // Audio variables
-      const audio = new Audio("https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/Helmut%20Fritz.mp3");
-      audio.loop = true;
-      audio.preload = "auto";
-      
+      let scanStartTime = null;
+      const SCAN_DURATION = 3200; // 3.2 seconds
+      let soundEnabled = false;
+      let audioCtx = null;
+      let laserOscillator = null;
+      let laserGain = null;
+
       function resizeCanvas() {
-        const rect = canvas.parentNode.getBoundingClientRect();
+        if (!canvas || !cardContainer) return;
+        const rect = cardContainer.getBoundingClientRect();
         canvas.width = rect.width;
         canvas.height = rect.height;
       }
-      
-      class Flake {
-        constructor() {
-          this.reset(true);
-        }
-        
-        reset(initY = false) {
-          this.x = Math.random() * canvas.width;
-          this.y = initY ? Math.random() * canvas.height : -10;
-          this.r = Math.random() * 3 + 1;
-          this.speed = Math.random() * 1.5 + 0.5;
-          this.swing = Math.random() * 0.02 + 0.005;
-          this.swingStep = Math.random() * 100;
-        }
-        
-        update() {
-          this.y += this.speed;
-          this.swingStep += this.swing;
-          this.x += Math.sin(this.swingStep) * 0.5;
-          
-          if (this.y > canvas.height || this.x < -10 || this.x > canvas.width + 10) {
-            this.reset();
-          }
-        }
-        
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
-          ctx.fill();
-        }
-      }
-      
-      class NoteParticle {
-        constructor() {
-          this.reset(true);
-        }
-        
-        reset(initY = false) {
-          this.x = Math.random() * canvas.width;
-          this.y = initY ? canvas.height + Math.random() * 200 : canvas.height + 20;
-          this.speed = Math.random() * 0.8 + 0.4;
-          this.opacity = Math.random() * 0.6 + 0.3;
-          this.scale = Math.random() * 0.6 + 0.6;
-          this.char = ["♩", "♪", "♫", "♬"][Math.floor(Math.random() * 4)];
-          this.angle = Math.random() * 360;
-          this.spin = Math.random() * 0.8 - 0.4;
-        }
-        
-        update() {
-          this.y -= this.speed;
-          this.angle += this.spin;
-          this.opacity -= 0.0015;
-          
-          if (this.y < -20 || this.opacity <= 0) {
-            this.reset();
-          }
-        }
-        
-        draw() {
-          ctx.save();
-          ctx.translate(this.x, this.y);
-          ctx.rotate(this.angle * Math.PI / 180);
-          ctx.fillStyle = `rgba(165, 180, 252, ${this.opacity})`;
-          ctx.font = `${Math.floor(18 * this.scale)}px sans-serif`;
-          ctx.shadowBlur = 6;
-          ctx.shadowColor = 'rgba(99, 102, 241, 0.4)';
-          ctx.fillText(this.char, 0, 0);
-          ctx.restore();
-        }
-      }
-      
-      function initParticles() {
-        resizeCanvas();
-        flakes = [];
-        noteParticles = [];
-        const flakeCount = Math.min(80, Math.floor(canvas.width / 10));
-        for (let i = 0; i < flakeCount; i++) {
-          flakes.push(new Flake());
-        }
-        for (let i = 0; i < 8; i++) {
-          noteParticles.push(new NoteParticle());
-        }
-      }
-      
-      function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        flakes.forEach(flake => {
-          flake.update();
-          flake.draw();
-        });
-        
-        if (!animationEnded) {
-          noteParticles.forEach(note => {
-            note.update();
-            note.draw();
-          });
-        }
-        
-        animationFrameId = requestAnimationFrame(animateParticles);
-      }
-      
+
       window.addEventListener('resize', resizeCanvas);
-      
-      // Sound system
-      function stopMusic() {
-        audio.pause();
-        audio.currentTime = 0;
-        const soundIcon = document.getElementById('soundIcon');
-        const soundText = document.getElementById('soundText');
-        if (soundIcon) soundIcon.textContent = '🔊';
-        if (soundText) soundText.textContent = 'Activer la Musique';
-        
-        const eqContainer = document.getElementById('eqContainer');
-        if (eqContainer) {
-          eqContainer.classList.remove('sound-active');
-        }
-      }
-      
-      const soundBtn = document.getElementById('soundToggleBtn');
-      if (soundBtn) {
-        // Update default button text on load to fit custom song
-        const soundText = document.getElementById('soundText');
-        if (soundText) soundText.textContent = 'Activer la Musique';
-        
-        soundBtn.addEventListener('click', () => {
-          const eqContainer = document.getElementById('eqContainer');
-          
-          if (audio.paused) {
-            audio.play().catch(err => console.log("Playback failed:", err));
-            document.getElementById('soundIcon').textContent = '🔇';
-            document.getElementById('soundText').textContent = 'Couper le son';
-            if (eqContainer) eqContainer.classList.add('sound-active');
-          } else {
-            stopMusic();
+
+      // Web Audio API Synthesizer for high-tech laser pulses
+      function initAudio() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
           }
-        });
-      }
-      
-      // Timer / transition control
-      function startIntroTimer() {
-        startTime = Date.now();
-        animationEnded = false;
-        updateProgressBar();
-      }
-      
-      function updateProgressBar() {
-        if (animationEnded) return;
-        const elapsed = Date.now() - startTime;
-        const pct = Math.max(0, 100 - (elapsed / duration) * 100);
-        const progressEl = document.getElementById('introProgressBar');
-        if (progressEl) {
-          progressEl.style.width = pct + '%';
         }
-        
-        if (elapsed < duration) {
-          progressFrameId = requestAnimationFrame(updateProgressBar);
-        } else {
-          endIntroAnimation();
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
         }
       }
-      
-      function endIntroAnimation() {
-        if (animationEnded) return;
-        animationEnded = true;
-        
-        stopMusic();
-        if (progressFrameId) cancelAnimationFrame(progressFrameId);
-        
-        const animZone = document.getElementById('winterAnimationZone');
-        const posterZone = document.getElementById('winterPosterZone');
-        
-        if (animZone && posterZone) {
-          animZone.classList.add('opacity-0', 'scale-95');
-          
-          setTimeout(() => {
-            animZone.classList.add('hidden');
-            posterZone.classList.remove('hidden');
-            posterZone.offsetHeight; // force reflow
-            posterZone.classList.remove('opacity-0', 'scale-95');
-            posterZone.classList.add('opacity-100', 'scale-100');
-          }, 700);
+
+      function startLaserSound() {
+        if (!soundEnabled || !audioCtx) return;
+        try {
+          if (laserOscillator) stopLaserSound();
+          laserOscillator = audioCtx.createOscillator();
+          laserGain = audioCtx.createGain();
+
+          laserOscillator.type = 'sawtooth';
+          laserOscillator.frequency.setValueAtTime(280, audioCtx.currentTime);
+          laserOscillator.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + (SCAN_DURATION / 1000));
+
+          // Soft lowpass filter to make it sound sleek and futuristic
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(800, audioCtx.currentTime);
+
+          laserGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+          laserGain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
+
+          laserOscillator.connect(filter);
+          filter.connect(laserGain);
+          laserGain.connect(audioCtx.destination);
+
+          laserOscillator.start();
+        } catch (e) {
+          console.warn("Audio error:", e);
         }
       }
-      
-      const skipBtn = document.getElementById('skipBtn');
-      if (skipBtn) {
-        skipBtn.addEventListener('click', endIntroAnimation);
-      }
-      
-      const replayBtn = document.getElementById('replayBtn');
-      if (replayBtn) {
-        replayBtn.addEventListener('click', () => {
-          const animZone = document.getElementById('winterAnimationZone');
-          const posterZone = document.getElementById('winterPosterZone');
-          
-          if (animZone && posterZone) {
-            posterZone.classList.add('opacity-0', 'scale-95');
-            
+
+      function stopLaserSound() {
+        if (laserGain && audioCtx) {
+          try {
+            laserGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
             setTimeout(() => {
-              posterZone.classList.add('hidden');
-              animZone.classList.remove('hidden');
-              animZone.offsetHeight;
-              animZone.classList.remove('opacity-0', 'scale-95');
-              animZone.classList.add('opacity-100', 'scale-100');
-              
-              startIntroTimer();
-            }, 700);
+              if (laserOscillator) {
+                laserOscillator.stop();
+                laserOscillator.disconnect();
+                laserOscillator = null;
+              }
+            }, 90);
+          } catch (e) {
+            laserOscillator = null;
+          }
+        }
+      }
+
+      function playCompletionChime() {
+        if (!soundEnabled || !audioCtx) return;
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+          osc.frequency.exponentialRampToValueAtTime(1046.5, audioCtx.currentTime + 0.3); // C6
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.5);
+        } catch (e) {}
+      }
+
+      if (soundBtn) {
+        soundBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          initAudio();
+          soundEnabled = !soundEnabled;
+          if (soundEnabled) {
+            soundIcon.textContent = '🔊';
+            soundText.textContent = 'Son Actif';
+            soundBtn.classList.add('border-red-500', 'text-red-400');
+            if (!isRevealed) startLaserSound();
+          } else {
+            soundIcon.textContent = '🔇';
+            soundText.textContent = 'Son Laser';
+            soundBtn.classList.remove('border-red-500', 'text-red-400');
+            stopLaserSound();
           }
         });
       }
-      
-      // Initialize
-      initParticles();
-      animateParticles();
-      startIntroTimer();
+
+      // Spark Particles
+      class LaserSpark {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 4 + 1.5;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = (Math.sin(angle) * speed) - 1.2; // upward bias
+          this.alpha = 1;
+          this.size = Math.random() * 3 + 1.5;
+          const colors = ['#ffffff', '#ff2a5f', '#ef4444', '#fbcfe8', '#fecdd3'];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.decay = Math.random() * 0.04 + 0.02;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.08; // subtle gravity
+          this.alpha -= this.decay;
+        }
+
+        draw(context) {
+          if (this.alpha <= 0) return;
+          context.save();
+          context.globalAlpha = Math.max(0, this.alpha);
+          context.fillStyle = this.color;
+          context.shadowColor = '#ff1e56';
+          context.shadowBlur = 6;
+          context.beginPath();
+          context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          context.fill();
+          context.restore();
+        }
+      }
+
+      function spawnSparks(originX, originY, count = 5) {
+        if (!canvas) return;
+        for (let i = 0; i < count; i++) {
+          const jX = originX + (Math.random() * 30 - 15);
+          const jY = originY + (Math.random() * 6 - 3);
+          sparks.push(new LaserSpark(jX, jY));
+        }
+      }
+
+      function runScanAnimation(timestamp) {
+        if (!scanStartTime) scanStartTime = timestamp;
+        const elapsed = timestamp - scanStartTime;
+        let progress = Math.min(1, elapsed / SCAN_DURATION);
+
+        const easedProgress = Math.pow(progress, 1.1);
+
+        if (canvas && ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        if (!isRevealed) {
+          const currentYPercent = easedProgress * 100;
+
+          // Update Laser Beam Position
+          if (beamLine) {
+            beamLine.style.top = currentYPercent + '%';
+            beamLine.style.opacity = '1';
+          }
+
+          // Laser handpiece horizontal sweep
+          const sweepXPercent = 50 + Math.sin(elapsed * 0.012) * 42;
+          if (handpiece) {
+            handpiece.style.left = sweepXPercent + '%';
+          }
+
+          // Update Reveal Mask
+          if (coverVeil) {
+            coverVeil.style.clipPath = `polygon(0% ${currentYPercent}%, 100% ${currentYPercent}%, 100% 100%, 0% 100%)`;
+          }
+
+          // Update Progress Bar
+          if (progressBar) {
+            progressBar.style.width = currentYPercent + '%';
+          }
+
+          // Generate spark particles at laser point
+          if (canvas) {
+            const beamPixelY = (easedProgress * canvas.height);
+            const handpiecePixelX = (sweepXPercent / 100) * canvas.width;
+            spawnSparks(handpiecePixelX, beamPixelY, 4);
+
+            if (Math.random() > 0.4) {
+              spawnSparks(Math.random() * canvas.width, beamPixelY, 2);
+            }
+          }
+
+          // Draw sparks
+          if (ctx) {
+            for (let i = sparks.length - 1; i >= 0; i--) {
+              sparks[i].update();
+              sparks[i].draw(ctx);
+              if (sparks[i].alpha <= 0) {
+                sparks.splice(i, 1);
+              }
+            }
+          }
+
+          if (progress < 1) {
+            animationFrameId = requestAnimationFrame(runScanAnimation);
+          } else {
+            completeReveal();
+          }
+        } else {
+          if (ctx && sparks.length > 0) {
+            for (let i = sparks.length - 1; i >= 0; i--) {
+              sparks[i].update();
+              sparks[i].draw(ctx);
+              if (sparks[i].alpha <= 0) {
+                sparks.splice(i, 1);
+              }
+            }
+            animationFrameId = requestAnimationFrame(runScanAnimation);
+          }
+        }
+      }
+
+      function completeReveal() {
+        if (isRevealed) return;
+        isRevealed = true;
+        stopLaserSound();
+        playCompletionChime();
+
+        // White/Ruby flash burst
+        if (flashOverlay) {
+          flashOverlay.style.opacity = '1';
+          setTimeout(() => {
+            flashOverlay.style.opacity = '0';
+          }, 250);
+        }
+
+        // Hide beam line and veil
+        if (beamLine) {
+          beamLine.style.opacity = '0';
+        }
+        if (coverVeil) {
+          coverVeil.style.clipPath = 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
+          coverVeil.style.display = 'none';
+        }
+
+        // Update status indicators
+        if (statusIndicator) {
+          statusIndicator.textContent = 'TRAITEMENT VALIDÉ • OFFRE RÉVÉLÉE';
+          statusIndicator.classList.remove('text-emerald-400');
+          statusIndicator.classList.add('text-rose-400');
+        }
+
+        if (zoomHintBadge) zoomHintBadge.classList.remove('hidden');
+        if (skipBtn) skipBtn.classList.add('hidden');
+      }
+
+      function startScan() {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        resizeCanvas();
+        isRevealed = false;
+        scanStartTime = null;
+        sparks = [];
+
+        if (coverVeil) {
+          coverVeil.style.display = 'flex';
+          coverVeil.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
+        }
+        if (beamLine) {
+          beamLine.style.top = '0%';
+          beamLine.style.opacity = '1';
+        }
+        if (progressBar) progressBar.style.width = '0%';
+        if (zoomHintBadge) zoomHintBadge.classList.add('hidden');
+        if (skipBtn) skipBtn.classList.remove('hidden');
+        if (statusIndicator) {
+          statusIndicator.textContent = 'BALAYAGE LASER EN COURS';
+          statusIndicator.classList.remove('text-rose-400');
+          statusIndicator.classList.add('text-emerald-400');
+        }
+
+        if (soundEnabled) {
+          initAudio();
+          startLaserSound();
+        }
+
+        animationFrameId = requestAnimationFrame(runScanAnimation);
+      }
+
+      // Event Listeners
+      if (skipBtn) {
+        skipBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          completeReveal();
+        });
+      }
+
+      if (replayBtn) {
+        replayBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          startScan();
+        });
+      }
+
+      function handleOpenModal() {
+        if (typeof openModal === 'function') {
+          openModal(PARTNER_IMAGE_URL);
+        }
+      }
+
+      if (cardContainer) {
+        cardContainer.addEventListener('click', handleOpenModal);
+      }
+
+      if (zoomBtn) {
+        zoomBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          handleOpenModal();
+        });
+      }
+
+      // Start on DOM ready / image load
+      const img = document.getElementById('laserRevealedImg');
+      if (img && !img.complete) {
+        img.addEventListener('load', () => {
+          resizeCanvas();
+          startScan();
+        });
+      } else {
+        setTimeout(startScan, 150);
+      }
     })();
   </script>
 
