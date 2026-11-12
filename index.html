@@ -442,28 +442,55 @@
 
 
   <!-- ========================================================
-       HERO SECTION - MESSAGE RAPPEL BADGE CSE
+       HERO SECTION - NOUVEAU PARTENAIRE
        ======================================================== -->
-  <section id="hero" class="autumn-hero-bg py-10 sm:py-16 px-4 border-b border-amber-600/30 flex flex-col justify-center items-center text-center">
-    <div class="max-w-4xl mx-auto flex flex-col items-center space-y-4 sm:space-y-5">
+  <section id="hero" class="autumn-hero-bg py-8 sm:py-12 px-4 border-b border-amber-600/30 flex flex-col justify-center items-center text-center">
+    <div class="max-w-4xl mx-auto flex flex-col items-center space-y-4 sm:space-y-6">
       
-      <!-- Badge Thème Automne -->
-      <div class="inline-flex items-center space-x-2 text-xs font-semibold px-4 py-1.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 shadow-sm">
-        <span>🍂</span>
-        <span class="tracking-wider uppercase font-bold text-[10px] sm:text-xs">Information CSE Renault Trucks • Bourg-en-Bresse</span>
+      <!-- Badge Nouveau Partenaire -->
+      <div class="inline-flex items-center space-x-2 text-xs font-semibold px-4 py-1.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 shadow-sm animate-pulse">
+        <span>✨</span>
+        <span class="tracking-wider uppercase font-bold text-[10px] sm:text-xs">Nouveau Partenaire • CSE Renault Trucks</span>
+        <span>✨</span>
       </div>
 
-      <!-- Premier Message Unique -->
-      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-snug sm:leading-tight max-w-3xl">
-        N'oubliez pas de <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent underline decoration-amber-500/50 decoration-wavy decoration-2">présenter votre badge</span> afin de pouvoir bénéficier de vos avantages
+      <!-- Titre d'accroche -->
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-snug max-w-2xl">
+        Découvrez notre nouveau partenaire <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent">Parfums & Cosmétiques</span>
       </h1>
 
-      <!-- Accès direct Partenaires -->
-      <div class="pt-2">
+      <!-- Rappel Badge & Remise -->
+      <p class="text-sm sm:text-base text-stone-200 max-w-xl">
+        Bénéficiez de <span class="text-amber-400 font-bold">-10% sur toute commande</span> sur présentation de votre badge Renault Trucks.
+      </p>
+
+      <!-- Affichage de l'affiche Partenaire (cliquable pour agrandir) -->
+      <div class="w-full max-w-2xl group relative rounded-2xl overflow-hidden shadow-2xl border border-amber-500/30 bg-stone-900 cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:border-amber-400/60 hover:shadow-amber-500/20"
+           onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/parfum.webp')">
+        <img src="https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/parfum.webp"
+             alt="Offre Partenaire - Elsa Bigeard Parfums"
+             class="w-full h-auto object-cover block transition duration-300 group-hover:brightness-105"
+             loading="eager">
+        
+        <!-- Overlay incitation au clic -->
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-black/75 text-white font-semibold text-xs sm:text-sm backdrop-blur-sm border border-white/20 shadow-lg">
+            <span>🔍 Cliquer pour agrandir l'offre</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <button onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/parfum.webp')"
+                class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 hover:from-amber-500 hover:to-red-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer">
+          <span>🔍 Voir l'affiche en grand</span>
+        </button>
+
         <a href="#categories" 
-           class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 hover:from-amber-500 hover:to-red-500 text-white font-bold text-sm shadow-md transition-all active:scale-95">
-          <span>Voir les offres partenaires</span>
-          <span>🍂</span>
+           class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-stone-800/80 hover:bg-stone-700/80 text-amber-200 border border-amber-500/30 font-semibold text-xs sm:text-sm shadow-md transition-all active:scale-95">
+          <span>Toutes les catégories</span>
+          <span>↓</span>
         </a>
       </div>
 
@@ -894,6 +921,9 @@
           </div>
         </div>
         <div id="beaute-bienetre" class="partner-content bg-white border border-gray-200 rounded-xl p-4 shadow-lg">
+          <div class="partner-link"
+            onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/parfum.webp')">
+            Elsa Bigeard (Parfums Chogan)</div>
           <div class="partner-link"
             onclick="openModal('https://raw.githubusercontent.com/luffy01984-png/Renault-trucks-CE/main/assets/assets/6emesens.webp')">
             6eme Sens</div>
